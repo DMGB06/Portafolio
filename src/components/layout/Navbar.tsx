@@ -1,7 +1,7 @@
 "use client";
 
 import { FaCodepen, FaTimes, FaBars } from "react-icons/fa";
-import { ThemeToggle } from "./ThemeToogle";
+import { ThemeToggle } from "../ui/ThemeToogle";
 import { useState } from "react";
 
 export default function Navbar() {
