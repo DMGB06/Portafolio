@@ -39,7 +39,8 @@ export default function Hero() {
             />
 
             <figure className="max-w-40 flex items-center gap-2 border border-gray-500 px-4 py-2 rounded">
-              <div className="w-3 h-3 bg-orange-400"></div>
+              <div className="w-3 h-3"
+              style={{backgroundColor:"rgb(var(--secondary))"}}></div>
               <span className="text-muted">Available</span>
             </figure>
           </figure>

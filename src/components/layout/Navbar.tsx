@@ -23,26 +23,26 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-8">
             <a
               href="#home"
-              className="text-muted hover:text-white transition-colors"
+              className="text-[#abb2bf] hover:text-white transition-colors"
             >
               <span className="text-secondary">#</span>
               home
             </a>
             <a
               href="#projects"
-              className="text-muted hover:text-white transition-colors"
+              className="text-[#abb2bf] hover:text-white transition-colors"
             >
               <span className="text-secondary">#</span>projects
             </a>
             <a
               href="#about-me"
-              className="text-muted hover:text-white transition-colors"
+              className="text-[#abb2bf] hover:text-white transition-colors"
             >
               <span className="text-secondary">#</span>about-me
             </a>
             <a
               href="#contacts"
-              className="text-muted hover:text-white transition-colors"
+              className="text-[#abb2bf] hover:text-white transition-colors"
             >
               <span className="text-secondary">#</span>contacts
             </a>
@@ -54,7 +54,7 @@ export default function Navbar() {
             <button
               onClick={() => setIsOpen(!isOpen)}
               aria-label="Toogle Menu"
-              className="text-muted hover:text-white"
+              className="text-[#abb2bf] hover:text-white"
             >
               {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
             </button>
@@ -65,7 +65,7 @@ export default function Navbar() {
           <div className="md:hidden mt-4 pb-4 flex flex-col gap-4">
             <a
               href="#home"
-              className="text-muted hover:text-white transition-colors"
+              className="text-[#abb2bf] hover:text-white transition-colors"
               onClick={() => setIsOpen(false)}
             >
               <span className="text-secondary">#</span>
@@ -74,7 +74,7 @@ export default function Navbar() {
             <a
               href="#projects"
               onClick={() => setIsOpen(false)}
-              className="text-muted hover:text-white transition-colors"
+              className="text-[#abb2bf] hover:text-white transition-colors"
             >
               <span className="text-secondary">#</span>
               projects
@@ -82,14 +82,14 @@ export default function Navbar() {
             <a
               href="#about-me"
               onClick={() => setIsOpen(false)}
-              className="text-muted hover:text-white transition-colors"
+              className="text-[#abb2bf] hover:text-white transition-colors"
             >
               <span className="text-secondary">#</span>about-me
             </a>
             <a
               href="#contacts"
               onClick={() => setIsOpen(false)}
-              className="text-muted hover:text-white transition-colors"
+              className="text-[#abb2bf] hover:text-white transition-colors"
             >
               <span className="text-secondary">#</span>contacts
             </a>

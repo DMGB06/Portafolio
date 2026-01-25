@@ -1,5 +1,3 @@
-import React from "react";
-
 interface ButtonProps {
   text: string; //Aqui va el texto del boton
   onClick: () => void; //Accion al hacer click
