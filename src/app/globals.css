@@ -2,14 +2,39 @@
 
 @layer base {
   :root {
-    --background: 255 255 255;
-    --foreground: 23 23 23;
+    --background: 217, 217, 219; /* Fondo claro */
+    --foreground: 23 23 23; /* Texto oscuro */
+    --primary: 23 23 23; /* Azul */
+    --secondary: 240, 157, 41; /* Naranja */
+    --muted: 40 44 51; /* Gris */
   }
 
   .dark {
-    --background: 22, 21, 19;
-    --foreground: 237 237 237;
+    --background: 40 44 51; /* Fondo oscuro */
+    --foreground: 237 237 237; /* Texto claro */
+    --primary: 237 237 237; /* Azul más claro */
+    --secondary: 228, 177, 105; /* Naranja más brillante */
+    --muted: 171, 178, 191; /* Gris claro */
   }
+}
+
+/* Texto principal */
+.text-primary {
+  color: rgb(var(--primary));
+}
+
+/* Texto secundario */
+.text-secondary {
+  color: rgb(var(--secondary));
+}
+
+/* Texto destacado */
+.text-highlight {
+  color: rgb(var(--text-highlight));
+}
+
+.text-muted {
+  color: rgb(var(--muted));
 }
 
 * {
@@ -21,6 +46,58 @@
 
 body {
   background-color: rgb(var(--background));
-  color: rgb(var(--foreground));
   font-family: var(--font-fira-code), monospace;
+}
+
+/* Botón principal */
+/* Botón principal */
+.btn {
+  padding: 0.75rem 1.5rem;
+  background-color: transparent; /* 👈 Fondo transparente */
+  color: rgb(var(--primary));
+  border: 2px solid rgb(var(--secondary)); /* 👈 Borde dorado/naranja */
+  border-radius: 0.25rem; /* 👈 Bordes ligeramente redondeados */
+  font-weight: 600;
+  cursor: pointer;
+
+  /* Transiciones */
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.2s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+/* Hover */
+.btn:hover {
+  background-color: rgb(var(--secondary)); /* Fondo naranja al hover */
+  color: rgb(var(--background)); /* Texto cambia a color de fondo (oscuro) */
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 16px rgba(var(--secondary), 0.3);
+}
+
+/* Click (active) */
+.btn:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Focus (accesibilidad) */
+.btn:focus {
+  outline: 2px solid rgb(var(--secondary));
+  outline-offset: 2px;
+}
+
+/* Disabled */
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn:disabled:hover {
+  background-color: transparent;
+  color: rgb(var(--muted));
+  transform: none;
 }

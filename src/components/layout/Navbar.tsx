@@ -10,12 +10,12 @@ export default function Navbar() {
 
   return (
     // Después:
-    <nav className="sticky top-0 w-full bg-white dark:bg-[#222222] backdrop-blur-sm z-50">
-      <div className="max-w-6xl mx-auto px-6 py-4">
+    <nav className="sticky top-0 w-dvw bg-white dark:bg-[#282c33] backdrop-blur-sm z-50">
+      <div className="max-w-6xl mx-auto px-6 py-4 pt-5 pb-5 min-80vw">
         <div className="flex items-center justify-between">
           {/*Logo*/}
-          <a className="text-black dark:text-white font-bold flex items-center gap-2">
-            <FaCodepen />
+          <a className="dark:text-white font-bold flex items-center gap-2">
+            <FaCodepen className="text-[#E4B169]" />
             Denilson
           </a>
 
@@ -23,27 +23,28 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-8">
             <a
               href="#home"
-              className="text-zinc-400 hover:text-white transition-colors"
+              className="text-muted hover:text-white transition-colors"
             >
-              #home
+              <span className="text-secondary">#</span>
+              home
             </a>
             <a
               href="#projects"
-              className="text-zinc-400 hover:text-white transition-colors"
+              className="text-muted hover:text-white transition-colors"
             >
-              #projects
+              <span className="text-secondary">#</span>projects
             </a>
             <a
               href="#about-me"
-              className="text-zinc-400 hover:text-white transition-colors"
+              className="text-muted hover:text-white transition-colors"
             >
-              #about-me
+              <span className="text-secondary">#</span>about-me
             </a>
             <a
               href="#contacts"
-              className="text-zinc-400 hover:text-white transition-colors"
+              className="text-muted hover:text-white transition-colors"
             >
-              #contacts
+              <span className="text-secondary">#</span>contacts
             </a>
             <ThemeToggle />
           </div>
@@ -53,7 +54,7 @@ export default function Navbar() {
             <button
               onClick={() => setIsOpen(!isOpen)}
               aria-label="Toogle Menu"
-              className="text-zinc-400 hover:text-white"
+              className="text-muted hover:text-white"
             >
               {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
             </button>
@@ -64,31 +65,33 @@ export default function Navbar() {
           <div className="md:hidden mt-4 pb-4 flex flex-col gap-4">
             <a
               href="#home"
-              className="text-zinc-400 hover:text-white transition-colors"
+              className="text-muted hover:text-white transition-colors"
               onClick={() => setIsOpen(false)}
             >
-              #home
+              <span className="text-secondary">#</span>
+              home
             </a>
             <a
               href="#projects"
               onClick={() => setIsOpen(false)}
-              className="text-zinc-400 hover:text-white transition-colors"
+              className="text-muted hover:text-white transition-colors"
             >
-              #projects
+              <span className="text-secondary">#</span>
+              projects
             </a>
             <a
               href="#about-me"
               onClick={() => setIsOpen(false)}
-              className="text-zinc-400 hover:text-white transition-colors"
+              className="text-muted hover:text-white transition-colors"
             >
-              #about-me
+              <span className="text-secondary">#</span>about-me
             </a>
             <a
               href="#contacts"
               onClick={() => setIsOpen(false)}
-              className="text-zinc-400 hover:text-white transition-colors"
+              className="text-muted hover:text-white transition-colors"
             >
-              #contacts
+              <span className="text-secondary">#</span>contacts
             </a>
           </div>
         )}
