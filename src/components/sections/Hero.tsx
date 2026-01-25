@@ -8,6 +8,7 @@ import {
   FaEnvelope,
   FaInstagram,
   FaTwitter,
+  FaFacebook,
 } from "react-icons/fa";
 
 export default function Hero() {
@@ -39,8 +40,10 @@ export default function Hero() {
             />
 
             <figure className="max-w-40 flex items-center gap-2 border border-gray-500 px-4 py-2 rounded">
-              <div className="w-3 h-3"
-              style={{backgroundColor:"rgb(var(--secondary))"}}></div>
+              <div
+                className="w-3 h-3"
+                style={{ backgroundColor: "rgb(var(--secondary))" }}
+              ></div>
               <span className="text-muted">Available</span>
             </figure>
           </figure>
@@ -48,7 +51,7 @@ export default function Hero() {
           {/* Biografy y botones*/}
           <article className="md:col-span-6 col-span-1">
             <h1
-              className="mb-1.5"
+              className="mb-1.5 font-normal"
               style={{ fontSize: "clamp(1.25rem, 4vw, 2rem)" }}
             >
               <span className="text-secondary">#</span>Biografy
@@ -59,10 +62,16 @@ export default function Hero() {
             </p>
             {/* Aqui van los botones*/}
             <div className="flex justify-end mr-8">
-              <Button
-                text="Download CV |> "
-                onClick={() => alert("Contact button clicked")}
-              />
+              <a
+                href="/files/CV.pdf" // Ruta al archivo de tu CV en la carpeta `public/files`
+                download="/public/files/CV.pdf" // Nombre del archivo al descargar
+                className="inline-block"
+              >
+                <Button
+                  text="Download CV |>"
+                  onClick={() => console.log("Descargando Cv")}
+                ></Button>
+              </a>
             </div>
           </article>
           <nav className="md:col-span-2 col-span-1">
@@ -75,7 +84,7 @@ export default function Hero() {
             </div>
             <div className="grid md:grid-cols-3 md:grid-rows-3 md:gap-5 grid-cols-5 grid-rows-1 gap-4 mt-6 justify-center items-center">
               <a
-                href=""
+                href="https://github.com/DMGB06"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex justify-center"
@@ -83,7 +92,7 @@ export default function Hero() {
                 <FaGithub size={24} className="text-muted hover:text-white" />
               </a>
               <a
-                href=""
+                href="https://www.linkedin.com/in/denilson-miguel-godoy-bautista/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex justify-center"
@@ -91,7 +100,7 @@ export default function Hero() {
                 <FaLinkedin size={24} className="text-muted hover:text-white" />
               </a>
               <a
-                href=""
+                href="2201010141@undc.edu.pe"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex justify-center"
@@ -111,7 +120,7 @@ export default function Hero() {
                 </div>
               </div>
               <a
-                href=""
+                href="https://www.instagram.com/denilson_6_gd/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex justify-center"
@@ -122,12 +131,12 @@ export default function Hero() {
                 />
               </a>
               <a
-                href=""
+                href="https://www.facebook.com/denilson.godoy.395"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex justify-center"
               >
-                <FaTwitter size={24} className="text-muted hover:text-white" />
+                <FaFacebook size={24} className="text-muted hover:text-white" />
               </a>
             </div>
           </nav>
