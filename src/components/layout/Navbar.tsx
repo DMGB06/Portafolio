@@ -3,6 +3,7 @@
 import { FaCodepen, FaTimes, FaBars } from "react-icons/fa";
 import { ThemeToggle } from "../ui/ThemeToogle";
 import { useState } from "react";
+import Link from "next/link";
 
 export default function Navbar() {
   //Para verificar el estado de la hamburguesa
@@ -14,38 +15,38 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto px-6 py-4 pt-5 pb-5 min-80vw">
         <div className="flex items-center justify-between">
           {/*Logo*/}
-          <a className="dark:text-white font-bold flex items-center gap-2">
+          <Link href="/" className="dark:text-white font-bold flex items-center gap-2">
             <FaCodepen className="text-[#E4B169]" />
             Denilson
-          </a>
+          </Link>
 
           {/* Links de navegación */}
           <div className="hidden md:flex items-center gap-8">
-            <a
-              href="#home"
+            <Link
+              href="/"
               className="text-[#abb2bf] hover:text-white transition-colors"
             >
               <span className="text-secondary">#</span>
               home
-            </a>
-            <a
-              href="#projects"
+            </Link>
+            <Link   
+              href="/projects"
               className="text-[#abb2bf] hover:text-white transition-colors"
             >
               <span className="text-secondary">#</span>projects
-            </a>
-            <a
-              href="#about-me"
+            </Link>
+            <Link
+              href="/about-me"
               className="text-[#abb2bf] hover:text-white transition-colors"
             >
               <span className="text-secondary">#</span>about-me
-            </a>
-            <a
-              href="#contacts"
+            </Link>
+            <Link
+              href="/contacts"
               className="text-[#abb2bf] hover:text-white transition-colors"
             >
               <span className="text-secondary">#</span>contacts
-            </a>
+            </Link>
             <ThemeToggle />
           </div>
           {/*Boton hamburguesa*/}
@@ -63,36 +64,36 @@ export default function Navbar() {
 
         {isOpen && (
           <div className="md:hidden mt-4 pb-4 flex flex-col gap-4">
-            <a
-              href="#home"
+            <Link
+              href="/"
               className="text-[#abb2bf] hover:text-white transition-colors"
               onClick={() => setIsOpen(false)}
             >
               <span className="text-secondary">#</span>
               home
-            </a>
-            <a
-              href="#projects"
+            </Link>
+            <Link
+              href="/projects"
               onClick={() => setIsOpen(false)}
               className="text-[#abb2bf] hover:text-white transition-colors"
             >
               <span className="text-secondary">#</span>
               projects
-            </a>
-            <a
-              href="#about-me"
+            </Link>
+            <Link
+              href="/about-me"
               onClick={() => setIsOpen(false)}
               className="text-[#abb2bf] hover:text-white transition-colors"
             >
               <span className="text-secondary">#</span>about-me
-            </a>
-            <a
-              href="#contacts"
+            </Link>
+            <Link
+              href="/contacts"
               onClick={() => setIsOpen(false)}
               className="text-[#abb2bf] hover:text-white transition-colors"
             >
               <span className="text-secondary">#</span>contacts
-            </a>
+            </Link>
           </div>
         )}
       </div>

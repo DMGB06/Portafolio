@@ -101,3 +101,12 @@ body {
   color: rgb(var(--muted));
   transform: none;
 }
+
+/* Sombra personalizada */
+.custom-shadow {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6); /* Sombra más oscura */
+}
+
+html {
+  scroll-behavior: smooth;
+}
