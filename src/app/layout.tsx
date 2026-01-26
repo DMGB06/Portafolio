@@ -4,6 +4,7 @@ import { Fira_Code } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import { ThemeProvider } from "@/components/provider/ThemeProvider";
+import Footer from "@/components/layout/Footer";
 
 const firaCode = Fira_Code({
   subsets: ["latin"],
@@ -39,6 +40,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <Navbar />
           <main>{children}</main>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

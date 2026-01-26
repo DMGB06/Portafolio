@@ -37,6 +37,10 @@
   color: rgb(var(--muted));
 }
 
+.text-foreground {
+  color: rgb(var(--foreground));
+}
+
 * {
   transition:
     background-color 0.5s ease,

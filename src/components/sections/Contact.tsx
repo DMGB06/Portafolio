@@ -32,7 +32,12 @@ export default function ContactSection() {
             className="border-2 p-4 rounded-r-sm w-fit"
             style={{ borderColor: "rgb(var(--muted))" }}
           >
-            <h3 className="not-italic m-2">Message me here</h3>
+            <h3
+              className="not-italic m-2
+            "
+            >
+              Message me here
+            </h3>
             <a
               href="https://www.linkedin.com/in/denilson-miguel-godoy-bautista/"
               target="_blank"
