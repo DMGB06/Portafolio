@@ -1,7 +1,7 @@
 "use react";
 import Image from "next/image";
 import { FaLinkedin, FaEnvelope } from "react-icons/fa";
-export default function ContactSection() {
+const ContactSection = () => {
   return (
     <section className="py-10">
       {/* Título con línea */}
@@ -76,3 +76,5 @@ export default function ContactSection() {
   );
   /* Sección de contacto */
 }
+
+export default ContactSection;

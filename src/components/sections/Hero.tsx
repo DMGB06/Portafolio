@@ -10,7 +10,7 @@ import {
   FaFacebook,
 } from "react-icons/fa";
 
-export default function Hero() {
+const Hero = () => {
   return (
     <section className="py-2 md:py-10">
       <div className="w-full mb-7 lg:mt-10 md:mb-20">
@@ -143,4 +143,6 @@ export default function Hero() {
       </div>
     </section>
   );
-}
+};
+
+export default Hero;

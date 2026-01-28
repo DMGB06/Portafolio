@@ -1,3 +1,6 @@
+import { Icon } from "next/dist/lib/metadata/types/metadata-types";
+import { IconType } from "react-icons";
+
 export interface Project {
   id: number;
   title: string;
@@ -14,8 +17,8 @@ export interface Technology {
 }
 export interface Skill {
   name: string;
-  icon: string;
-  category: "Frontend" | "Backend" | "tools";
+  icon: IconType;
+  color: string;
 }
 
 export interface PersonalInfo {

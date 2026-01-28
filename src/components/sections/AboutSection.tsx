@@ -3,13 +3,19 @@
 "use client";
 import Image from "next/image";
 import { Button } from "../ui/Button";
+import { useRouter } from "next/navigation";
 
-export default function AboutSection({
+const AboutSection = ({
   imagePosition = "left", //Prop para posición de la imagen
   showReadMore = true, //Prop para mostrar botón "Leer más"
-}) {
+}) => {
   //Comparador de posición de imagen para verificar si es izquierda o derecha
   const isImageLeft = imagePosition === "left";
+  const router = useRouter();
+
+  const handleReadMore = () => {
+    router.push("/about-me");
+  }
 
   return (
     <section className="py-10" id="about-me">
@@ -33,7 +39,7 @@ export default function AboutSection({
 
       {/* Contenido de about */}
       <div
-        className={`grid grid-cols-1 md:grid-cols-2 gap-8 ${
+        className={`grid grid-cols-1 md:grid-cols-2 gap-8 p-2 ${
           !isImageLeft ? "md:flex md:flex-row-reverse" : ""
         }`}
       >
@@ -64,7 +70,7 @@ export default function AboutSection({
             {showReadMore && (
               <Button
                 text="Read more ->"
-                onClick={() => {}}
+                onClick={handleReadMore}
                 className="flex justify-end"
               />
             )}
@@ -73,4 +79,6 @@ export default function AboutSection({
       </div>
     </section>
   );
-}
+};
+
+export default AboutSection;
