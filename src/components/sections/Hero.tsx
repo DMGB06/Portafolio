@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { personalInfo } from "@/data/portfolio";
 import { Button } from "../ui/Button";
+import { animate, splitText, stagger } from "animejs";
 import {
   FaGithub,
   FaLinkedin,
@@ -9,13 +10,38 @@ import {
   FaInstagram,
   FaFacebook,
 } from "react-icons/fa";
+import { useEffect, useRef } from "react";
 
 const Hero = () => {
+  /*
+  const textRef = useRef(null);
+
+  useEffect(() => {
+    if (textRef.current) {
+      splitText(textRef.current, {
+        lines: { wrap: "clip" },
+      }).addEffect(({ lines }) =>
+        animate(lines, {
+          y: [
+            { to: ["100%", "0%"] },
+            { to: "-100%", delay: 750, ease: "in(3)" },
+          ],
+          duration: 750,
+          ease: "out(3)",
+          delay: stagger(200),
+          loop: true,
+          loopDelay: 500,
+        }),
+      );
+    }
+  }, []);
+*/
   return (
     <section className="py-2 md:py-10">
       <div className="w-full mb-7 lg:mt-10 md:mb-20">
         {/* Nombre y descripción */}
         <h1
+          //ref={textRef}
           className="font-semibold mb-4 leading-snug"
           style={{ fontSize: "clamp(1.5rem, 5vw, 2.7rem)" }}
         >

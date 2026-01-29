@@ -21,7 +21,7 @@ const Skills = () => {
         ></div>
       </div>
       <div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 place-items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 place-items-center">
           {Object.entries(skills).map(([category, skillList]) => (
             <div
               key={category}
@@ -48,6 +48,48 @@ const Skills = () => {
               </div>
             </div>
           ))}
+          {/*Aqui un pequeño diseñito ps*/}
+          <div
+            className="hidden md:flex justify-end"
+            style={{
+              position: "relative",
+              width: "200px",
+              height: "200px",
+            }}
+          >
+            <div
+              style={{
+                position: "absolute",
+                top: 100,
+                left: 0,
+                width: "80px",
+                height: "100px",
+                border: "2px solid secondary",
+              }}
+            ></div>
+
+            <div
+              style={{
+                position: "absolute",
+                top: 50,
+                left: "40px",
+                width: "80px",
+                height: "100px",
+                border: "2px solid #d4af37",
+              }}
+            ></div>
+
+            <div
+              style={{
+                position: "absolute",
+                top: 0,
+                left: "79px",
+                width: "80px",
+                height: "100px",
+                border: "2px solid #d4af37",
+              }}
+            ></div>
+          </div>
         </div>
       </div>
     </section>

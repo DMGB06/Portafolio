@@ -1,17 +1,10 @@
 import type { Project, Skill, PersonalInfo } from "@/types/porfolio";
-
-import {
-  FaReact,
-  FaNodeJs,
-  FaHtml5,
-  FaDocker,
-  FaCss3Alt,
-  FaPython,
-} from "react-icons/fa";
-import { SiTypescript } from "react-icons/si";
 import {
   SiNextdotjs,
+  SiTypescript,
   SiTailwindcss,
+  SiJavascript,
+   SiPython,
   SiMongodb,
   SiReact,
   SiKubernetes,
@@ -19,7 +12,10 @@ import {
   SiDocker,
   SiPostman,
   SiFigma,
+  SiPostgresql,
   SiNotion,
+  SiExpress,
+  SiGit,
 } from "react-icons/si";
 
 export const personalInfo: PersonalInfo[] = [
@@ -37,24 +33,32 @@ export const personalInfo: PersonalInfo[] = [
 ];
 
 export const skills = {
+  Languages: [
+    { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
+    { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
+     { name: "Python", icon: SiPython, color: "#3776AB" },
+  ],
   Frontend: [
     { name: "React", icon: SiReact, color: "#61DAFB" },
-    { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
+    { name: "Next.js", icon: SiNextdotjs, color: "#000000" },
     { name: "Tailwind", icon: SiTailwindcss, color: "#06B6D4" },
   ],
-  Backend: [{ name: "Node.js", icon: SiNodedotjs, color: "#339933" }],
+  Backend: [
+    { name: "Node.js", icon: SiNodedotjs, color: "#339933" },
+    { name: "Express", icon: SiExpress, color: "#000000" },
+    { name: "PostgreSQL", icon: SiPostgresql, color: "#4169E1" },
+  ],
   DevOps: [
     { name: "Docker", icon: SiDocker, color: "#2496ED" },
     { name: "Kubernetes", icon: SiKubernetes, color: "#326CE5" },
+    { name: "Git", icon: SiGit, color: "#F05032" },
   ],
-  Utils: [
-    
+  Tools: [
     { name: "Postman", icon: SiPostman, color: "#FF6C37" },
     { name: "Figma", icon: SiFigma, color: "#F24E1E" },
     { name: "Notion", icon: SiNotion, color: "#000000" },
   ],
 };
-
 export const projects: Project[] = [
   {
     id: 1,
