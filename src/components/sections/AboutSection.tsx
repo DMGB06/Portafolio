@@ -1,46 +1,40 @@
-//Componente/AboutSection.jsx
+//Componente/AboutSection.tsx
 
 "use client";
 import Image from "next/image";
 import { Button } from "../ui/Button";
 import { useRouter } from "next/navigation";
+import { Titulo } from "../ui/Titulo";
+
+interface AboutSectionProps {
+  isSection?: boolean; //Prop para posición de la imagen
+  showReadMore?: boolean; //Prop para mostrar botón "Leer más"
+}
 
 const AboutSection = ({
-  imagePosition = "left", //Prop para posición de la imagen
+  isSection = true, //Prop para posición de la imagen
   showReadMore = true, //Prop para mostrar botón "Leer más"
-}) => {
+}: AboutSectionProps) => {
   //Comparador de posición de imagen para verificar si es izquierda o derecha
-  const isImageLeft = imagePosition === "left";
   const router = useRouter();
 
   const handleReadMore = () => {
     router.push("/about-me");
-  }
+  };
 
   return (
     <section className="py-10" id="about-me">
       {/* Título con línea */}
-      <div className="flex items-center gap-4 mb-8">
-        <h2
-          className="font-normal whitespace-nowrap"
-          style={{ fontSize: "clamp(1.25rem, 4vw, 2rem)" }}
-        >
-          <span className="text-secondary">{isImageLeft ? "#" : "/"}</span>
-          about-me
-        </h2>
-
-        {/* La línea CORRECTA */}
-        <div
-          className="flex-1 h-px max-w-1/3"
-          style={{ backgroundColor: "rgb(var(--secondary))" }}
-          aria-hidden="true"
-        ></div>
-      </div>
+      <Titulo
+        text="About Me"
+        isSection={isSection}
+        className="max-w-1/3"
+      ></Titulo>
 
       {/* Contenido de about */}
       <div
         className={`grid grid-cols-1 md:grid-cols-2 gap-8 p-2 ${
-          !isImageLeft ? "md:flex md:flex-row-reverse" : ""
+          !isSection ? "md:flex md:flex-row-reverse" : ""
         }`}
       >
         <figure className="flex justify-center order-2 md:order-0">

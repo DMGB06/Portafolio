@@ -1,25 +1,20 @@
 "use client";
 import { skills } from "@/data/portfolio";
+import { Titulo } from "../ui/Titulo";
 
-const Skills = () => {
+type SkillsProps = {
+  isSection?: boolean; // Cambiar de 'true | undefined' a 'boolean | undefined'
+}
+
+const Skills = ({ isSection = true }: SkillsProps) => {
   return (
     // <section> - Contenedor principal semántico para la sección de habilidades
     <section className="py-2 md:py-10">
-      <div className="w-full mb-7 lg:mt-10 md:mb-20 flex flex-row gap-4 items-center">
-        {/* Título de la sección de habilidades */}
-        <h2
-          className="font-normal whitespace-nowrap"
-          style={{ fontSize: "clamp(1.25rem, 4vw, 2rem)" }}
-        >
-          <span className="text-secondary">#</span>
-          skills
-        </h2>
-        <div
-          className="h-px max-w-1/2 flex-1"
-          style={{ backgroundColor: "rgb(var(--secondary))" }}
-          aria-hidden="true"
-        ></div>
-      </div>
+      <Titulo
+        text="Skills"
+        isSection={isSection}
+        className="max-w-[45%] "
+      ></Titulo>
       <div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 place-items-center">
           {Object.entries(skills).map(([category, skillList]) => (

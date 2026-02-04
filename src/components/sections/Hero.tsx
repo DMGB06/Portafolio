@@ -2,7 +2,6 @@
 import Image from "next/image";
 import { personalInfo } from "@/data/portfolio";
 import { Button } from "../ui/Button";
-import { animate, splitText, stagger } from "animejs";
 import {
   FaGithub,
   FaLinkedin,
@@ -10,7 +9,7 @@ import {
   FaInstagram,
   FaFacebook,
 } from "react-icons/fa";
-import { useEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
 
 const Hero = () => {
   /*
@@ -36,6 +35,12 @@ const Hero = () => {
     }
   }, []);
 */
+  const router = useRouter();
+
+  const handleContactMe = () => {
+    router.push("/contact");
+  };
+
   return (
     <section className="py-2 md:py-10">
       <div className="w-full mb-7 lg:mt-10 md:mb-20">
@@ -90,8 +95,9 @@ const Hero = () => {
           {/* Aqui van los botones*/}
           <div className="hidden md:flex justify-end">
             <a
-              href="/files/CV.pdf"
-              download="CV-Denilson-Godoy.pdf"
+              href="#"
+              //href="/files/CV.pdf"
+              //download="CV-Denilson-Godoy.pdf"
               className="inline-block"
             >
               <Button
@@ -105,10 +111,7 @@ const Hero = () => {
         <nav className="md:col-span-2 col-span-1">
           {/*Aqui van los enlaces de las redes y el boton de contactame*/}
           <div className="flex md:justify-end justify-center">
-            <Button
-              text="Contact me!!"
-              onClick={() => alert("Contact button clicked")}
-            />
+            <Button text="Contact me!!" onClick={handleContactMe} />
           </div>
 
           <div className="grid md:grid-cols-3 md:grid-rows-3 md:gap-5 grid-cols-5 grid-rows-1 gap-4 mt-6 justify-center items-center">

@@ -42,7 +42,7 @@ export default function Navbar() {
               <span className="text-secondary">#</span>about-me
             </Link>
             <Link
-              href="/contacts"
+              href="/contact-me"
               className="text-[#abb2bf] hover:text-white transition-colors"
             >
               <span className="text-secondary">#</span>contacts

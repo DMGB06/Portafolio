@@ -33,9 +33,9 @@ export function ThemeToggle() {
       aria-label="Toggle theme"
     >
       {isDark ? (
-        <FaSun size={20} className="transition-transform duration-500" />
-      ) : (
         <FaMoon size={20} className="transition-transform duration-500" />
+      ) : (
+        <FaSun size={20} className="transition-transform duration-500" />
       )}
     </button>
   );

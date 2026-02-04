@@ -1,30 +1,27 @@
-"use react";
+"use client";
 import Image from "next/image";
 import { FaLinkedin, FaEnvelope } from "react-icons/fa";
-const ContactSection = () => {
+import { Titulo } from "../ui/Titulo";
+
+type ProjectsSectionProps = {
+  isSection?: boolean; // Cambiar de 'true | undefined' a 'boolean | undefined'
+};
+
+const ContactSection = ({ isSection = true }: ProjectsSectionProps) => {
   return (
     <section className="py-10">
       {/* Título con línea */}
-      <div className="flex items-center gap-4">
-        <h2
-          className="font-normal whitespace-nowrap"
-          style={{ fontSize: "clamp(1.25rem, 4vw, 2rem)" }}
-        >
-          <span className="text-secondary">#</span>contacts
-        </h2>
-        {/* La línea CORRECTA */}
-        <div
-          className="flex-1 h-px max-w-1/6"
-          style={{ backgroundColor: "rgb(var(--secondary))" }}
-          aria-hidden="true"
-        ></div>
-      </div>
+      <Titulo
+        text="Contacts"
+        isSection={isSection}
+        className="max-w-1/6"
+      ></Titulo>
 
       {/* Contenido de contacto */}
       <div className="grid md:grid-cols-2 grid-cols-1 gap-10 ">
         {/* Seccion de contacto*/}
         <div className="flex flex-col items-center md:items-start">
-          <p className="text-muted mb-4 md:leading-relaxed leading-snug md:mt-7 mt-2">
+          <p className="text-muted mb-4 md:leading-relaxed leading-snug  mt-2">
             I’m interested in freelance opportunities. However, if you have
             other request or question, don’t hesitate to contact me
           </p>
@@ -75,6 +72,6 @@ const ContactSection = () => {
     </section>
   );
   /* Sección de contacto */
-}
+};
 
 export default ContactSection;

@@ -2,6 +2,7 @@ import Hero from "@/components/sections/Hero";
 import AboutSection from "@/components/sections/AboutSection";
 import ContactSection from "@/components/sections/Contact";
 import Skills from "@/components/sections/Skills";
+import ProjectsSection from "@/components/sections/Projects";
 
 export default function Home() {
   return (
@@ -9,12 +10,13 @@ export default function Home() {
       {/* Contenedor global centrado */}
       <div className="max-w-6xl mx-auto px-2 md:px-10">
         <Hero />
-        <Skills />
+        <ProjectsSection isSection={true} />
+        <Skills isSection={true} />
         <AboutSection
-          imagePosition="left"
+          isSection={true} // ← Con #
           showReadMore={true} // ← Con botón
         />
-        <ContactSection />
+        <ContactSection isSection={true} />
       </div>
     </main>
   );

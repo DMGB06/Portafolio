@@ -8,7 +8,7 @@ export function Button({ text, onClick, className = "" }: ButtonProps) {
   return (
     <button
       onClick={onClick}
-      className="btn"
+      className={`btn ${className}`}
       style={{ borderColor: "rgb(var(--secondary))" }}
     >
       {text}
