@@ -1,19 +1,8 @@
-import { Resend } from "resend";
 import { NextResponse } from "next/server";
-
-const resend = new Resend(process.env.RESEND_API_KEY);
+import { sendContactEmail } from "@/lib/email";
 
 export async function POST(request: Request) {
   try {
-    // Verificar API Key
-    if (!process.env.RESEND_API_KEY) {
-      console.error("ERROR: RESEND_API_KEY no está configurada");
-      return NextResponse.json(
-        { error: "API Key no configurada" },
-        { status: 500 }
-      );
-    }
-
     const { name, email, message } = await request.json();
 
     // Validación básica
@@ -24,19 +13,8 @@ export async function POST(request: Request) {
       );
     }
 
-    // Enviar email
-    const { data, error } = await resend.emails.send({
-      from: "Portafolio <onboarding@resend.dev>",
-      to: "2201010141@undc.edu.pe",
-      subject: `Nuevo mensaje de ${name}`,
-      html: `
-        <h2>Nuevo mensaje desde tu portafolio</h2>
-        <p><strong>Nombre:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Mensaje:</strong></p>
-        <p>${message}</p>
-      `,
-    });
+    // Enviar email usando lib/email.ts
+    const { data, error } = await sendContactEmail({ name, email, message });
 
     if (error) {
       console.error("Error de Resend:", error);
