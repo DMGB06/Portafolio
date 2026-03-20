@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="flex flex-col max-w-full">
           <div className="flex flex-row items-center gap-2 mb-2">
             <FaCodepen size={15} className="text-secondary" />
-            <span className="text-foreground">Godoy</span>
+            <span className="">Godoy</span>
             <address className="text-muted not-italic ml-5">
               2201010141@undc.edu.pe
             </address>

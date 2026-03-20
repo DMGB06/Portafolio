@@ -11,7 +11,7 @@ export function Titulo({
 }: TituloProps) {
   return (
     <div
-      className={`w-full mb-7 lg:mt-10 md:mb-20 flex flex-row gap-4 items-center `}
+      className={`w-full mb-4 lg:mt-10 md:mb-5 flex flex-row gap-4 items-center `}
     >
       {/* Título de la sección de habilidades */}
       <h2

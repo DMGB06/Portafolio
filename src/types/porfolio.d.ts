@@ -28,6 +28,6 @@ export interface PersonalInfo {
   Description: string;
   github: string;
   linkedin: string;
-  email: string;
+  email: string;  
   instagram: string;
 }

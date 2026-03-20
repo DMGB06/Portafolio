@@ -33,12 +33,12 @@ const Hero = () => {
         }),
       );
     }
-  }, []);
-*/
+  }, []);*/
+
   const router = useRouter();
 
   const handleContactMe = () => {
-    router.push("/contact");
+    router.push("/contact-me");
   };
 
   return (
