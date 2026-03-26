@@ -14,7 +14,7 @@ export async function sendContactEmail({ name, email, message }: ContactEmailPar
   // Verificar API Key
   if (!process.env.RESEND_API_KEY) {
     throw new Error("RESEND_API_KEY no está configurada");
-  }
+  } 
 
   return await resend.emails.send({
     from: "Portafolio <onboarding@resend.dev>",
