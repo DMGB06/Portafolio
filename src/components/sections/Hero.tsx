@@ -301,7 +301,7 @@ const Hero = () => {
             className="mb-1.5 font-normal"
             style={{ fontSize: "clamp(1.25rem, 4vw, 2rem)" }}
           >
-            <span className="text-secondary">#</span>Biografy
+            <span className="text-secondary">#</span>Biography
           </h1>
           <p ref={biographyTextRef} className="text-muted mb-1 md:mb-5">
             He builds practical and efficient solutions where technology meets

@@ -20,7 +20,7 @@ import {
 export const personalInfo: PersonalInfo[] = [
   {
     shortName: "Denilson",
-    name: "Denilson Godoy Bautista Denilson",
+    name: "Denilson Godoy Bautista",
     role: "Ingeniero de Sistemas",
     universidad: "Universidad nacional de cañete",
     Description: "",
