@@ -23,7 +23,7 @@ export const personalInfo: PersonalInfo[] = [
     name: "Denilson Godoy Bautista Denilson",
     role: "Ingeniero de Sistemas",
     universidad: "Universidad nacional de cañete",
-    Description: "",
+    Description: "Full stack developer passionate about building practical and efficient web applications. Currently studying Systems Engineering at Universidad Nacional de Cañete, Peru.",
     github: "https://github.com/DMGB06",
     linkedin: "https://www.linkedin.com/in/denilson-miguel-godoy-bautista/",
     email: "2201010141@undc.edu.pe",
@@ -75,5 +75,35 @@ export const projects: Project[] = [
     ],
     github: "https://github.com/DMGB06/ecommerce-app",
     demo: "https://ecommerce-app-demo.com",
-  }
+  },
+  {
+    id: 2,
+    title: "Typing Platform",
+    description:
+      "Plataforma de práctica de mecanografía con estadísticas en tiempo real, seguimiento de velocidad y precisión.",
+    principalImage:
+      "https://images.unsplash.com/photo-1518770660439-4636190af475?w=666&h=370&fit=crop",
+    secundayImage: "/projects/typing-2.png",
+    technologies: [
+      { name: "TypeScript" },
+      { name: "Next.js" },
+      { name: "Tailwind" },
+    ],
+    github: "https://github.com/DMGB06/typing-platform",
+  },
+  {
+    id: 3,
+    title: "PredictScore ML",
+    description:
+      "Sistema de machine learning para la predicción del rendimiento académico de estudiantes universitarios.",
+    principalImage:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=666&h=370&fit=crop",
+    secundayImage: "/projects/predictscore-2.png",
+    technologies: [
+      { name: "Python" },
+      { name: "Machine Learning" },
+      { name: "Data Analysis" },
+    ],
+    github: "https://github.com/DMGB06/PredictScore-ML",
+  },
 ];
