@@ -4,8 +4,8 @@ export interface Project {
   id: number;
   title: string;
   description: string;
-  principalImage: string;
-  secundayImage: string;
+  images: string[];
+  type?: "mobile" | "web";
   technologies: Technology[];
   github?: string;
   demo?: string;

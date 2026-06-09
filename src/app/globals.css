@@ -115,3 +115,9 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Oculta elementos antes de que GSAP anime (visible en SSR sin flash) */
+.gsap-prehide {
+  opacity: 0;
+  visibility: hidden;
+}
+

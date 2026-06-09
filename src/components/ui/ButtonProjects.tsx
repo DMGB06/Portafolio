@@ -1,12 +1,10 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-
 interface ButtonProjectsProps {
-  href: string; //Link al que redirige
-  className?: string; //Clases adicionales opcionales
-  isDemo?: boolean; //Si es codigo o demo
-  isGitHub?: boolean; //Si es un link normal
+  href: string;
+  className?: string;
+  isDemo?: boolean;
+  isGitHub?: boolean;
 }
 
 export default function ButtonProjects({
@@ -15,23 +13,22 @@ export default function ButtonProjects({
   isDemo = false,
   isGitHub = false,
 }: ButtonProjectsProps) {
-  const router = useRouter();
+  const borderColor = isGitHub
+    ? "rgb(var(--secondary))"
+    : isDemo
+      ? "rgb(var(--muted))"
+      : "rgb(var(--muted))";
 
-  const handleReadMore = () => {
-    router.push(href);
-  };
   return (
-    <div>
-      <button
-        className={`border  px-4 py-2 ${className} cursor-pointer`}
-        style={{
-          borderColor: `${isDemo ? "rgb(var(--muted))" : ""}${isGitHub ? "rgb(var(--secondary))" : ""}`,
-        }}
-        onClick={handleReadMore}
-      >
-        {isGitHub && " Github <~>"}
-        {isDemo && " Demo <~>"}
-      </button>
-    </div>
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`inline-block border px-4 py-2 ${className}`}
+      style={{ borderColor }}
+    >
+      {isGitHub && "Github <~>"}
+      {isDemo && "Demo <~>"}
+    </a>
   );
 }

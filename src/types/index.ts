@@ -5,8 +5,10 @@ export interface Project {
   id: number;
   title: string;
   description: string;
-  principalImage: string;
-  secundayImage: string;
+  /** Rutas en /public, ej: /projects/mi-app/cover.png */
+  images: string[];
+  /** mobile = capturas de celular, web = capturas horizontales */
+  type?: "mobile" | "web";
   technologies: Technology[];
   github?: string;
   demo?: string;
@@ -39,6 +41,7 @@ export interface Skill {
 export interface SkillCategory {
   Languages: Skill[];
   Frontend: Skill[];
+  Mobile: Skill[];
   Backend: Skill[];
   DevOps: Skill[];
   Tools: Skill[];
