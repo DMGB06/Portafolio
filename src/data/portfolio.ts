@@ -1,5 +1,5 @@
-import type { Project, PersonalInfo } from "@/types/porfolio";
-import type { Locale } from "@/i18n";
+import type { Project, PersonalInfo, Skill } from "@/types";
+import type { Locale, Dictionary } from "@/i18n";
 import { getDictionary } from "@/i18n";
 import {
   SiNextdotjs,
@@ -20,8 +20,6 @@ import {
   SiExpress,
   SiGit,
 } from "react-icons/si";
-import type { Skill } from "@/types";
-import type { Dictionary } from "@/i18n";
 
 export const personalInfo: PersonalInfo[] = [
   {
@@ -72,11 +70,15 @@ export const skillCategories: Record<SkillCategoryKey, Skill[]> = {
   ],
 };
 
+/** Fixed project data (URLs, images, tech). Localized copy lives in i18n JSON. */
 type ProjectCatalogItem = Omit<Project, "title" | "description">;
+
+type ProjectItemKey = keyof Dictionary["projects"]["items"];
 
 const projectCatalog: ProjectCatalogItem[] = [
   {
     id: 1,
+    slug: "buscontrol-qr",
     type: "mobile",
     images: [
       "/projects/control-asistencia/cover.png",
@@ -92,6 +94,7 @@ const projectCatalog: ProjectCatalogItem[] = [
   },
   {
     id: 2,
+    slug: "ecommerce-app",
     type: "web",
     images: [
       "https://i0.wp.com/www.silocreativo.com/wp-content/uploads/2018/06/adobe-xd-alternativa-cabecera.png?fit=666%2C370&quality=100&strip=all&ssl=1",
@@ -106,17 +109,39 @@ const projectCatalog: ProjectCatalogItem[] = [
   },
 ];
 
-export function getProjects(locale: Locale): Project[] {
-  const { projects: copy } = getDictionary(locale);
+function getProjectItemCopy(locale: Locale, id: number) {
+  const { projects } = getDictionary(locale);
+  const key = String(id) as ProjectItemKey;
+  return projects.items[key];
+}
 
-  return projectCatalog.map((project) => {
-    const text = copy.items[String(project.id) as keyof typeof copy.items];
-    return {
-      ...project,
-      title: text.title,
-      description: text.description,
-    };
-  });
+function hydrateProject(
+  locale: Locale,
+  catalogItem: ProjectCatalogItem
+): Project {
+  const text = getProjectItemCopy(locale, catalogItem.id);
+  return {
+    ...catalogItem,
+    title: text.title,
+    description: text.description,
+  };
+}
+
+export function getProjects(locale: Locale): Project[] {
+  return projectCatalog.map((project) => hydrateProject(locale, project));
+}
+
+export function getAllProjectSlugs(): string[] {
+  return projectCatalog.map((project) => project.slug);
+}
+
+export function getProjectBySlug(
+  locale: Locale,
+  slug: string
+): Project | null {
+  const catalogItem = projectCatalog.find((project) => project.slug === slug);
+  if (!catalogItem) return null;
+  return hydrateProject(locale, catalogItem);
 }
 
 /** @deprecated Use getProjects(locale) for localized copy */

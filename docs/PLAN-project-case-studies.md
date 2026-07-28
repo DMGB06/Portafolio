@@ -20,7 +20,7 @@ Guía paso a paso para que cada proyecto tenga una página propia (motivo, overv
 | Fase | Estado |
 |------|--------|
 | 0 Preparación | Hecho (main; slugs + borrador copy) |
-| 1 Slugs + helpers | Pendiente |
+| 1 Slugs + helpers | Hecho |
 | 2 Diccionarios | Pendiente |
 | 3 Página + plantilla | Pendiente |
 | 4 Card CTA | Pendiente |

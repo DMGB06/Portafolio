@@ -3,6 +3,8 @@ import type { IconType } from "react-icons";
 // ==================== PROYECTO ====================
 export interface Project {
   id: number;
+  /** Stable URL segment, e.g. buscontrol-qr — not translated */
+  slug: string;
   title: string;
   description: string;
   /** Rutas en /public, ej: /projects/mi-app/cover.png */
