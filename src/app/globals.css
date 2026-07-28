@@ -24,15 +24,11 @@
     --elevation-shadow-sm: 0 8px 24px rgba(var(--shadow-color), 0.08);
     --media-shadow: 0 16px 40px rgba(var(--shadow-color), 0.18);
     --custom-shadow: 0 8px 16px rgba(var(--shadow-color), 0.12);
-    /* Atmosphere (light only) — soft vertical wash, no pattern noise */
+    /* Atmosphere wash (fades via opacity — background-image cannot interpolate) */
     --atmosphere-from: 255, 255, 255;
     --atmosphere-to: 242, 244, 248;
-    --atmosphere-image: linear-gradient(
-      165deg,
-      rgb(var(--atmosphere-from)) 0%,
-      rgb(var(--background)) 42%,
-      rgb(var(--atmosphere-to)) 100%
-    );
+    --atmosphere-opacity: 1;
+    --theme-duration: 280ms;
   }
 
   .dark {
@@ -50,7 +46,7 @@
     --elevation-shadow-sm: 0 8px 24px rgba(var(--shadow-color), 0.35);
     --media-shadow: 0 16px 40px rgba(var(--shadow-color), 0.45);
     --custom-shadow: 0 8px 16px rgba(var(--shadow-color), 0.55);
-    --atmosphere-image: none;
+    --atmosphere-opacity: 0;
   }
 }
 
@@ -100,22 +96,45 @@
   color: rgb(var(--foreground));
 }
 
-* {
-  transition:
-    background-color 0.5s ease,
-    color 0.5s ease,
-    border-color 0.5s ease;
+/* Theme switch: only page chrome fades — never transition every node (*) */
+html {
+  scroll-behavior: smooth;
 }
 
 body {
+  position: relative;
+  isolation: isolate;
   min-height: 100dvh;
   background-color: rgb(var(--background));
-  background-image: var(--atmosphere-image);
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-size: cover;
   color: rgb(var(--foreground));
   font-family: var(--font-fira-code), monospace;
+  transition:
+    background-color var(--theme-duration) ease,
+    color var(--theme-duration) ease;
+}
+
+/* Fixed wash above solid bg; opacity fades cleanly across themes */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: linear-gradient(
+    165deg,
+    rgb(var(--atmosphere-from)) 0%,
+    rgb(var(--background)) 42%,
+    rgb(var(--atmosphere-to)) 100%
+  );
+  opacity: var(--atmosphere-opacity);
+  transition: opacity var(--theme-duration) ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body,
+  body::before {
+    transition: none;
+  }
 }
 
 /* Form fields — shared surface + border tokens */
@@ -209,10 +228,6 @@ body {
 
 .custom-shadow {
   box-shadow: var(--custom-shadow);
-}
-
-html {
-  scroll-behavior: smooth;
 }
 
 /* Oculta elementos antes de que GSAP anime (visible en SSR sin flash) */

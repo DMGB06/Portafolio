@@ -26,15 +26,15 @@ export function ThemeToggle() {
     <button
       type="button"
       onClick={() => setTheme(isDark ? "light" : "dark")}
-      className="text-chrome transition-colors duration-500 p-2 rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgb(var(--secondary))]"
+      className="text-chrome transition-colors duration-[var(--theme-duration)] p-2 rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgb(var(--secondary))]"
       aria-label={
         isDark ? dict.a11y.toggleThemeLight : dict.a11y.toggleThemeDark
       }
     >
       {isDark ? (
-        <FaMoon size={20} className="transition-transform duration-500" />
+        <FaMoon size={20} />
       ) : (
-        <FaSun size={20} className="transition-transform duration-500" />
+        <FaSun size={20} />
       )}
     </button>
   );
