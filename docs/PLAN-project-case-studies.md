@@ -25,7 +25,7 @@ Guía paso a paso para que cada proyecto tenga una página propia (motivo, overv
 | 3 Página + plantilla | Hecho |
 | 4 Card CTA | Hecho |
 | 5 Next + a11y | Hecho |
-| 6 QA | Pendiente |
+| 6 QA | Hecho |
 
 ### Slugs definitivos (Fase 0)
 
@@ -393,21 +393,23 @@ Orden = orden del `projectCatalog`. Circular o lineal al primero: **v1 lineal co
 
 **Commit sugerido:** solo fixes de QA si los hay.
 
+**Estado:** Hecho — lint/build OK; recorrido ES/EN, tema, slugs, móvil; sin fixes pendientes.
+
 ---
 
 ## Checklist final
 
-- [ ] `/projects/[slug]` existe para cada proyecto del catálogo
-- [ ] Slug estable, independiente del idioma
-- [ ] Plantilla única; approach opcional no deja huecos feos
-- [ ] Card: Ver caso + título link; galería no navega
-- [ ] Github / Demo siguen externos
-- [ ] Copy case study en ES y EN
-- [ ] `getProjectBySlug` + slugs inválidos manejados
-- [ ] Siguiente proyecto funciona
-- [ ] Tema claro/oscuro OK en el caso
-- [ ] Build y lint OK
-- [ ] Tipos `Project` unificados
+- [x] `/projects/[slug]` existe para cada proyecto del catálogo
+- [x] Slug estable, independiente del idioma
+- [x] Plantilla única; approach opcional no deja huecos feos
+- [x] Card: Ver caso + título link; galería no navega
+- [x] Github / Demo siguen externos
+- [x] Copy case study en ES y EN
+- [x] `getProjectBySlug` + slugs inválidos manejados
+- [x] Siguiente proyecto funciona
+- [x] Tema claro/oscuro OK en el caso
+- [x] Build y lint OK
+- [x] Tipos `Project` unificados
 
 ---
 
