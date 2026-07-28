@@ -36,31 +36,38 @@ Acuerdos antes de implementar. No cambiar en v1 salvo que falle en pruebas.
 |-------|-----|--------------------|
 | `--background` | Fondo de página | Casi blanco frío (~250, 250, 252) |
 | `--foreground` / `--primary` | Texto principal | Casi negro (~28, 28, 32) |
-| `--muted` | Texto secundario, bordes suaves | Gris medio legible (~100, 105, 115) |
+| `--muted` | Texto secundario | Gris medio legible (~100, 105, 115) — **no** usarlo como borde de cards |
 | `--secondary` | Acento naranja | Un poco más cerrado que en dark (mejor contraste en claro) |
-| `--surface` | **Nuevo.** Cards, paneles, navbar | Blanco puro (~255, 255, 255) |
-| `--border` | **Nuevo opcional.** Bordes | Negro al ~10% de opacidad o RGB gris claro |
+| `--surface` | Cards, paneles, navbar | Light: blanco; dark: un peldaño sobre el background (~48, 52, 60) |
+| `--border` | Bordes de cards/inputs | Gris de estructura (separado de `--muted`) |
+| `--on-secondary` | Texto sobre fill naranja | Light: blanco; dark: tono oscuro legible sobre secondary |
+| `--elevation-shadow` / `-sm` | Sombra de elevación | Light suave (~8% negro); dark más profunda |
+| `--custom-shadow` | Foto About / media | Intensidad por tema (no hardcodear `0.6`) |
+| `--media-shadow` | Marco de phone en gallery | Sombra de dispositivo por tema |
 
-Dark: conservar valores actuales; solo añadir `--surface` / `--border` equivalentes para no romper CSS nuevo.
+Formato: canales RGB **con comas** para que funcionen `rgb(var(--x))` y `rgba(var(--x), a)`.
+
+Dark: no clonar el light al revés; elevar `--surface` respecto a `--background` para que las cards se lean como paneles.
 
 ### Navbar
 
-- En light: fondo `--surface` (o blanco semitransparente + `backdrop-blur`) + borde inferior sutil.
-- En dark: mantener aspecto actual (`#282c33` o token equivalente).
-- **Cero** hex fijos de UI (`#abb2bf`, `hover:text-white`) en Navbar, LanguageToggle y ThemeToggle.
-- Usar solo tokens: `text-muted`, `text-foreground`, `text-secondary`, hover a foreground.
+- Fondo: `bg-surface-translucent` + `border-theme` + blur (utilidades en `globals.css`).
+- Links/toggles: clase `.text-chrome` (muted → foreground al hover). **Cero** hex fijos.
+- Logo: `text-foreground` + icono `text-secondary`.
 
 ### Profundidad
 
-- Cards / paneles sobre `--surface`, no sobre el mismo gris del body.
-- Sombra suave en light (gris, no solo glow naranja).
-- Botones `.btn`: en light, hover con texto que contraste (blanco o foreground oscuro), no el color del background gris.
+- Cards / skills: `background: rgb(var(--surface))` + `border: … var(--border)`.
+- Hover: `var(--elevation-shadow)` **más** glow suave de `--secondary` (ambos temas).
+- Chips/tags: `rgba(var(--foreground), 0.04)` — un solo estilo, sin forks `.dark .…` innecesarios.
+- Botones `.btn` y links primary: hover con `color: rgb(var(--on-secondary))`, nunca `var(--background)`.
 
 ### Atmósfera (fase opcional al final)
 
 - Gradiente muy suave en `body`, o grid/puntos al 3–4% de opacidad.
 - No meter púrpura, cream/terracotta ni otro look genérico.
 - Mantener identidad: mono + naranja + estética “dev”.
+- Preferir limitar atmósfera a light si ensucia el dark.
 
 ### Qué NO hacer en v1
 
@@ -69,9 +76,23 @@ Dark: conservar valores actuales; solo añadir `--surface` / `--border` equivale
 - No tocar copy ni i18n.
 - No convertir el sitio a “cards everywhere” en el hero.
 - No usar `dark:` de Tailwind con colores hardcodeados para piezas nuevas: preferir CSS variables.
+- No usar `bg-surface/90` de Tailwind sobre clases custom: crear utilidad (`bg-surface-translucent`) o `rgba(var(--surface), …)`.
 
 ---
 
+## Progreso
+
+| Fase | Estado |
+|------|--------|
+| 0 Git / docs | Hecho |
+| 1 Tokens | Hecho |
+| 2 Navbar + toggles | Hecho |
+| 3 Superficies + botones | Hecho |
+| 4 Hero / About / Contact | Pendiente |
+| 5 Atmósfera | Opcional |
+| 6 QA | Pendiente |
+
+---
 ## FASE 0 — Git y carpeta docs
 
 **Objetivo:** Que los `.md` de `docs/` se puedan versionar sin sorpresas.
@@ -89,7 +110,7 @@ Dark: conservar valores actuales; solo añadir `--surface` / `--border` equivale
 **Commit sugerido:** `chore: track docs/ for project plans`
 
 ---
-
+s
 ## FASE 1 — Tokens del tema claro
 
 **Objetivo:** Nueva paleta light en `globals.css` sin tocar componentes aún.
@@ -135,15 +156,18 @@ Dark: conservar valores actuales; solo añadir `--surface` / `--border` equivale
 **Objetivo:** Separar “página” de “tarjeta” y corregir hover de botones en light.
 
 **Qué hacer:**
-- `projects.css` / `skills.css`: fondo de cards con `--surface`; bordes con muted o `--border`.
-- Hover light: sombra gris suave (`rgba(0,0,0,0.08)` aprox.) además del acento naranja.
-- Revisar `.btn` en `globals.css`: color de texto en hover debe contrastar en light (p. ej. blanco o foreground fijo de contraste), no `rgb(var(--background))` si background es claro.
-- Revisar sombras `.custom-shadow` si se usan en light (hoy `0.6` es muy dura/oscurasolo-dark).
+- `projects.css` / `skills.css`: fondo `rgb(var(--surface))`; bordes `rgb(var(--border))` (no `--muted`).
+- Hover: `var(--elevation-shadow)` / `-sm` + glow suave de secondary.
+- `.btn` y links primary fill: `color: rgb(var(--on-secondary))` en hover.
+- `.custom-shadow` → `var(--custom-shadow)` (intensidad por tema).
+- Gallery phone / dots: `--media-shadow`, `--shadow-color`, `--on-secondary` (sin `rgba(0,0,0,…)` sueltos).
+- Chips/tags: un fondo `rgba(var(--foreground), 0.04)`; quitar reglas `.dark .chip` duplicadas si ya no aportan.
 
 **Verificar:**
 - Cards se leen como paneles sobre el fondo, no “dibujadas” en el mismo gris.
 - Botones outline: hover agradable en light y dark.
 - Skills chips/cards coherentes con projects.
+- About foto (`custom-shadow`) no se ve “negra” de más en light.
 
 **Commit sugerido:** `style: surfaces and button contrast for light theme`
 
@@ -154,15 +178,16 @@ Dark: conservar valores actuales; solo añadir `--surface` / `--border` equivale
 **Objetivo:** Ajustar piezas sueltas que aún se vean lavadas o con mal contraste.
 
 **Qué hacer:**
-- Hero: tipografía secondary sobre el nuevo fondo; si el naranja falla WCAG-ish, cerrar un poco más `--secondary` en light (ya definido en fase 1; solo afinar).
-- About: foto/texto con suficiente separación del fondo; botón “Leer más” coherente con `.btn`.
-- Contact / formulario: labels, inputs y bordes con tokens (si hay hex fijos, sustituir).
+- Hero: tipografía secondary sobre el nuevo fondo; si el naranja falla WCAG-ish, cerrar un poco más `--secondary` en light (solo afinar tokens).
+- About: foto/texto con separación del fondo; botón “Leer más” vía `.btn` (ya usa `--on-secondary`).
+- Contact / formulario: labels, inputs y bordes con `--border` / `--muted` (si hay hex fijos, sustituir).
 - Footer: texto muted legible en light.
+- Grep: sin `#abb2bf`, `hover:text-white`, `text-zinc-*` en chrome UI.
 
 **Verificar:**
 - Recorrer home completa en light: Hero → Projects → Skills → About → Contact.
 - Rutas `/projects`, `/about-me`, `/contact-me` en light.
-- Ningún texto `#abb2bf` o `text-white` hardcodeado en UI cromática (grep rápido).
+- Dark sin regresiones visibles en esas mismas rutas.
 
 **Commit sugerido:** `style: polish light contrast on hero about contact`
 
@@ -199,25 +224,25 @@ Dark: conservar valores actuales; solo añadir `--surface` / `--border` equivale
 
 ## Checklist final
 
-- [ ] `docs/` no está en `.gitignore`; los planes se pueden `git add`
-- [ ] Fondo light casi blanco / off-white, no gris medio
-- [ ] Navbar clara en light y oscura en dark
-- [ ] Links, ES|EN y tema legibles en ambos temas
-- [ ] Sin `#abb2bf` / `hover:text-white` en controles de chrome
-- [ ] Cards con `--surface` y sombra suave en light
-- [ ] Botones con buen contraste en hover light
+- [x] `docs/` no está en `.gitignore`; los planes se pueden `git add`
+- [x] Fondo light casi blanco / off-white, no gris medio
+- [x] Navbar clara en light y oscura en dark
+- [x] Links, ES|EN y tema legibles en ambos temas
+- [x] Sin `#abb2bf` / `hover:text-white` en controles de chrome
+- [x] Cards con `--surface` y sombra suave en light
+- [x] Botones con buen contraste en hover light (`--on-secondary`)
 - [ ] Hero / About / Contact sin texto lavado
-- [ ] Dark no regresionó
+- [ ] Dark no regresionó (revisar surface elevada en cards)
 - [ ] Build y lint OK
 
 ---
 
 ## Commits sugeridos (uno por paso)
 
-1. Track `docs/` + planes (si aplica)
-2. Tokens light (+ surface)
-3. Navbar y toggles theme-aware
-4. Surfaces y botones
+1. Track `docs/` + planes (si aplica) — hecho
+2. Tokens light (+ surface) — hecho
+3. Navbar y toggles theme-aware — hecho
+4. Surfaces y botones (+ `--on-secondary`, elevation) — hecho
 5. Contraste Hero/About/Contact
 6. Atmósfera (opcional)
 7. Fixes de QA (si hubo)
@@ -228,7 +253,8 @@ Dark: conservar valores actuales; solo añadir `--surface` / `--border` equivale
 
 - Tokens raros: volver valores dark a los de antes del cambio y reabrir solo `:root`.
 - Navbar ilegible: buscar hex fijos restantes con búsqueda en `Navbar`, `LanguageToggle`, `ThemeToogle`.
-- Cards rotas: revisar que `--surface` exista en `:root` y `.dark`.
+- Cards rotas: verificar `--surface`, `--border`, `--elevation-shadow` en `:root` y `.dark`.
+- Botón hover ilegible: verificar `--on-secondary` (no uses `--background` como texto).
 - Build OK pero visual mal: comparar capturas light vs dark sección por sección.
 
 ---
@@ -248,4 +274,4 @@ Dark: conservar valores actuales; solo añadir `--surface` / `--border` equivale
 
 ---
 
-Última actualización: Julio 2026 — Next.js 16, next-themes, tokens en `globals.css`.
+Última actualización: Julio 2026 — fases 0–3 aplicadas; tokens de elevación y `--on-secondary` documentados.

@@ -14,6 +14,16 @@
     --muted: 100, 105, 115;
     --surface: 255, 255, 255;
     --border: 210, 212, 218;
+    /* Text/icon on filled secondary (buttons, primary links) */
+    --on-secondary: 255, 255, 255;
+    /* Light content on intentionally dark overlays (gallery dots, etc.) */
+    --on-overlay: 255, 255, 255;
+    /* Elevation — gray lift in light; deeper in dark */
+    --shadow-color: 0, 0, 0;
+    --elevation-shadow: 0 12px 32px rgba(var(--shadow-color), 0.08);
+    --elevation-shadow-sm: 0 8px 24px rgba(var(--shadow-color), 0.08);
+    --media-shadow: 0 16px 40px rgba(var(--shadow-color), 0.18);
+    --custom-shadow: 0 8px 16px rgba(var(--shadow-color), 0.12);
   }
 
   .dark {
@@ -22,8 +32,15 @@
     --primary: 237, 237, 237;
     --secondary: 228, 177, 105;
     --muted: 171, 178, 191;
-    --surface: 40, 44, 51;
+    /* Slightly above page bg so cards/navbar read as panels */
+    --surface: 48, 52, 60;
     --border: 80, 85, 95;
+    --on-secondary: 40, 44, 51;
+    --on-overlay: 255, 255, 255;
+    --elevation-shadow: 0 12px 32px rgba(var(--shadow-color), 0.4);
+    --elevation-shadow-sm: 0 8px 24px rgba(var(--shadow-color), 0.35);
+    --media-shadow: 0 16px 40px rgba(var(--shadow-color), 0.45);
+    --custom-shadow: 0 8px 16px rgba(var(--shadow-color), 0.55);
   }
 }
 
@@ -85,18 +102,15 @@ body {
   font-family: var(--font-fira-code), monospace;
 }
 
-/* Botón principal */
-/* Botón principal */
+/* Botón principal — outline; fill uses --on-secondary for contrast on both themes */
 .btn {
   padding: 0.75rem 1.5rem;
-  background-color: transparent; /* 👈 Fondo transparente */
+  background-color: transparent;
   color: rgb(var(--primary));
-  border: 2px solid rgb(var(--secondary)); /* 👈 Borde dorado/naranja */
-  border-radius: 0.25rem; /* 👈 Bordes ligeramente redondeados */
+  border: 2px solid rgb(var(--secondary));
+  border-radius: 0.25rem;
   font-weight: 600;
   cursor: pointer;
-
-  /* Transiciones */
   transition:
     background-color 0.3s ease,
     color 0.3s ease,
@@ -105,27 +119,25 @@ body {
     border-color 0.3s ease;
 }
 
-/* Hover */
 .btn:hover {
-  background-color: rgb(var(--secondary)); /* Fondo naranja al hover */
-  color: rgb(var(--background)); /* Texto cambia a color de fondo (oscuro) */
+  background-color: rgb(var(--secondary));
+  color: rgb(var(--on-secondary));
   transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 8px 16px rgba(var(--secondary), 0.3);
+  box-shadow:
+    var(--elevation-shadow-sm),
+    0 8px 16px rgba(var(--secondary), 0.28);
 }
 
-/* Click (active) */
 .btn:active {
   transform: translateY(0) scale(0.98);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(var(--shadow-color), 0.12);
 }
 
-/* Focus (accesibilidad) */
 .btn:focus {
   outline: 2px solid rgb(var(--secondary));
   outline-offset: 2px;
 }
 
-/* Disabled */
 .btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
@@ -136,11 +148,11 @@ body {
   background-color: transparent;
   color: rgb(var(--muted));
   transform: none;
+  box-shadow: none;
 }
 
-/* Sombra personalizada */
 .custom-shadow {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6); /* Sombra más oscura */
+  box-shadow: var(--custom-shadow);
 }
 
 html {

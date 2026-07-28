@@ -3,9 +3,10 @@
   width: 100%;
   height: 100%;
   padding: 1.25rem;
-  border: 1px solid rgb(var(--muted));
+  border: 1px solid rgb(var(--border));
   border-radius: 0.5rem;
   overflow: hidden;
+  background: rgb(var(--surface));
   transition:
     border-color 0.3s ease,
     box-shadow 0.3s ease,
@@ -25,7 +26,9 @@
 
 .skill-card:hover {
   border-color: rgb(var(--secondary));
-  box-shadow: 0 8px 24px rgba(var(--secondary), 0.12);
+  box-shadow:
+    var(--elevation-shadow-sm),
+    0 8px 24px rgba(var(--secondary), 0.1);
   transform: translateY(-2px);
 }
 
@@ -47,19 +50,15 @@
   align-items: center;
   gap: 0.4rem;
   padding: 0.4rem 0.65rem;
-  border: 1px solid rgb(var(--muted));
+  border: 1px solid rgb(var(--border));
   border-radius: 0.25rem;
   font-size: 0.75rem;
   color: rgb(var(--foreground));
-  background: rgba(var(--foreground), 0.03);
+  background: rgba(var(--foreground), 0.04);
   transition:
     border-color 0.2s ease,
     transform 0.2s ease,
     background-color 0.2s ease;
-}
-
-.dark .skill-chip {
-  background: rgba(var(--foreground), 0.05);
 }
 
 .skill-chip:hover {

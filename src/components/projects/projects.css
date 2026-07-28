@@ -3,10 +3,10 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  border: 1px solid rgb(var(--muted));
+  border: 1px solid rgb(var(--border));
   border-radius: 0.5rem;
   overflow: hidden;
-  background: rgba(var(--foreground), 0.02);
+  background: rgb(var(--surface));
   transition:
     border-color 0.3s ease,
     box-shadow 0.3s ease,
@@ -27,7 +27,9 @@
 
 .project-card:hover {
   border-color: rgb(var(--secondary));
-  box-shadow: 0 12px 32px rgba(var(--secondary), 0.12);
+  box-shadow:
+    var(--elevation-shadow),
+    0 12px 32px rgba(var(--secondary), 0.1);
   transform: translateY(-3px);
 }
 
@@ -54,7 +56,7 @@
 
 .project-card__link {
   padding: 0.25rem 0.6rem;
-  border: 1px solid rgb(var(--muted));
+  border: 1px solid rgb(var(--border));
   border-radius: 0.25rem;
   font-size: 0.7rem;
   color: rgb(var(--muted));
@@ -78,7 +80,7 @@
 
 .project-card__link--primary:hover {
   background: rgb(var(--secondary));
-  color: rgb(var(--background));
+  color: rgb(var(--on-secondary));
 }
 
 /* ── Gallery ── */
@@ -120,12 +122,12 @@
   position: relative;
   width: min(48%, 190px);
   aspect-ratio: 9 / 19.5;
-  border: 2px solid rgb(var(--muted));
+  border: 2px solid rgb(var(--border));
   border-radius: 1.25rem;
   overflow: hidden;
   box-shadow:
-    0 16px 40px rgba(0, 0, 0, 0.35),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+    var(--media-shadow),
+    inset 0 0 0 1px rgba(var(--foreground), 0.06);
   background: rgb(var(--background));
 }
 
@@ -174,8 +176,8 @@
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: rgb(var(--muted));
-  background: rgba(var(--background), 0.7);
-  border: 1px solid rgba(var(--muted), 0.4);
+  background: rgba(var(--surface), 0.85);
+  border: 1px solid rgba(var(--border), 0.8);
   opacity: 0;
   transition: opacity 0.3s ease;
   pointer-events: none;
@@ -194,7 +196,7 @@
   gap: 0.35rem;
   padding: 0.2rem 0.45rem;
   border-radius: 999px;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(var(--shadow-color), 0.5);
 }
 
 .project-gallery--mobile .project-gallery__dots {
@@ -205,7 +207,7 @@
   width: 0.4rem;
   height: 0.4rem;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(var(--on-overlay), 0.45);
   transition:
     background-color 0.3s ease,
     transform 0.3s ease;
@@ -224,7 +226,7 @@
   flex: 1;
   gap: 0.85rem;
   padding: 1rem;
-  border-top: 1px solid rgba(var(--muted), 0.35);
+  border-top: 1px solid rgb(var(--border));
 }
 
 .project-card__description {
@@ -242,18 +244,14 @@
 
 .project-card__tag {
   padding: 0.3rem 0.55rem;
-  border: 1px solid rgb(var(--muted));
+  border: 1px solid rgb(var(--border));
   border-radius: 0.25rem;
   font-size: 0.7rem;
   color: rgb(var(--foreground));
-  background: rgba(var(--foreground), 0.03);
+  background: rgba(var(--foreground), 0.04);
   transition: border-color 0.2s ease;
 }
 
 .project-card__tag:hover {
   border-color: rgb(var(--secondary));
-}
-
-.dark .project-card__tag {
-  background: rgba(var(--foreground), 0.05);
 }
