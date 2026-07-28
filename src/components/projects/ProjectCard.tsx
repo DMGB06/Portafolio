@@ -1,5 +1,8 @@
+"use client";
+
 import type { Project } from "@/types";
 import { ProjectGallery } from "./ProjectGallery";
+import { DEFAULT_LOCALE, getDictionary, useTranslations } from "@/i18n";
 import "./projects.css";
 
 interface ProjectCardProps {
@@ -9,6 +12,8 @@ interface ProjectCardProps {
 
 export function ProjectCard({ project, className = "" }: ProjectCardProps) {
   const projectType = project.type ?? "web";
+  const { t, isReady } = useTranslations();
+  const dict = isReady ? t : getDictionary(DEFAULT_LOCALE);
 
   return (
     <article className={`project-card ${className}`}>
@@ -25,7 +30,7 @@ export function ProjectCard({ project, className = "" }: ProjectCardProps) {
               rel="noopener noreferrer"
               className="project-card__link project-card__link--primary"
             >
-              Github
+              {dict.projects.github}
             </a>
           )}
           {project.demo && (
@@ -35,7 +40,7 @@ export function ProjectCard({ project, className = "" }: ProjectCardProps) {
               rel="noopener noreferrer"
               className="project-card__link"
             >
-              Demo
+              {dict.projects.demo}
             </a>
           )}
         </div>

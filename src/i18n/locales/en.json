@@ -1,0 +1,97 @@
+{
+  "metadata": {
+    "title": "Denilson Godoy - Portfolio"
+  },
+  "nav": {
+    "home": "home",
+    "projects": "projects",
+    "aboutMe": "about-me",
+    "contacts": "contacts"
+  },
+  "footer": {
+    "role": "full stack developer"
+  },
+  "hero": {
+    "title": {
+      "verb": "is a",
+      "roleStudent": "Systems engineering student",
+      "conjunction": "and",
+      "roleDeveloper": "aspiring software developer"
+    },
+    "available": "Available",
+    "biography": "Biografy",
+    "bioShort": "He builds practical and efficient solutions where technology meets creativity",
+    "downloadCv": "Download CV |>",
+    "contactMe": "Contact me!!"
+  },
+  "sections": {
+    "projects": "Projects",
+    "aboutMe": "About Me",
+    "skills": "Skills",
+    "contacts": "Contacts",
+    "contact": "Contact"
+  },
+  "projects": {
+    "readMore": "Read more ~~>",
+    "github": "Github",
+    "demo": "Demo",
+    "items": {
+      "1": {
+        "title": "BusControl QR",
+        "description": "Mobile app for school attendance control in municipal transport. QR scanning, manual registration, round trips, and real-time traceability with Supabase."
+      },
+      "2": {
+        "title": "E-Commerce App",
+        "description": "E-commerce application with shopping cart and payment gateway."
+      }
+    }
+  },
+  "skills": {
+    "categories": {
+      "languages": "Languages",
+      "frontend": "Frontend",
+      "mobile": "Mobile",
+      "backend": "Backend",
+      "devops": "DevOps",
+      "tools": "Tools"
+    }
+  },
+  "about": {
+    "readMore": "Read more ->",
+    "paragraphs": [
+      "Hello, I'm Denilson!",
+      "I'm a 20-year-old full stack developer from Peru, currently studying at the Universidad Nacional de Cañete. I enjoy building responsive and user-friendly websites and applications, turning ideas into interactive digital experiences.",
+      "I love combining creativity with technology to develop projects that make an impact. I'm constantly learning new tools and frameworks to deliver modern and efficient solutions."
+    ]
+  },
+  "contact": {
+    "intro": "I'm interested in freelance opportunities. However, if you have other request or question, don't hesitate to contact me.",
+    "messageMeHere": "Message me here",
+    "orMessageMeHere": "Or message me here"
+  },
+  "form": {
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "namePlaceholder": "Your name",
+    "emailPlaceholder": "your@email.com",
+    "messagePlaceholder": "Your message...",
+    "submit": "Send message",
+    "submitting": "Sending...",
+    "success": "Message sent successfully!",
+    "errorGeneric": "Error sending message",
+    "errors": {
+      "required": "All fields are required"
+    }
+  },
+  "a11y": {
+    "languageGroup": "Change language",
+    "toggleMenu": "Open or close navigation menu",
+    "toggleThemeDark": "Enable dark theme",
+    "toggleThemeLight": "Enable light theme",
+    "profileAlt": "Profile picture",
+    "galleryHover": "Move cursor",
+    "galleryMultiple": "{title}, image {current} of {total}",
+    "galleryScreenshot": "{title} - screenshot {index}"
+  }
+}

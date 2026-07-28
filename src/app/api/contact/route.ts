@@ -1,33 +1,38 @@
 import { NextResponse } from "next/server";
 import { sendContactEmail } from "@/lib/email";
+import {
+  DEFAULT_LOCALE,
+  getContactApiMessages,
+  resolveLocale,
+  type Locale,
+} from "@/i18n";
 
 export async function POST(request: Request) {
-  try {
-    const { name, email, message } = await request.json();
+  let locale: Locale = DEFAULT_LOCALE;
 
-    // Validación básica
+  try {
+    const body = await request.json();
+    const { name, email, message, locale: localeInput } = body;
+    locale = resolveLocale(localeInput);
+    const messages = getContactApiMessages(locale);
+
     if (!name || !email || !message) {
-      return NextResponse.json(
-        { error: "Todos los campos son requeridos" },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: messages.required }, { status: 400 });
     }
 
-    // Enviar email usando lib/email.ts
     const { data, error } = await sendContactEmail({ name, email, message });
 
     if (error) {
       console.error("Error de Resend:", error);
-      return NextResponse.json({ error: error.message }, { status: 500 });
+      return NextResponse.json({ error: messages.send }, { status: 500 });
     }
 
     console.log("Email enviado exitosamente:", data);
     return NextResponse.json({ success: true, data });
   } catch (error) {
     console.error("Error en API contact:", error);
-    return NextResponse.json(
-      { error: error instanceof Error ? error.message : "Error al enviar el mensaje" },
-      { status: 500 }
-    );
+    const messages = getContactApiMessages(locale);
+
+    return NextResponse.json({ error: messages.send }, { status: 500 });
   }
 }

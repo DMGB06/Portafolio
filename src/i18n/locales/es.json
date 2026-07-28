@@ -1,0 +1,97 @@
+{
+  "metadata": {
+    "title": "Denilson Godoy - Portafolio"
+  },
+  "nav": {
+    "home": "inicio",
+    "projects": "proyectos",
+    "aboutMe": "sobre-mí",
+    "contacts": "contacto"
+  },
+  "footer": {
+    "role": "desarrollador full stack"
+  },
+  "hero": {
+    "title": {
+      "verb": "es",
+      "roleStudent": "estudiante de ingeniería de sistemas",
+      "conjunction": "y",
+      "roleDeveloper": "aspirante a desarrollador de software"
+    },
+    "available": "Disponible",
+    "biography": "Biografía",
+    "bioShort": "Construye soluciones prácticas y eficientes donde la tecnología se encuentra con la creatividad",
+    "downloadCv": "Descargar CV |>",
+    "contactMe": "¡Contáctame!!"
+  },
+  "sections": {
+    "projects": "Proyectos",
+    "aboutMe": "Sobre mí",
+    "skills": "Habilidades",
+    "contacts": "Contacto",
+    "contact": "Contacto"
+  },
+  "projects": {
+    "readMore": "Leer más ~~>",
+    "github": "Github",
+    "demo": "Demo",
+    "items": {
+      "1": {
+        "title": "BusControl QR",
+        "description": "App móvil para control de asistencia escolar en transporte municipal. Escaneo QR, registro manual, viajes ida/vuelta y trazabilidad en tiempo real con Supabase."
+      },
+      "2": {
+        "title": "E-Commerce App",
+        "description": "Aplicación de comercio electrónico con carrito de compras y pasarela de pagos."
+      }
+    }
+  },
+  "skills": {
+    "categories": {
+      "languages": "Lenguajes",
+      "frontend": "Frontend",
+      "mobile": "Móvil",
+      "backend": "Backend",
+      "devops": "DevOps",
+      "tools": "Herramientas"
+    }
+  },
+  "about": {
+    "readMore": "Leer más ->",
+    "paragraphs": [
+      "¡Hola, soy Denilson!",
+      "Soy desarrollador full stack de 20 años, de Perú, estudiando en la Universidad Nacional de Cañete. Me gusta crear sitios web y aplicaciones responsivas y fáciles de usar, convirtiendo ideas en experiencias digitales interactivas.",
+      "Me encanta combinar creatividad con tecnología para desarrollar proyectos que generen impacto. Aprendo constantemente nuevas herramientas y frameworks para ofrecer soluciones modernas y eficientes."
+    ]
+  },
+  "contact": {
+    "intro": "Estoy interesado en oportunidades freelance. Sin embargo, si tienes otra solicitud o pregunta, no dudes en contactarme.",
+    "messageMeHere": "Escríbeme aquí",
+    "orMessageMeHere": "O escríbeme aquí"
+  },
+  "form": {
+    "name": "Nombre",
+    "email": "Email",
+    "message": "Mensaje",
+    "namePlaceholder": "Tu nombre",
+    "emailPlaceholder": "tu@email.com",
+    "messagePlaceholder": "Tu mensaje...",
+    "submit": "Enviar mensaje",
+    "submitting": "Enviando...",
+    "success": "¡Mensaje enviado correctamente!",
+    "errorGeneric": "Error al enviar el mensaje",
+    "errors": {
+      "required": "Todos los campos son requeridos"
+    }
+  },
+  "a11y": {
+    "languageGroup": "Cambiar idioma",
+    "toggleMenu": "Abrir o cerrar menú de navegación",
+    "toggleThemeDark": "Activar tema oscuro",
+    "toggleThemeLight": "Activar tema claro",
+    "profileAlt": "Foto de perfil",
+    "galleryHover": "Mueve el cursor",
+    "galleryMultiple": "{title}, imagen {current} de {total}",
+    "galleryScreenshot": "{title} - captura {index}"
+  }
+}

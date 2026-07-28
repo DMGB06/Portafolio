@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { Fira_Code } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
-import { ThemeProvider } from "@/components/provider/ThemeProvider";
+import { AppProviders } from "@/components/provider/AppProviders";
 import Footer from "@/components/layout/Footer";
 
 const firaCode = Fira_Code({
@@ -37,11 +37,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${firaCode.className} ${geistMono.variable} antialiased `}
       >
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+        <AppProviders>
           <Navbar />
           <main>{children}</main>
           <Footer />
-        </ThemeProvider>
+        </AppProviders>
       </body>
     </html>
   );

@@ -1,22 +1,22 @@
 import { gsap } from "../gsap";
-import {
-  ABOUT_PARAGRAPHS,
-  ABOUT_TYPEWRITER_DURATIONS,
-} from "../content/about.content";
+import { ABOUT_TYPEWRITER_DURATIONS } from "../content/about.content";
 import type { AboutAnimationRefs } from "../types";
 
-export function createAboutTypewriterTimeline(refs: AboutAnimationRefs) {
+export function createAboutTypewriterTimeline(
+  refs: AboutAnimationRefs,
+  paragraphs: readonly [string, string, string]
+) {
   const tl = gsap.timeline();
 
   tl.to(refs.text1.current, {
-    text: ABOUT_PARAGRAPHS[0],
+    text: paragraphs[0],
     duration: ABOUT_TYPEWRITER_DURATIONS[0],
     ease: "none",
   })
     .to(
       refs.text2.current,
       {
-        text: ABOUT_PARAGRAPHS[1],
+        text: paragraphs[1],
         duration: ABOUT_TYPEWRITER_DURATIONS[1],
         ease: "none",
       },
@@ -25,7 +25,7 @@ export function createAboutTypewriterTimeline(refs: AboutAnimationRefs) {
     .to(
       refs.text3.current,
       {
-        text: ABOUT_PARAGRAPHS[2],
+        text: paragraphs[2],
         duration: ABOUT_TYPEWRITER_DURATIONS[2],
         ease: "none",
       },
