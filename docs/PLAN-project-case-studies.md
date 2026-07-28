@@ -6,12 +6,69 @@ Guía paso a paso para que cada proyecto tenga una página propia (motivo, overv
 
 ## Antes de empezar
 
-1. Trabaja en una rama nueva: `feat/project-case-studies` desde `main` actualizado (i18n + tema + galería ya commiteados).
+1. **Rama:** en equipo, `feat/project-case-studies`. En proyecto personal solo, se puede trabajar directo en `main` (más rápido; commits chicos igual).
 2. Confirma `npm run dev` y que `/projects` muestra las cards con scrub y botones Github/Demo.
 3. Regla: una fase, un commit, probar en el navegador, luego la siguiente.
 4. No cambies el look general del sitio (tokens, tipografía mono, navbar). Reutiliza componentes existentes (`ProjectGallery`, `.btn`, `.project-card__link`, `Titulo` solo si encaja).
 5. No traduzcas nombres de tecnologías, URLs de Github/Demo, ni el `slug`.
 6. No metas certificados ni idiomas en este plan (van en CV / otro trabajo).
+
+---
+
+## Progreso
+
+| Fase | Estado |
+|------|--------|
+| 0 Preparación | Hecho (main; slugs + borrador copy) |
+| 1 Slugs + helpers | Pendiente |
+| 2 Diccionarios | Pendiente |
+| 3 Página + plantilla | Pendiente |
+| 4 Card CTA | Pendiente |
+| 5 Next + a11y | Pendiente |
+| 6 QA | Pendiente |
+
+### Slugs definitivos (Fase 0)
+
+| id | Título | slug |
+|----|--------|------|
+| 1 | BusControl QR | `buscontrol-qr` |
+| 2 | E-Commerce App | `ecommerce-app` |
+
+### Borrador de copy (pegar en JSON en Fase 2)
+
+Ajustable al implementar; sirve de base.
+
+#### id 1 — BusControl QR (`buscontrol-qr`)
+
+**ES**
+- **motivation:** En el transporte escolar municipal el control de asistencia suele ser manual, lento y fácil de perder. Quise construir una app que permitiera registrar subidas y bajadas con QR (y respaldo manual), con viajes de ida/vuelta y un historial confiable en tiempo real para quienes coordinan las rutas.
+- **overview:** BusControl QR es una app móvil (Expo / React Native) conectada a Supabase. El personal puede escanear códigos, registrar asistencia a mano cuando hace falta y seguir el estado de cada viaje sin depender de hojas sueltas.
+- **highlights:** Escaneo QR · Registro manual de respaldo · Viajes ida/vuelta · Trazabilidad en tiempo real con Supabase
+- **approach:** Elegí Expo para iterar rápido en móvil y Supabase para auth/datos sin armar un backend desde cero. El foco estuvo en el flujo de asistencia real, no en features de más.
+- **learnings:** Modelar viajes y asistencia en tiempo real · Priorizar UX offline/manual cuando el QR falla · Separar bien el rol operativo del historial
+
+**EN**
+- **motivation:** School municipal transport often tracks attendance by hand—slow and easy to lose. I wanted an app to log boardings with QR (plus manual fallback), support round trips, and keep a reliable real-time history for route coordinators.
+- **overview:** BusControl QR is a mobile app (Expo / React Native) backed by Supabase. Staff can scan codes, fall back to manual entry, and follow each trip without paper sheets.
+- **highlights:** QR scanning · Manual fallback · Round-trip trips · Real-time traceability with Supabase
+- **approach:** Expo for fast mobile iteration; Supabase for data/auth without a custom backend. Focus stayed on the real attendance flow, not extra features.
+- **learnings:** Modeling trips and attendance in real time · Prioritizing manual fallback when QR fails · Keeping ops flow separate from history
+
+#### id 2 — E-Commerce App (`ecommerce-app`)
+
+**ES**
+- **motivation:** Quería practicar un flujo de e-commerce completo (catálogo → carrito → checkout) con stack moderno de front, para entender bien estado del carrito, UI responsiva y cómo se conectaría una pasarela de pagos.
+- **overview:** Aplicación web de comercio electrónico con listado de productos, carrito de compras y preparación para pasarela de pagos, construida con React, TypeScript y Tailwind.
+- **highlights:** Catálogo de productos · Carrito de compras · Enfoque en UI responsiva · Base lista para integrar pagos
+- **approach:** React + TypeScript para tipar el dominio del carrito; Tailwind para iterar UI rápido. El demo prioriza la experiencia de compra sobre un backend pesado.
+- **learnings:** Estado de carrito y límites de UX · Componentizar bien listados y checkout · Separar UI de la futura integración de pagos
+
+**EN**
+- **motivation:** I wanted to practice a full e-commerce flow (catalog → cart → checkout) with a modern front-end stack—cart state, responsive UI, and how a payment gateway would plug in.
+- **overview:** A web storefront with product listing, shopping cart, and a path toward payment integration, built with React, TypeScript, and Tailwind.
+- **highlights:** Product catalog · Shopping cart · Responsive UI focus · Ready base for payments
+- **approach:** React + TypeScript to type cart domain; Tailwind for fast UI iteration. The demo prioritizes the buying experience over a heavy backend.
+- **learnings:** Cart state and UX edges · Componentizing listings and checkout · Keeping UI separate from future payment wiring
 
 ---
 
@@ -203,18 +260,20 @@ Orden = orden del `projectCatalog`. Circular o lineal al primero: **v1 lineal co
 
 ## FASE 0 — Preparación
 
-**Objetivo:** Rama limpia y baseline OK.
+**Objetivo:** Baseline OK y copy/slugs listos (sin bloquear por rama si trabajas solo en `main`).
 
 **Qué hacer:**
-- Crear `feat/project-case-studies`.
-- Anotar slugs definitivos de los proyectos actuales.
-- Escribir borrador de copy ES (y EN) de motivation/overview fuera del repo o en notas — listo para pegar en JSON en fase 2.
+- Usar `main` (personal) o `feat/project-case-studies` (si prefieres aislar).
+- Fijar slugs definitivos (ver tabla en Progreso).
+- Dejar borrador ES/EN de motivation/overview/etc. en este plan (listo para Fase 2).
 
 **Verificar:**
-- `npm run dev`, `/projects` OK.
-- Working tree limpio al empezar a codear.
+- Working tree limpio al empezar Fase 1.
+- Slugs y borrador documentados.
 
-**Commit sugerido:** ninguno (o solo este plan: `docs: add project case studies plan`).
+**Estado:** Hecho en `main` — slugs + borrador en este documento.
+
+**Commit sugerido:** `docs: complete case studies phase 0 (slugs and copy draft)`
 
 ---
 
