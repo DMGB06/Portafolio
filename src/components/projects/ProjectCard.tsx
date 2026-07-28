@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import type { Project } from "@/types";
 import { ProjectGallery } from "./ProjectGallery";
 import { DEFAULT_LOCALE, getDictionary, useTranslations } from "@/i18n";
@@ -14,21 +15,32 @@ export function ProjectCard({ project, className = "" }: ProjectCardProps) {
   const projectType = project.type ?? "web";
   const { t, isReady } = useTranslations();
   const dict = isReady ? t : getDictionary(DEFAULT_LOCALE);
+  const caseHref = `/projects/${project.slug}`;
 
   return (
     <article className={`project-card ${className}`}>
       <div className="project-card__header">
         <h3 className="project-card__title">
-          <span className="text-secondary">#</span>
-          {project.title}
+          <Link href={caseHref} className="project-card__title-link">
+            <span className="text-secondary" aria-hidden>
+              #
+            </span>
+            {project.title}
+          </Link>
         </h3>
         <div className="project-card__links">
+          <Link
+            href={caseHref}
+            className="project-card__link project-card__link--primary"
+          >
+            {dict.projects.viewCase}
+          </Link>
           {project.github && (
             <a
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="project-card__link project-card__link--primary"
+              className="project-card__link"
             >
               {dict.projects.github}
             </a>

@@ -23,7 +23,7 @@ Guía paso a paso para que cada proyecto tenga una página propia (motivo, overv
 | 1 Slugs + helpers | Hecho |
 | 2 Diccionarios | Hecho |
 | 3 Página + plantilla | Hecho |
-| 4 Card CTA | Pendiente |
+| 4 Card CTA | Hecho |
 | 5 Next + a11y | Pendiente |
 | 6 QA | Pendiente |
 
