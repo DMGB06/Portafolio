@@ -24,6 +24,15 @@
     --elevation-shadow-sm: 0 8px 24px rgba(var(--shadow-color), 0.08);
     --media-shadow: 0 16px 40px rgba(var(--shadow-color), 0.18);
     --custom-shadow: 0 8px 16px rgba(var(--shadow-color), 0.12);
+    /* Atmosphere (light only) — soft vertical wash, no pattern noise */
+    --atmosphere-from: 255, 255, 255;
+    --atmosphere-to: 242, 244, 248;
+    --atmosphere-image: linear-gradient(
+      165deg,
+      rgb(var(--atmosphere-from)) 0%,
+      rgb(var(--background)) 42%,
+      rgb(var(--atmosphere-to)) 100%
+    );
   }
 
   .dark {
@@ -41,6 +50,7 @@
     --elevation-shadow-sm: 0 8px 24px rgba(var(--shadow-color), 0.35);
     --media-shadow: 0 16px 40px rgba(var(--shadow-color), 0.45);
     --custom-shadow: 0 8px 16px rgba(var(--shadow-color), 0.55);
+    --atmosphere-image: none;
   }
 }
 
@@ -98,7 +108,12 @@
 }
 
 body {
+  min-height: 100dvh;
   background-color: rgb(var(--background));
+  background-image: var(--atmosphere-image);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
   color: rgb(var(--foreground));
   font-family: var(--font-fira-code), monospace;
 }

@@ -89,7 +89,7 @@ Dark: no clonar el light al revés; elevar `--surface` respecto a `--background`
 | 2 Navbar + toggles | Hecho |
 | 3 Superficies + botones | Hecho |
 | 4 Hero / About / Contact | Hecho |
-| 5 Atmósfera | Opcional |
+| 5 Atmósfera | Hecho (opción A: gradiente light) |
 | 6 QA | Pendiente |
 
 ---
@@ -198,12 +198,14 @@ s
 **Objetivo:** Quitar la sensación de “plano gris” sin ensuciar el diseño.
 
 **Qué hacer (elige una, no las dos a la vez al inicio):**
-- **A)** Gradiente mínimo en `body` (p. ej. arriba un pelo más claro, abajo un pelo más frío), o
+- **A)** Gradiente mínimo en `body` vía tokens `--atmosphere-from` / `--atmosphere-to` / `--atmosphere-image`.
 - **B)** Patrón grid/puntos muy suave (opacidad 3–4%) fijo en body.
+
+**Decisión v1:** opción **A**. En `.dark`, `--atmosphere-image: none` (fondo sólido, sin “suciedad”).
 
 **Verificar:**
 - No compite con el contenido ni con el naranja.
-- Dark no queda “sucio”; si molesta en dark, limitar el efecto a `:root` sin `.dark`.
+- Dark queda limpio (sin gradiente).
 
 **Commit sugerido:** `style: subtle light theme atmosphere`
 
