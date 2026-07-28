@@ -19,7 +19,7 @@
       "roleDeveloper": "aspiring software developer"
     },
     "available": "Available",
-    "biography": "Biografy",
+    "biography": "Biography",
     "bioShort": "He builds practical and efficient solutions where technology meets creativity",
     "downloadCv": "Download CV |>",
     "contactMe": "Contact me!!"
@@ -35,14 +35,54 @@
     "readMore": "Read more ~~>",
     "github": "Github",
     "demo": "Demo",
+    "viewCase": "View case",
+    "backToProjects": "← Projects",
+    "sectionMotivation": "Why I built it",
+    "sectionOverview": "What it does",
+    "sectionApproach": "How I built it",
+    "sectionLearnings": "What I learned",
+    "nextProject": "Next project",
+    "previousProject": "Previous project",
+    "typeMobile": "Mobile",
+    "typeWeb": "Web",
+    "notFoundTitle": "Project not found",
+    "notFoundBody": "That case study does not exist or the link is wrong. Go back to the projects list.",
     "items": {
       "1": {
         "title": "BusControl QR",
-        "description": "Mobile app for school attendance control in municipal transport. QR scanning, manual registration, round trips, and real-time traceability with Supabase."
+        "description": "Mobile app for school attendance control in municipal transport. QR scanning, manual registration, round trips, and real-time traceability with Supabase.",
+        "motivation": "School municipal transport often tracks attendance by hand—slow and easy to lose. I wanted an app to log boardings with QR (plus manual fallback), support round trips, and keep a reliable real-time history for route coordinators.",
+        "overview": "BusControl QR is a mobile app (Expo / React Native) backed by Supabase. Staff can scan codes, fall back to manual entry, and follow each trip without paper sheets.",
+        "highlights": [
+          "QR scanning",
+          "Manual fallback",
+          "Round-trip trips",
+          "Real-time traceability with Supabase"
+        ],
+        "approach": "Expo for fast mobile iteration; Supabase for data and auth without a custom backend. Focus stayed on the real attendance flow, not extra features.",
+        "learnings": [
+          "Modeling trips and attendance in real time",
+          "Prioritizing manual fallback when QR fails",
+          "Keeping ops flow separate from history"
+        ]
       },
       "2": {
         "title": "E-Commerce App",
-        "description": "E-commerce application with shopping cart and payment gateway."
+        "description": "E-commerce application with shopping cart and payment gateway.",
+        "motivation": "I wanted to practice a full e-commerce flow (catalog → cart → checkout) with a modern front-end stack—cart state, responsive UI, and how a payment gateway would plug in.",
+        "overview": "A web storefront with product listing, shopping cart, and a path toward payment integration, built with React, TypeScript, and Tailwind.",
+        "highlights": [
+          "Product catalog",
+          "Shopping cart",
+          "Responsive UI focus",
+          "Ready base for payments"
+        ],
+        "approach": "React + TypeScript to type the cart domain; Tailwind for fast UI iteration. The demo prioritizes the buying experience over a heavy backend.",
+        "learnings": [
+          "Cart state and UX edges",
+          "Componentizing listings and checkout",
+          "Keeping UI separate from future payment wiring"
+        ]
       }
     }
   },

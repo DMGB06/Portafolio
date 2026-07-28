@@ -1,4 +1,4 @@
-import type { Project, PersonalInfo, Skill } from "@/types";
+import type { Project, PersonalInfo, Skill, ProjectLocalizedFields } from "@/types";
 import type { Locale, Dictionary } from "@/i18n";
 import { getDictionary } from "@/i18n";
 import {
@@ -71,7 +71,7 @@ export const skillCategories: Record<SkillCategoryKey, Skill[]> = {
 };
 
 /** Fixed project data (URLs, images, tech). Localized copy lives in i18n JSON. */
-type ProjectCatalogItem = Omit<Project, "title" | "description">;
+type ProjectCatalogItem = Omit<Project, ProjectLocalizedFields>;
 
 type ProjectItemKey = keyof Dictionary["projects"]["items"];
 
@@ -124,7 +124,17 @@ function hydrateProject(
     ...catalogItem,
     title: text.title,
     description: text.description,
+    motivation: text.motivation,
+    overview: text.overview,
+    highlights: text.highlights,
+    approach: text.approach,
+    learnings: text.learnings,
   };
+}
+
+/** Whether the case study should render the approach section */
+export function projectHasApproach(project: Project): boolean {
+  return project.approach.trim().length > 0;
 }
 
 export function getProjects(locale: Locale): Project[] {
@@ -142,6 +152,31 @@ export function getProjectBySlug(
   const catalogItem = projectCatalog.find((project) => project.slug === slug);
   if (!catalogItem) return null;
   return hydrateProject(locale, catalogItem);
+}
+
+/**
+ * Neighbor slugs for case study navigation (wraps around).
+ * Returns nulls only if the catalog is empty or slug is unknown.
+ */
+export function getAdjacentProjectSlugs(slug: string): {
+  previous: string | null;
+  next: string | null;
+} {
+  const slugs = getAllProjectSlugs();
+  if (slugs.length === 0) {
+    return { previous: null, next: null };
+  }
+
+  const index = slugs.indexOf(slug);
+  if (index === -1) {
+    return { previous: null, next: null };
+  }
+
+  const last = slugs.length - 1;
+  return {
+    previous: slugs[index === 0 ? last : index - 1] ?? null,
+    next: slugs[index === last ? 0 : index + 1] ?? null,
+  };
 }
 
 /** @deprecated Use getProjects(locale) for localized copy */

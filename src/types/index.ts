@@ -6,7 +6,14 @@ export interface Project {
   /** Stable URL segment, e.g. buscontrol-qr — not translated */
   slug: string;
   title: string;
+  /** Short teaser for cards — not the full case study */
   description: string;
+  motivation: string;
+  overview: string;
+  highlights: string[];
+  /** Empty string = hide approach section in the case study template */
+  approach: string;
+  learnings: string[];
   /** Rutas en /public, ej: /projects/mi-app/cover.png */
   images: string[];
   /** mobile = capturas de celular, web = capturas horizontales */
@@ -15,6 +22,17 @@ export interface Project {
   github?: string;
   demo?: string;
 }
+
+/** Fields that come from i18n dictionaries, not the static catalog */
+export type ProjectLocalizedFields =
+  | "title"
+  | "description"
+  | "motivation"
+  | "overview"
+  | "highlights"
+  | "approach"
+  | "learnings";
+
 
 export interface Technology {
   name: string;

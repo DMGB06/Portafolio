@@ -35,14 +35,54 @@
     "readMore": "Leer más ~~>",
     "github": "Github",
     "demo": "Demo",
+    "viewCase": "Ver caso",
+    "backToProjects": "← Proyectos",
+    "sectionMotivation": "Por qué lo hice",
+    "sectionOverview": "Qué hace",
+    "sectionApproach": "Cómo lo armé",
+    "sectionLearnings": "Qué aprendí",
+    "nextProject": "Siguiente proyecto",
+    "previousProject": "Proyecto anterior",
+    "typeMobile": "Móvil",
+    "typeWeb": "Web",
+    "notFoundTitle": "Proyecto no encontrado",
+    "notFoundBody": "Ese caso de estudio no existe o el enlace está mal. Vuelve al listado de proyectos.",
     "items": {
       "1": {
         "title": "BusControl QR",
-        "description": "App móvil para control de asistencia escolar en transporte municipal. Escaneo QR, registro manual, viajes ida/vuelta y trazabilidad en tiempo real con Supabase."
+        "description": "App móvil para control de asistencia escolar en transporte municipal. Escaneo QR, registro manual, viajes ida/vuelta y trazabilidad en tiempo real con Supabase.",
+        "motivation": "En el transporte escolar municipal el control de asistencia suele ser manual, lento y fácil de perder. Quise construir una app que permitiera registrar subidas y bajadas con QR (y respaldo manual), con viajes de ida/vuelta y un historial confiable en tiempo real para quienes coordinan las rutas.",
+        "overview": "BusControl QR es una app móvil (Expo / React Native) conectada a Supabase. El personal puede escanear códigos, registrar asistencia a mano cuando hace falta y seguir el estado de cada viaje sin depender de hojas sueltas.",
+        "highlights": [
+          "Escaneo QR",
+          "Registro manual de respaldo",
+          "Viajes ida/vuelta",
+          "Trazabilidad en tiempo real con Supabase"
+        ],
+        "approach": "Elegí Expo para iterar rápido en móvil y Supabase para auth/datos sin armar un backend desde cero. El foco estuvo en el flujo de asistencia real, no en features de más.",
+        "learnings": [
+          "Modelar viajes y asistencia en tiempo real",
+          "Priorizar UX manual cuando el QR falla",
+          "Separar el rol operativo del historial"
+        ]
       },
       "2": {
         "title": "E-Commerce App",
-        "description": "Aplicación de comercio electrónico con carrito de compras y pasarela de pagos."
+        "description": "Aplicación de comercio electrónico con carrito de compras y pasarela de pagos.",
+        "motivation": "Quería practicar un flujo de e-commerce completo (catálogo → carrito → checkout) con stack moderno de front, para entender bien el estado del carrito, la UI responsiva y cómo se conectaría una pasarela de pagos.",
+        "overview": "Aplicación web de comercio electrónico con listado de productos, carrito de compras y preparación para pasarela de pagos, construida con React, TypeScript y Tailwind.",
+        "highlights": [
+          "Catálogo de productos",
+          "Carrito de compras",
+          "Enfoque en UI responsiva",
+          "Base lista para integrar pagos"
+        ],
+        "approach": "React + TypeScript para tipar el dominio del carrito; Tailwind para iterar la UI rápido. El demo prioriza la experiencia de compra sobre un backend pesado.",
+        "learnings": [
+          "Estado de carrito y límites de UX",
+          "Componentizar bien listados y checkout",
+          "Separar la UI de la futura integración de pagos"
+        ]
       }
     }
   },
