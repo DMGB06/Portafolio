@@ -1,34 +1,40 @@
 @import "tailwindcss";
 
+/*
+  Theme tokens — RGB channels (comma-separated) so both work:
+  rgb(var(--token)) and rgba(var(--token), a)
+  Switch theme only by swapping these variables; avoid hardcoded hex in UI.
+*/
 @layer base {
   :root {
-    --background: 217, 217, 219; /* Fondo claro */
-    --foreground: 23 23 23; /* Texto oscuro */
-    --primary: 23 23 23; /* Azul */
-    --secondary: 240, 157, 41; /* Naranja */
-    --muted: 40 44 51; /* Gris */
+    --background: 250, 250, 252;
+    --foreground: 28, 28, 32;
+    --primary: 28, 28, 32;
+    --secondary: 210, 125, 25;
+    --muted: 100, 105, 115;
+    --surface: 255, 255, 255;
+    --border: 210, 212, 218;
   }
 
   .dark {
-    --background: 40 44 51; /* Fondo oscuro */
-    --foreground: 237 237 237; /* Texto claro */
-    --primary: 237 237 237; /* Azul más claro */
-    --secondary: 228, 177, 105; /* Naranja más brillante */
-    --muted: 171, 178, 191; /* Gris claro */
+    --background: 40, 44, 51;
+    --foreground: 237, 237, 237;
+    --primary: 237, 237, 237;
+    --secondary: 228, 177, 105;
+    --muted: 171, 178, 191;
+    --surface: 40, 44, 51;
+    --border: 80, 85, 95;
   }
 }
 
-/* Texto principal */
 .text-primary {
   color: rgb(var(--primary));
 }
 
-/* Texto secundario */
 .text-secondary {
   color: rgb(var(--secondary));
 }
 
-/* Texto destacado */
 .text-highlight {
   color: rgb(var(--text-highlight));
 }
@@ -39,6 +45,18 @@
 
 .text-foreground {
   color: rgb(var(--foreground));
+}
+
+.bg-surface {
+  background-color: rgb(var(--surface));
+}
+
+.bg-background {
+  background-color: rgb(var(--background));
+}
+
+.border-theme {
+  border-color: rgb(var(--border));
 }
 
 * {
