@@ -42,7 +42,10 @@ export function ProjectCaseStudy({ slug }: ProjectCaseStudyProps) {
         </Link>
         <h1 className="project-case__title">{copy.notFoundTitle}</h1>
         <p className="project-case__lead text-muted">{copy.notFoundBody}</p>
-        <Link href="/projects" className="project-card__link project-card__link--primary">
+        <Link
+          href="/projects"
+          className="project-card__link project-card__link--primary"
+        >
           {copy.backToProjects}
         </Link>
       </section>
@@ -97,15 +100,30 @@ export function ProjectCaseStudy({ slug }: ProjectCaseStudyProps) {
             </a>
           )}
         </div>
+
+        <ul className="project-case__tags">
+          {project.technologies.map((tech) => (
+            <li key={tech.name} className="project-card__tag">
+              {tech.name}
+            </li>
+          ))}
+        </ul>
+
+        <p className="project-case__lead">{project.description}</p>
       </header>
 
-      <ul className="project-case__tags">
-        {project.technologies.map((tech) => (
-          <li key={tech.name} className="project-card__tag">
-            {tech.name}
-          </li>
-        ))}
-      </ul>
+      <section
+        className="project-case__callout"
+        aria-labelledby="case-motivation"
+      >
+        <h2 id="case-motivation" className="project-case__section-title">
+          <span className="text-secondary" aria-hidden>
+            #
+          </span>
+          {copy.sectionMotivation}
+        </h2>
+        <p className="project-case__callout-text">{project.motivation}</p>
+      </section>
 
       <div className="project-case__media">
         <ProjectGallery
@@ -114,16 +132,6 @@ export function ProjectCaseStudy({ slug }: ProjectCaseStudyProps) {
           type={project.type ?? "web"}
         />
       </div>
-
-      <section className="project-case__section" aria-labelledby="case-motivation">
-        <h2 id="case-motivation" className="project-case__section-title">
-          <span className="text-secondary" aria-hidden>
-            #
-          </span>
-          {copy.sectionMotivation}
-        </h2>
-        <p className="project-case__text">{project.motivation}</p>
-      </section>
 
       <section className="project-case__section" aria-labelledby="case-overview">
         <h2 id="case-overview" className="project-case__section-title">
@@ -134,16 +142,21 @@ export function ProjectCaseStudy({ slug }: ProjectCaseStudyProps) {
         </h2>
         <p className="project-case__text">{project.overview}</p>
         {project.highlights.length > 0 && (
-          <ul className="project-case__list">
+          <ul className="project-case__chips">
             {project.highlights.map((item) => (
-              <li key={item}>{item}</li>
+              <li key={item} className="project-case__chip">
+                {item}
+              </li>
             ))}
           </ul>
         )}
       </section>
 
       {showApproach && (
-        <section className="project-case__section" aria-labelledby="case-approach">
+        <section
+          className="project-case__panel"
+          aria-labelledby="case-approach"
+        >
           <h2 id="case-approach" className="project-case__section-title">
             <span className="text-secondary" aria-hidden>
               #
@@ -155,18 +168,26 @@ export function ProjectCaseStudy({ slug }: ProjectCaseStudyProps) {
       )}
 
       {project.learnings.length > 0 && (
-        <section className="project-case__section" aria-labelledby="case-learnings">
+        <section
+          className="project-case__section"
+          aria-labelledby="case-learnings"
+        >
           <h2 id="case-learnings" className="project-case__section-title">
             <span className="text-secondary" aria-hidden>
               #
             </span>
             {copy.sectionLearnings}
           </h2>
-          <ul className="project-case__list">
-            {project.learnings.map((item) => (
-              <li key={item}>{item}</li>
+          <ol className="project-case__steps">
+            {project.learnings.map((item, index) => (
+              <li key={item} className="project-case__step">
+                <span className="project-case__step-index" aria-hidden>
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <span>{item}</span>
+              </li>
             ))}
-          </ul>
+          </ol>
         </section>
       )}
 
