@@ -37,7 +37,7 @@ Acuerdos antes de implementar. No cambiar en v1 salvo que falle en pruebas.
 | `--background` | Fondo de página | Casi blanco frío (~250, 250, 252) |
 | `--foreground` / `--primary` | Texto principal | Casi negro (~28, 28, 32) |
 | `--muted` | Texto secundario | Gris medio legible (~100, 105, 115) — **no** usarlo como borde de cards |
-| `--secondary` | Acento naranja | Un poco más cerrado que en dark (mejor contraste en claro) |
+| `--secondary` | Acento naranja | Light afinado (~195, 110, 18) para mejor contraste sobre off-white |
 | `--surface` | Cards, paneles, navbar | Light: blanco; dark: un peldaño sobre el background (~48, 52, 60) |
 | `--border` | Bordes de cards/inputs | Gris de estructura (separado de `--muted`) |
 | `--on-secondary` | Texto sobre fill naranja | Light: blanco; dark: tono oscuro legible sobre secondary |
@@ -88,7 +88,7 @@ Dark: no clonar el light al revés; elevar `--surface` respecto a `--background`
 | 1 Tokens | Hecho |
 | 2 Navbar + toggles | Hecho |
 | 3 Superficies + botones | Hecho |
-| 4 Hero / About / Contact | Pendiente |
+| 4 Hero / About / Contact | Hecho |
 | 5 Atmósfera | Opcional |
 | 6 QA | Pendiente |
 
@@ -192,7 +192,7 @@ s
 **Commit sugerido:** `style: polish light contrast on hero about contact`
 
 ---
-    
+
 ## FASE 5 — Atmósfera ligera (opcional)
 
 **Objetivo:** Quitar la sensación de “plano gris” sin ensuciar el diseño.
