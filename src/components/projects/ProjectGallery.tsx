@@ -1,23 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import { DEFAULT_LOCALE, getDictionary, useTranslations } from "@/i18n";
+import { DEFAULT_LOCALE, fillTemplate, getDictionary, useTranslations } from "@/i18n";
 import { useGalleryScrub } from "./useGalleryScrub";
 
 interface ProjectGalleryProps {
   images: string[];
   title: string;
   type?: "mobile" | "web";
-}
-
-function fillTemplate(
-  template: string,
-  values: Record<string, string | number>
-) {
-  return Object.entries(values).reduce(
-    (result, [key, value]) => result.replace(`{${key}}`, String(value)),
-    template
-  );
 }
 
 export function ProjectGallery({

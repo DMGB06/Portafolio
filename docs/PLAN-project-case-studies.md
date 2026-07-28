@@ -24,7 +24,7 @@ Guía paso a paso para que cada proyecto tenga una página propia (motivo, overv
 | 2 Diccionarios | Hecho |
 | 3 Página + plantilla | Hecho |
 | 4 Card CTA | Hecho |
-| 5 Next + a11y | Pendiente |
+| 5 Next + a11y | Hecho |
 | 6 QA | Pendiente |
 
 ### Slugs definitivos (Fase 0)
@@ -347,12 +347,12 @@ Orden = orden del `projectCatalog`. Circular o lineal al primero: **v1 lineal co
 - `ProjectCard`: envolver título en `Link` a `/projects/{slug}`.
 - Añadir botón/link `viewCase` (estilo alineado a `.project-card__link` o `.btn` pequeño) → mismo href.
 - Github / Demo: sin cambios de comportamiento (`target="_blank"`, `rel="noopener noreferrer"`).
-- **No** poner `Link` envolviendo la card ni la galería.
+- **No** poner `Link` envolviendo la card ni la galería.  
 - Asegurar que el click en dots/scrub no navegue.
 
 **Verificar:**
 - Scrub sigue funcionando.
-- Click en Ver caso / título abre el caso.
+- Click en Ver caso / título abre el caso.  
 - Click Github/Demo abre externo.
 - Home y `/projects` iguales en comportamiento.
 
@@ -376,6 +376,8 @@ Orden = orden del `projectCatalog`. Circular o lineal al primero: **v1 lineal co
 - Lector de pantalla: estructura de headings coherente.
 
 **Commit sugerido:** `feat(projects): case study prev/next and a11y`
+
+**Estado:** Hecho — prev/next con título, focus visible, aria-labels, headings h1/h2.
 
 ---
 

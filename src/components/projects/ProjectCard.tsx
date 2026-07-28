@@ -3,7 +3,7 @@
 import Link from "next/link";
 import type { Project } from "@/types";
 import { ProjectGallery } from "./ProjectGallery";
-import { DEFAULT_LOCALE, getDictionary, useTranslations } from "@/i18n";
+import { DEFAULT_LOCALE, fillTemplate, getDictionary, useTranslations } from "@/i18n";
 import "./projects.css";
 
 interface ProjectCardProps {
@@ -32,6 +32,9 @@ export function ProjectCard({ project, className = "" }: ProjectCardProps) {
           <Link
             href={caseHref}
             className="project-card__link project-card__link--primary"
+            aria-label={fillTemplate(dict.a11y.viewCase, {
+              title: project.title,
+            })}
           >
             {dict.projects.viewCase}
           </Link>

@@ -7,5 +7,6 @@ export {
 } from "./config";
 export { getDictionary } from "./getDictionary";
 export { getContactApiMessages, resolveLocale } from "./contactApiMessages";
+export { fillTemplate } from "./fillTemplate";
 export { useTranslations } from "./useTranslations";
 export type { Dictionary } from "./types";

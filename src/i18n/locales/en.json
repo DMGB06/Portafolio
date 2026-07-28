@@ -43,6 +43,8 @@
     "sectionLearnings": "What I learned",
     "nextProject": "Next project",
     "previousProject": "Previous project",
+    "projectsNav": "Projects navigation",
+
     "typeMobile": "Mobile",
     "typeWeb": "Web",
     "notFoundTitle": "Project not found",
@@ -132,6 +134,9 @@
     "profileAlt": "Profile picture",
     "galleryHover": "Move cursor",
     "galleryMultiple": "{title}, image {current} of {total}",
-    "galleryScreenshot": "{title} - screenshot {index}"
+    "galleryScreenshot": "{title} - screenshot {index}",
+    "viewCase": "View case study for {title}",
+    "previousProject": "Previous project: {title}",
+    "nextProject": "Next project: {title}"
   }
 }
