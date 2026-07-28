@@ -3,34 +3,33 @@
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { FaMoon, FaSun } from "react-icons/fa";
+import { DEFAULT_LOCALE, getDictionary, useTranslations } from "@/i18n";
 
 export function ThemeToggle() {
   const [mounted, setMounted] = useState(false);
   const { resolvedTheme, setTheme } = useTheme();
+  const { t, isReady } = useTranslations();
+  const dict = isReady ? t : getDictionary(DEFAULT_LOCALE);
 
-  // Detectar cuando el componente se monta en el cliente
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- client mount guard for next-themes
     setMounted(true);
   }, []);
 
-  // En el servidor Y primera renderización del cliente: mostrar placeholder
   if (!mounted) {
-    return (
-      <div className="w-9 h-9 p-2">
-        {/* Espacio vacío del mismo tamaño que el botón */}
-      </div>
-    );
+    return <div className="w-9 h-9 p-2" aria-hidden />;
   }
 
-  // Solo en el cliente (después del mount): mostrar el botón real
   const isDark = resolvedTheme === "dark";
 
   return (
     <button
+      type="button"
       onClick={() => setTheme(isDark ? "light" : "dark")}
-      className="text-zinc-400 hover:text-white transition-all duration-500 p-2"
-      aria-label="Toggle theme"
+      className="text-chrome transition-colors duration-500 p-2 rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgb(var(--secondary))]"
+      aria-label={
+        isDark ? dict.a11y.toggleThemeLight : dict.a11y.toggleThemeDark
+      }
     >
       {isDark ? (
         <FaMoon size={20} className="transition-transform duration-500" />

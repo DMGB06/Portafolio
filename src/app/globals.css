@@ -51,12 +51,26 @@
   background-color: rgb(var(--surface));
 }
 
+.bg-surface-translucent {
+  background-color: rgba(var(--surface), 0.9);
+}
+
 .bg-background {
   background-color: rgb(var(--background));
 }
 
 .border-theme {
   border-color: rgb(var(--border));
+}
+
+/* Interactive chrome (nav links, toggles) — follows theme tokens */
+.text-chrome {
+  color: rgb(var(--muted));
+}
+
+.text-chrome:hover,
+.text-chrome:focus-visible {
+  color: rgb(var(--foreground));
 }
 
 * {
