@@ -240,3 +240,145 @@
 .project-card__tag:hover {
   border-color: rgb(var(--secondary));
 }
+
+/* ── Case study page ── */
+
+.project-case {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-bottom: 2.5rem;
+}
+
+.project-case--missing {
+  gap: 1rem;
+  padding-top: 1rem;
+}
+
+.project-case__back {
+  align-self: flex-start;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.project-case__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.project-case__heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.project-case__title {
+  margin: 0;
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
+  font-weight: 600;
+  line-height: 1.25;
+  color: rgb(var(--foreground));
+}
+
+.project-case__type {
+  padding: 0.2rem 0.55rem;
+  border: 1px solid rgb(var(--border));
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  color: rgb(var(--muted));
+  background: rgb(var(--surface));
+}
+
+.project-case__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.project-case__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.project-case__media {
+  border: 1px solid rgb(var(--border));
+  border-radius: 0.5rem;
+  overflow: hidden;
+  background: rgb(var(--surface));
+}
+
+.project-case__section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.project-case__section-title {
+  margin: 0;
+  font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+  font-weight: 500;
+  color: rgb(var(--foreground));
+}
+
+.project-case__text {
+  margin: 0;
+  color: rgb(var(--muted));
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  line-height: 1.7;
+}
+
+.project-case__lead {
+  margin: 0;
+  max-width: 40rem;
+  line-height: 1.6;
+}
+
+.project-case__list {
+  margin: 0;
+  padding-left: 1.15rem;
+  color: rgb(var(--muted));
+  line-height: 1.7;
+}
+
+.project-case__list li + li {
+  margin-top: 0.35rem;
+}
+
+.project-case__footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgb(var(--border));
+}
+
+.project-case__nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.project-case__nav-link {
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.project-case__nav-link--next {
+  color: rgb(var(--secondary));
+}
+
+.project-case__nav-link--next:hover {
+  color: rgb(var(--foreground));
+}
