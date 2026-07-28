@@ -1,16 +1,12 @@
 interface ButtonProps {
-  text: string; //Aqui va el texto del boton
-  onClick: () => void; //Accion al hacer click
-  className?: string; //Clases adicionales opcionales
+  text: string;
+  onClick: () => void;
+  className?: string;
 }
 
 export function Button({ text, onClick, className = "" }: ButtonProps) {
   return (
-    <button
-      onClick={onClick}
-      className={`btn ${className}`}
-      style={{ borderColor: "rgb(var(--secondary))" }}
-    >
+    <button type="button" onClick={onClick} className={`btn ${className}`}>
       {text}
     </button>
   );

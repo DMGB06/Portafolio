@@ -66,8 +66,8 @@
   transform: translateY(-1px);
 }
 
-.skill-chip__icon--dark {
-  filter: invert(1);
+.skill-chip__icon--mono {
+  color: rgb(var(--foreground));
 }
 
 .skills-grid {

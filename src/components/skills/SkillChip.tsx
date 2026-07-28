@@ -15,7 +15,7 @@ export function SkillChip({ skill }: SkillChipProps) {
       <Icon
         size={16}
         style={{ color: needsInvert ? undefined : skill.color }}
-        className={needsInvert ? "skill-chip__icon--dark" : undefined}
+        className={needsInvert ? "skill-chip__icon--mono" : undefined}
         aria-hidden
       />
       {skill.name}

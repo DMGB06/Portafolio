@@ -17,6 +17,7 @@ import {
   useHeroAnimation,
   type HeroAnimationRefs,
 } from "@/animations";
+import { DEFAULT_LOCALE, getDictionary, useTranslations } from "@/i18n";
 
 const Hero = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -45,6 +46,10 @@ const Hero = () => {
   useHeroAnimation(sectionRef, animationRefs);
 
   const router = useRouter();
+  const { t, isReady } = useTranslations();
+  const dict = isReady ? t : getDictionary(DEFAULT_LOCALE);
+  const { hero } = dict;
+  const shortName = personalInfo[0].shortName;
 
   const handleContactMe = () => {
     router.push("/contact-me");
@@ -58,10 +63,10 @@ const Hero = () => {
           className={`font-semibold mb-4 leading-snug ${GSAP_PREHIDE}`}
           style={{ fontSize: "clamp(1.5rem, 5vw, 2.7rem)" }}
         >
-          {personalInfo[0].shortName} is a{" "}
-          <span className="text-secondary">Systems engineering student </span>{" "}
-          and{" "}
-          <span className="text-secondary">aspiring software developer</span>
+          {shortName} {hero.title.verb}{" "}
+          <span className="text-secondary">{hero.title.roleStudent} </span>
+          {hero.title.conjunction}{" "}
+          <span className="text-secondary">{hero.title.roleDeveloper}</span>
         </h1>
       </div>
 
@@ -73,19 +78,19 @@ const Hero = () => {
             alt="Denilson Godoy"
             width={250}
             height={250}
-            className={`rounded-full border-2 border-gray-500 mb-4 ${GSAP_PREHIDE}`}
+            className={`rounded-full border-2 border-theme mb-4 ${GSAP_PREHIDE}`}
             priority
           />
 
           <figure
             ref={availableRef}
-            className={`max-w-40 flex items-center gap-2 border border-gray-500 px-4 py-2 rounded ${GSAP_PREHIDE}`}
+            className={`max-w-40 flex items-center gap-2 border border-theme px-4 py-2 rounded ${GSAP_PREHIDE}`}
           >
             <div
               className="w-3 h-3"
               style={{ backgroundColor: "rgb(var(--secondary))" }}
             ></div>
-            <span className="text-muted">Available</span>
+            <span className="text-muted">{hero.available}</span>
           </figure>
         </figure>
 
@@ -95,14 +100,14 @@ const Hero = () => {
             className={`mb-1.5 font-normal ${GSAP_PREHIDE}`}
             style={{ fontSize: "clamp(1.25rem, 4vw, 2rem)" }}
           >
-            <span className="text-secondary">#</span>Biografy
+            <span className="text-secondary">#</span>
+            {hero.biography}
           </h1>
           <p
             ref={biographyTextRef}
             className={`text-muted mb-1 md:mb-5 ${GSAP_PREHIDE}`}
           >
-            He builds practical and efficient solutions where technology meets
-            creativity
+            {hero.bioShort}
           </p>
 
           <div
@@ -111,7 +116,7 @@ const Hero = () => {
           >
             <a href="#" className="inline-block">
               <Button
-                text="Download CV |>"
+                text={hero.downloadCv}
                 onClick={() => console.log("Descargando CV")}
               />
             </a>
@@ -123,7 +128,7 @@ const Hero = () => {
             ref={contactButtonRef}
             className={`flex md:justify-end justify-center ${GSAP_PREHIDE}`}
           >
-            <Button text="Contact me!!" onClick={handleContactMe} />
+            <Button text={hero.contactMe} onClick={handleContactMe} />
           </div>
 
           <div className="grid md:grid-cols-3 md:grid-rows-3 md:gap-5 grid-cols-5 grid-rows-1 gap-4 mt-6 justify-center items-center">
@@ -136,7 +141,7 @@ const Hero = () => {
               rel="noopener noreferrer"
               className={`flex justify-center ${GSAP_PREHIDE}`}
             >
-              <FaGithub size={24} className="text-muted hover:text-white" />
+              <FaGithub size={24} className="text-chrome" />
             </a>
             <a
               ref={(el) => {
@@ -147,7 +152,7 @@ const Hero = () => {
               rel="noopener noreferrer"
               className={`flex justify-center ${GSAP_PREHIDE}`}
             >
-              <FaLinkedin size={24} className="text-muted hover:text-white" />
+              <FaLinkedin size={24} className="text-chrome" />
             </a>
             <a
               ref={(el) => {
@@ -156,7 +161,7 @@ const Hero = () => {
               href="mailto:2201010141@undc.edu.pe"
               className={`flex justify-center ${GSAP_PREHIDE}`}
             >
-              <FaEnvelope size={24} className="text-muted hover:text-white" />
+              <FaEnvelope size={24} className="text-chrome" />
             </a>
 
             <div
@@ -183,7 +188,7 @@ const Hero = () => {
               rel="noopener noreferrer"
               className={`flex justify-center ${GSAP_PREHIDE}`}
             >
-              <FaInstagram size={24} className="text-muted hover:text-white" />
+              <FaInstagram size={24} className="text-chrome" />
             </a>
             <a
               ref={(el) => {
@@ -194,7 +199,7 @@ const Hero = () => {
               rel="noopener noreferrer"
               className={`flex justify-center ${GSAP_PREHIDE}`}
             >
-              <FaFacebook size={24} className="text-muted hover:text-white" />
+              <FaFacebook size={24} className="text-chrome" />
             </a>
           </div>
         </nav>

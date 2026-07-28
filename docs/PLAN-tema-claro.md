@@ -192,7 +192,7 @@ s
 **Commit sugerido:** `style: polish light contrast on hero about contact`
 
 ---
-
+    
 ## FASE 5 — Atmósfera ligera (opcional)
 
 **Objetivo:** Quitar la sensación de “plano gris” sin ensuciar el diseño.
@@ -231,8 +231,10 @@ s
 - [x] Sin `#abb2bf` / `hover:text-white` en controles de chrome
 - [x] Cards con `--surface` y sombra suave en light
 - [x] Botones con buen contraste en hover light (`--on-secondary`)
-- [ ] Hero / About / Contact sin texto lavado
-- [ ] Dark no regresionó (revisar surface elevada en cards)
+- [x] Hero / About / Contact sin texto lavado / hex de chrome
+- [x] `body` usa `color: rgb(var(--foreground))`
+- [x] Skills mono-icons (Next, Express…) legibles en light (`--foreground`, no invert)
+- [ ] Dark no regresionó (pase visual final)
 - [ ] Build y lint OK
 
 ---
@@ -243,7 +245,7 @@ s
 2. Tokens light (+ surface) — hecho
 3. Navbar y toggles theme-aware — hecho
 4. Surfaces y botones (+ `--on-secondary`, elevation) — hecho
-5. Contraste Hero/About/Contact
+5. Contraste Hero/About/Contact (+ skills mono, body color) — hecho
 6. Atmósfera (opcional)
 7. Fixes de QA (si hubo)
 
@@ -255,6 +257,7 @@ s
 - Navbar ilegible: buscar hex fijos restantes con búsqueda en `Navbar`, `LanguageToggle`, `ThemeToogle`.
 - Cards rotas: verificar `--surface`, `--border`, `--elevation-shadow` en `:root` y `.dark`.
 - Botón hover ilegible: verificar `--on-secondary` (no uses `--background` como texto).
+- Iconos negros invisibles en light: usar `.skill-chip__icon--mono`, no `filter: invert(1)` global.
 - Build OK pero visual mal: comparar capturas light vs dark sección por sección.
 
 ---
@@ -274,4 +277,4 @@ s
 
 ---
 
-Última actualización: Julio 2026 — fases 0–3 aplicadas; tokens de elevación y `--on-secondary` documentados.
+Última actualización: Julio 2026 — fases 0–4 aplicadas; body foreground + skills mono + form fields documentados.
