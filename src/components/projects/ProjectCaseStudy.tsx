@@ -223,7 +223,7 @@ export function ProjectCaseStudy({ slug }: ProjectCaseStudyProps) {
       <footer className="project-case__footer">
         {externalLinks}
         <nav className="project-case__nav" aria-label={copy.projectsNav}>
-          {previousProject && neighbors.previous && (
+          {previousProject && neighbors.previous && neighbors.previous !== slug && (
             <Link
               href={`/projects/${neighbors.previous}`}
               className="project-case__nav-link text-chrome"
@@ -234,7 +234,7 @@ export function ProjectCaseStudy({ slug }: ProjectCaseStudyProps) {
               ← {previousProject.title}
             </Link>
           )}
-          {nextProject && neighbors.next && (
+          {nextProject && neighbors.next && neighbors.next !== slug && (
             <Link
               href={`/projects/${neighbors.next}`}
               className="project-case__nav-link project-case__nav-link--next"

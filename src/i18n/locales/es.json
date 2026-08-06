@@ -9,14 +9,17 @@
     "contacts": "contacto"
   },
   "footer": {
-    "role": "desarrollador full stack"
+    "role": "desarrollador full stack",
+    "rights": "Todos los derechos reservados.",
+    "navLabel": "navegación",
+    "socialLabel": "conecta"
   },
   "hero": {
     "title": {
       "verb": "es",
       "roleStudent": "estudiante de ingeniería de sistemas",
       "conjunction": "y",
-      "roleDeveloper": "aspirante a desarrollador de software"
+      "roleDeveloper": "desarrollador de software en formación"
     },
     "available": "Disponible",
     "biography": "Biografía",
@@ -67,24 +70,6 @@
           "Priorizar UX manual cuando el QR falla",
           "Separar el rol operativo del historial"
         ]
-      },
-      "2": {
-        "title": "E-Commerce App",
-        "description": "Aplicación de comercio electrónico con carrito de compras y pasarela de pagos.",
-        "motivation": "Quería practicar un flujo de e-commerce completo (catálogo → carrito → checkout) con stack moderno de front, para entender bien el estado del carrito, la UI responsiva y cómo se conectaría una pasarela de pagos.",
-        "overview": "Aplicación web de comercio electrónico con listado de productos, carrito de compras y preparación para pasarela de pagos, construida con React, TypeScript y Tailwind.",
-        "highlights": [
-          "Catálogo de productos",
-          "Carrito de compras",
-          "Enfoque en UI responsiva",
-          "Base lista para integrar pagos"
-        ],
-        "approach": "React + TypeScript para tipar el dominio del carrito; Tailwind para iterar la UI rápido. El demo prioriza la experiencia de compra sobre un backend pesado.",
-        "learnings": [
-          "Estado de carrito y límites de UX",
-          "Componentizar bien listados y checkout",
-          "Separar la UI de la futura integración de pagos"
-        ]
       }
     }
   },
@@ -102,12 +87,12 @@
     "readMore": "Leer más ->",
     "paragraphs": [
       "¡Hola, soy Denilson!",
-      "Soy desarrollador full stack de 20 años, de Perú, estudiando en la Universidad Nacional de Cañete. Me gusta crear sitios web y aplicaciones responsivas y fáciles de usar, convirtiendo ideas en experiencias digitales interactivas.",
+      "Soy desarrollador full stack de 21 años, de Perú, estudiando en la Universidad Nacional de Cañete. Me gusta crear sitios web y aplicaciones responsivas y fáciles de usar, convirtiendo ideas en experiencias digitales interactivas.",
       "Me encanta combinar creatividad con tecnología para desarrollar proyectos que generen impacto. Aprendo constantemente nuevas herramientas y frameworks para ofrecer soluciones modernas y eficientes."
     ]
   },
   "contact": {
-    "intro": "Estoy interesado en oportunidades freelance. Sin embargo, si tienes otra solicitud o pregunta, no dudes en contactarme.",
+    "intro": "Estoy abierto a oportunidades laborales, prácticas y proyectos freelance. Si tienes algo en mente, no dudes en escribirme.",
     "messageMeHere": "Escríbeme aquí",
     "orMessageMeHere": "O escríbeme aquí"
   },

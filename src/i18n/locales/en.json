@@ -9,14 +9,17 @@
     "contacts": "contacts"
   },
   "footer": {
-    "role": "full stack developer"
+    "role": "full stack developer",
+    "rights": "All rights reserved.",
+    "navLabel": "navigate",
+    "socialLabel": "connect"
   },
   "hero": {
     "title": {
       "verb": "is a",
       "roleStudent": "Systems engineering student",
       "conjunction": "and",
-      "roleDeveloper": "aspiring software developer"
+      "roleDeveloper": "software developer in training"
     },
     "available": "Available",
     "biography": "Biography",
@@ -67,24 +70,6 @@
           "Prioritizing manual fallback when QR fails",
           "Keeping ops flow separate from history"
         ]
-      },
-      "2": {
-        "title": "E-Commerce App",
-        "description": "E-commerce application with shopping cart and payment gateway.",
-        "motivation": "I wanted to practice a full e-commerce flow (catalog → cart → checkout) with a modern front-end stack—cart state, responsive UI, and how a payment gateway would plug in.",
-        "overview": "A web storefront with product listing, shopping cart, and a path toward payment integration, built with React, TypeScript, and Tailwind.",
-        "highlights": [
-          "Product catalog",
-          "Shopping cart",
-          "Responsive UI focus",
-          "Ready base for payments"
-        ],
-        "approach": "React + TypeScript to type the cart domain; Tailwind for fast UI iteration. The demo prioritizes the buying experience over a heavy backend.",
-        "learnings": [
-          "Cart state and UX edges",
-          "Componentizing listings and checkout",
-          "Keeping UI separate from future payment wiring"
-        ]
       }
     }
   },
@@ -102,12 +87,12 @@
     "readMore": "Read more ->",
     "paragraphs": [
       "Hello, I'm Denilson!",
-      "I'm a 20-year-old full stack developer from Peru, currently studying at the Universidad Nacional de Cañete. I enjoy building responsive and user-friendly websites and applications, turning ideas into interactive digital experiences.",
+      "I'm a 21-year-old full stack developer from Peru, currently studying at the Universidad Nacional de Cañete. I enjoy building responsive and user-friendly websites and applications, turning ideas into interactive digital experiences.",
       "I love combining creativity with technology to develop projects that make an impact. I'm constantly learning new tools and frameworks to deliver modern and efficient solutions."
     ]
   },
   "contact": {
-    "intro": "I'm interested in freelance opportunities. However, if you have other request or question, don't hesitate to contact me.",
+    "intro": "I'm open to job opportunities, internships, and freelance projects. If you have something in mind, feel free to reach out.",
     "messageMeHere": "Message me here",
     "orMessageMeHere": "Or message me here"
   },

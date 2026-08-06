@@ -2,9 +2,13 @@
 
 import { DEFAULT_LOCALE, getDictionary, useTranslations } from "@/i18n";
 
-export function FooterContent() {
+interface FooterContentProps {
+  part?: "role" | "rights";
+}
+
+export function FooterContent({ part = "role" }: FooterContentProps) {
   const { t, isReady } = useTranslations();
   const dict = isReady ? t : getDictionary(DEFAULT_LOCALE);
 
-  return <p>{dict.footer.role}</p>;
+  return <span>{dict.footer[part]}</span>;
 }

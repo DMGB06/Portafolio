@@ -91,21 +91,6 @@ const projectCatalog: ProjectCatalogItem[] = [
     ],
     github: "https://github.com/DMGB06/bus-attendance-qr",
   },
-  {
-    id: 2,
-    slug: "ecommerce-app",
-    type: "web",
-    images: [
-      "https://i0.wp.com/www.silocreativo.com/wp-content/uploads/2018/06/adobe-xd-alternativa-cabecera.png?fit=666%2C370&quality=100&strip=all&ssl=1",
-    ],
-    technologies: [
-      { name: "React" },
-      { name: "TypeScript" },
-      { name: "Tailwind" },
-    ],
-    github: "https://github.com/DMGB06/ecommerce-app",
-    demo: "https://ecommerce-app-demo.com",
-  },
 ];
 
 function getProjectItemCopy(locale: Locale, id: number) {
