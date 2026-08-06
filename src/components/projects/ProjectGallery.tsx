@@ -37,7 +37,7 @@ export function ProjectGallery({
       ref={rootRef}
       className={`project-gallery project-gallery--${isMobile ? "mobile" : "web"}${
         hasMultiple
-          ? " focus-visible:outline focus-visible:outline-2 focus-visible:outline-secondary focus-visible:outline-offset-2"
+          ? " focus-visible:outline focus-visible:outline-2 focus-visible:outline-[rgb(var(--secondary))] focus-visible:outline-offset-2"
           : ""
       }`}
       onPointerMove={hasMultiple ? onPointerMove : undefined}
