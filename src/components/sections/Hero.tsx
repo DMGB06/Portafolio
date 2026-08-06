@@ -75,7 +75,7 @@ const Hero = () => {
           <Image
             ref={imageRef}
             src="/images/profile/foto_animada.png"
-            alt="Denilson Godoy"
+            alt={dict.a11y.profileAlt}
             width={250}
             height={250}
             className={`rounded-full border-2 border-theme mb-4 ${GSAP_PREHIDE}`}
@@ -100,7 +100,7 @@ const Hero = () => {
             className={`mb-1.5 font-normal ${GSAP_PREHIDE}`}
             style={{ fontSize: "clamp(1.25rem, 4vw, 2rem)" }}
           >
-            <span className="text-secondary">#</span>
+            <span className="text-secondary" aria-hidden>#</span>
             {hero.biography}
           </h1>
           <p
@@ -114,10 +114,9 @@ const Hero = () => {
             ref={cvButtonRef}
             className={`hidden md:flex justify-end ${GSAP_PREHIDE}`}
           >
-            <a href="#" className="inline-block">
+            <a href="/cv.pdf" className="inline-block">
               <Button
                 text={hero.downloadCv}
-                onClick={() => console.log("Descargando CV")}
               />
             </a>
           </div>
@@ -158,7 +157,7 @@ const Hero = () => {
               ref={(el) => {
                 socialIconsRef.current[2] = el;
               }}
-              href="mailto:2201010141@undc.edu.pe"
+              href={`mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL}`}
               className={`flex justify-center ${GSAP_PREHIDE}`}
             >
               <FaEnvelope size={24} className="text-chrome" />

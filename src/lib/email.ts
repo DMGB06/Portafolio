@@ -11,14 +11,17 @@ type ContactEmailParams = {
 
 // Función para enviar email de contacto
 export async function sendContactEmail({ name, email, message }: ContactEmailParams) {
-  // Verificar API Key
+  // Verificar variables de entorno
   if (!process.env.RESEND_API_KEY) {
     throw new Error("RESEND_API_KEY no está configurada");
-  } 
+  }
+  if (!process.env.OWNER_EMAIL_FOR_MESSAGES) {
+    throw new Error("OWNER_EMAIL_FOR_MESSAGES no está configurada");
+  }
 
   return await resend.emails.send({
     from: "Portafolio <onboarding@resend.dev>",
-    to: "2201010141@undc.edu.pe",
+    to: process.env.OWNER_EMAIL_FOR_MESSAGES,
     subject: `Nuevo mensaje de ${name}`,
     html: `
       <h2>Nuevo mensaje desde tu portafolio</h2>

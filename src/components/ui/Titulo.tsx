@@ -18,7 +18,7 @@ export function Titulo({
         className="font-normal whitespace-nowrap"
         style={{ fontSize: "clamp(1.25rem, 4vw, 2rem)" }}
       >
-        <span className="text-secondary">{isSection ? "#" : "/"}</span>
+        <span className="text-secondary" aria-hidden>{isSection ? "#" : "/"}</span>
         {text}
       </h2>
       {/*Esto lo hago para que sea personalido por seccion cada linea*/}

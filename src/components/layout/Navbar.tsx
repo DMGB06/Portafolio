@@ -39,7 +39,7 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-8">
             {NAV_LINKS.map(({ href, key }) => (
               <Link key={href} href={href} className={linkClassName}>
-                <span className="text-secondary">#</span>
+                <span className="text-secondary" aria-hidden>#</span>
                 {dict.nav[key]}
               </Link>
             ))}
@@ -71,7 +71,7 @@ export default function Navbar() {
                 className={linkClassName}
                 onClick={() => setIsOpen(false)}
               >
-                <span className="text-secondary">#</span>
+                <span className="text-secondary" aria-hidden>#</span>
                 {dict.nav[key]}
               </Link>
             ))}

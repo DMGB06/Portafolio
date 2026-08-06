@@ -10,7 +10,7 @@ export default function Footer() {
             <FaCodepen size={15} className="text-secondary" aria-hidden />
             <span className="text-foreground font-medium">Godoy</span>
             <address className="text-muted not-italic ml-5">
-              2201010141@undc.edu.pe
+              {process.env.NEXT_PUBLIC_CONTACT_EMAIL}
             </address>
           </div>
           <div className="flex flex-row mt-3">

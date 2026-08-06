@@ -2,9 +2,9 @@
 
 import { useRef } from "react";
 import Image from "next/image";
-import { FaLinkedin, FaEnvelope } from "react-icons/fa";
 import { Titulo } from "../ui/Titulo";
 import ContactForm from "../forms/ContactForm";
+import { ContactLinks } from "./ContactLinks";
 import { GSAP_PREHIDE, REVEAL_ITEM, useScrollReveal } from "@/animations";
 import { DEFAULT_LOCALE, getDictionary, useTranslations } from "@/i18n";
 
@@ -44,27 +44,7 @@ const ContactFormSection = ({ isSection = true }: ContactFormSectionProps) => {
           {...{ [REVEAL_ITEM]: true }}
           className={`flex flex-col items-center md:items-center ${GSAP_PREHIDE}`}
         >
-          <address className="border-2 border-theme bg-surface p-4 rounded-r-sm w-fit not-italic">
-            <h3 className="m-2 font-medium text-foreground">
-              {dict.contact.orMessageMeHere}
-            </h3>
-            <a
-              href="https://www.linkedin.com/in/denilson-miguel-godoy-bautista/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="gap-4 text-chrome flex flex-row items-center p-1 m-2"
-            >
-              <FaLinkedin size={24} aria-hidden />
-              <p>denilson-miguel-godoy-bautista</p>
-            </a>
-            <a
-              href="mailto:2201010141@undc.edu.pe"
-              className="gap-4 text-chrome flex flex-row items-center p-1 m-2"
-            >
-              <FaEnvelope size={24} aria-hidden />
-              <p>2201010141@undc.edu.pe</p>
-            </a>
-          </address>
+          <ContactLinks heading={dict.contact.orMessageMeHere} />
 
           <figure className="hidden md:flex flex-col items-center mt-8">
             <Image

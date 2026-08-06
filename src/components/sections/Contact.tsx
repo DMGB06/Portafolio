@@ -2,8 +2,8 @@
 
 import { useRef } from "react";
 import Image from "next/image";
-import { FaLinkedin, FaEnvelope } from "react-icons/fa";
 import { Titulo } from "../ui/Titulo";
+import { ContactLinks } from "./ContactLinks";
 import { GSAP_PREHIDE, REVEAL_ITEM, useScrollReveal } from "@/animations";
 import { DEFAULT_LOCALE, getDictionary, useTranslations } from "@/i18n";
 
@@ -36,27 +36,7 @@ const ContactSection = ({ isSection = true }: ContactSectionProps) => {
           <p className="text-muted mb-4 md:leading-relaxed leading-snug mt-2">
             {dict.contact.intro}
           </p>
-          <address className="border-2 border-theme bg-surface p-4 rounded-r-sm w-fit">
-            <h3 className="not-italic m-2 text-foreground">
-              {dict.contact.messageMeHere}
-            </h3>
-            <a
-              href="https://www.linkedin.com/in/denilson-miguel-godoy-bautista/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="gap-4 not-italic text-chrome flex flex-row items-center p-1 m-2"
-            >
-              <FaLinkedin size={24} aria-hidden />
-              <p>denilson-miguel-godoy-bautista</p>
-            </a>
-            <a
-              href="mailto:2201010141@undc.edu.pe"
-              className="gap-4 not-italic text-chrome flex flex-row items-center p-1 m-2"
-            >
-              <FaEnvelope size={24} aria-hidden />
-              <p>2201010141@undc.edu.pe</p>
-            </a>
-          </address>
+          <ContactLinks heading={dict.contact.messageMeHere} />
         </div>
 
         <figure

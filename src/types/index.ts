@@ -44,7 +44,6 @@ export interface PersonalInfo {
   name: string;
   role: string;
   universidad: string;
-  Description: string;
   github: string;
   linkedin: string;
   email: string;
@@ -56,15 +55,6 @@ export interface Skill {
   name: string;
   icon: IconType;
   color: string;
-}
-
-export interface SkillCategory {
-  Languages: Skill[];
-  Frontend: Skill[];
-  Mobile: Skill[];
-  Backend: Skill[];
-  DevOps: Skill[];
-  Tools: Skill[];
 }
 
 // ==================== NAVEGACIÓN ====================

@@ -4,9 +4,7 @@ export function fillTemplate(
   values: Record<string, string | number>
 ): string {
   if (typeof template !== "string") {
-    return Object.values(values)
-      .map(String)
-      .join(" ");
+    return "";
   }
 
   return Object.entries(values).reduce(

@@ -21,7 +21,7 @@ export function SkillCard({
       className={`skill-card ${reveal ? GSAP_PREHIDE : ""} ${className}`}
     >
       <h3 className="skill-card__title">
-        <span className="text-secondary">#</span> {category}
+        <span className="text-secondary" aria-hidden>#</span> {category}
       </h3>
       <ul className="skill-card__list">
         {skills.map((skill) => (

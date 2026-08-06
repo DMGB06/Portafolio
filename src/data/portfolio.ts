@@ -27,10 +27,9 @@ export const personalInfo: PersonalInfo[] = [
     name: "Denilson Godoy Bautista Denilson",
     role: "Ingeniero de Sistemas",
     universidad: "Universidad nacional de cañete",
-    Description: "",
     github: "https://github.com/DMGB06",
     linkedin: "https://www.linkedin.com/in/denilson-miguel-godoy-bautista/",
-    email: "2201010141@undc.edu.pe",
+    email: "",
     instagram: "https://www.instagram.com/denilson_6_gd/",
   },
 ];
@@ -112,7 +111,11 @@ const projectCatalog: ProjectCatalogItem[] = [
 function getProjectItemCopy(locale: Locale, id: number) {
   const { projects } = getDictionary(locale);
   const key = String(id) as ProjectItemKey;
-  return projects.items[key];
+  const copy = projects.items[key];
+  if (!copy) {
+    throw new Error(`Missing i18n copy for project id ${id} (locale: ${locale})`);
+  }
+  return copy;
 }
 
 function hydrateProject(
