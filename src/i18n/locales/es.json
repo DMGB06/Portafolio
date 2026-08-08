@@ -108,7 +108,8 @@
     "success": "¡Mensaje enviado correctamente!",
     "errorGeneric": "Error al enviar el mensaje",
     "errors": {
-      "required": "Todos los campos son requeridos"
+      "required": "Todos los campos son requeridos",
+      "rateLimited": "Demasiados mensajes. Intenta de nuevo en unos minutos."
     }
   },
   "a11y": {

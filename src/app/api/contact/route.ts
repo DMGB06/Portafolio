@@ -1,12 +1,18 @@
 import { NextResponse } from "next/server";
 import { sendContactEmail } from "@/lib/email";
 import { isValidEmail } from "@/lib/validation";
+import { isRateLimited } from "@/lib/rate-limit";
 import {
   DEFAULT_LOCALE,
   getContactApiMessages,
   resolveLocale,
   type Locale,
 } from "@/i18n";
+
+function getClientIp(request: Request): string {
+  const forwardedFor = request.headers.get("x-forwarded-for");
+  return forwardedFor?.split(",")[0]?.trim() ?? "unknown";
+}
 
 export async function POST(request: Request) {
   let locale: Locale = DEFAULT_LOCALE;
@@ -16,6 +22,10 @@ export async function POST(request: Request) {
     const { name, email, message, locale: localeInput } = body;
     locale = resolveLocale(localeInput);
     const messages = getContactApiMessages(locale);
+
+    if (isRateLimited(getClientIp(request))) {
+      return NextResponse.json({ error: messages.rateLimited }, { status: 429 });
+    }
 
     if (!name || !email || !message) {
       return NextResponse.json({ error: messages.required }, { status: 400 });

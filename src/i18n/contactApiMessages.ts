@@ -11,5 +11,6 @@ export function getContactApiMessages(locale: Locale) {
   return {
     required: form.errors.required,
     send: form.errorGeneric,
+    rateLimited: form.errors.rateLimited,
   };
 }
