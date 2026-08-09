@@ -55,20 +55,20 @@
     "items": {
       "1": {
         "title": "BusControl QR",
-        "description": "App móvil para control de asistencia escolar en transporte municipal. Escaneo QR, registro manual, viajes ida/vuelta y trazabilidad en tiempo real con Supabase.",
-        "motivation": "En el transporte escolar municipal el control de asistencia suele ser manual, lento y fácil de perder. Quise construir una app que permitiera registrar subidas y bajadas con QR (y respaldo manual), con viajes de ida/vuelta y un historial confiable en tiempo real para quienes coordinan las rutas.",
-        "overview": "BusControl QR es una app móvil (Expo / React Native) conectada a Supabase. El personal puede escanear códigos, registrar asistencia a mano cuando hace falta y seguir el estado de cada viaje sin depender de hojas sueltas.",
+        "description": "App móvil multi-rol para transporte escolar municipal: escaneo QR con cola offline, mapa en vivo del bus y notificaciones push para las familias, sobre Supabase.",
+        "motivation": "En el transporte escolar municipal el control de asistencia solía ser manual y fácil de perder, y los padres no tenían forma de saber si su hijo había subido al bus o dónde estaba. Quise resolver los dos lados a la vez: un registro confiable para chofer y asistenta (con QR y respaldo offline), y visibilidad en tiempo real para las familias.",
+        "overview": "BusControl es una app Expo/React Native con Supabase de fondo, con roles separados para chofer, asistenta, apoderado y coordinador. Chofer y asistenta registran asistencia por QR incluso sin señal (la app sincroniza sola al recuperar conexión); los padres ven a sus hijos y el bus en un mapa en vivo y reciben notificaciones push en cada evento.",
         "highlights": [
-          "Escaneo QR",
-          "Registro manual de respaldo",
-          "Viajes ida/vuelta",
-          "Trazabilidad en tiempo real con Supabase"
+          "App multi-rol: chofer, asistenta, apoderado y coordinador en una sola base de código",
+          "Cola de asistencia offline que sincroniza sola al volver la señal",
+          "Mapa en vivo del bus y notificaciones push para las familias",
+          "Reglas de negocio (asistencia, prioridad, permisos) cubiertas con tests unitarios y CI en cada push"
         ],
-        "approach": "Elegí Expo para iterar rápido en móvil y Supabase para auth/datos sin armar un backend desde cero. El foco estuvo en el flujo de asistencia real, no en features de más.",
+        "approach": "Separé las reglas de negocio (asistencia, prioridad, permisos por rol) en una capa de dominio sin UI, para poder testearlas con Jest sin levantar la app, clave para no romper el registro de asistencia al agregar la cola offline. Para el mapa del bus elegí Apple Maps nativo en iOS y OpenStreetMap vía WebView en Android/web, para no depender de una API key de pago de Google Maps en un proyecto municipal con presupuesto ajustado. Y para el estado de viajes usé useSyncExternalStore de React en vez de sumar Zustand o Redux: la app ya carga cámara, mapas y push, y no quería otra dependencia para algo que React ya resuelve. Lint y tests corren automáticamente en GitHub Actions en cada push.",
         "learnings": [
-          "Modelar viajes y asistencia en tiempo real",
-          "Priorizar UX manual cuando el QR falla",
-          "Separar el rol operativo del historial"
+          "Diseñar reglas de negocio testeables separadas de la UI",
+          "Manejar estado offline/optimista sin perder eventos de asistencia",
+          "Coordinar roles distintos (chofer, apoderado, coordinador) sobre el mismo dominio de datos"
         ]
       }
     }

@@ -80,8 +80,8 @@ const projectCatalog: ProjectCatalogItem[] = [
     slug: "buscontrol-qr",
     type: "mobile",
     images: [
-      "/projects/control-asistencia/cover.png",
       "/projects/control-asistencia/dashboard.png",
+      "/projects/control-asistencia/cover.png",
     ],
     technologies: [
       { name: "Expo" },

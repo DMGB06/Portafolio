@@ -55,20 +55,20 @@
     "items": {
       "1": {
         "title": "BusControl QR",
-        "description": "Mobile app for school attendance control in municipal transport. QR scanning, manual registration, round trips, and real-time traceability with Supabase.",
-        "motivation": "School municipal transport often tracks attendance by hand—slow and easy to lose. I wanted an app to log boardings with QR (plus manual fallback), support round trips, and keep a reliable real-time history for route coordinators.",
-        "overview": "BusControl QR is a mobile app (Expo / React Native) backed by Supabase. Staff can scan codes, fall back to manual entry, and follow each trip without paper sheets.",
+        "description": "Multi-role mobile app for municipal school transport: QR attendance with an offline queue, a live bus map, and push notifications for families, backed by Supabase.",
+        "motivation": "School municipal transport attendance used to be manual and easy to lose, and parents had no way to know if their kid boarded or where the bus was. I wanted to solve both sides at once: a reliable log for the driver and assistant (QR plus offline fallback), and real-time visibility for families.",
+        "overview": "BusControl is an Expo/React Native app backed by Supabase, with separate roles for driver, assistant, parent, and coordinator. Driver and assistant log attendance by QR even without signal (the app syncs on its own once connection is back); parents see their kids and the bus on a live map and get push notifications on every event.",
         "highlights": [
-          "QR scanning",
-          "Manual fallback",
-          "Round-trip trips",
-          "Real-time traceability with Supabase"
+          "Multi-role app: driver, assistant, parent, and coordinator in one codebase",
+          "Offline attendance queue that syncs on its own once the connection is back",
+          "Live bus map and push notifications for families",
+          "Business rules (attendance, priority, permissions) covered by unit tests and CI on every push"
         ],
-        "approach": "Expo for fast mobile iteration; Supabase for data and auth without a custom backend. Focus stayed on the real attendance flow, not extra features.",
+        "approach": "I split business rules (attendance, priority, role permissions) into a UI-free domain layer so they could be unit-tested with Jest without booting the app, key to not breaking attendance tracking when I added the offline queue. For the bus map, I chose native Apple Maps on iOS and OpenStreetMap via WebView on Android/web, to avoid depending on a paid Google Maps API key on a municipal project with a tight budget. For trip state I used React's own useSyncExternalStore instead of adding Zustand or Redux: the app already loads camera, maps, and push, and I didn't want another dependency for something React already solves. Lint and tests also run automatically on GitHub Actions on every push.",
         "learnings": [
-          "Modeling trips and attendance in real time",
-          "Prioritizing manual fallback when QR fails",
-          "Keeping ops flow separate from history"
+          "Designing testable business rules separate from the UI",
+          "Handling offline/optimistic state without losing attendance events",
+          "Coordinating different roles (driver, parent, coordinator) over the same data domain"
         ]
       }
     }
