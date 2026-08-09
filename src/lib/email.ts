@@ -9,6 +9,15 @@ type ContactEmailParams = {
   message: string;
 };
 
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
 // Función para enviar email de contacto
 export async function sendContactEmail({ name, email, message }: ContactEmailParams) {
   // Verificar variables de entorno
@@ -22,13 +31,13 @@ export async function sendContactEmail({ name, email, message }: ContactEmailPar
   return await resend.emails.send({
     from: "Portafolio <onboarding@resend.dev>",
     to: process.env.OWNER_EMAIL_FOR_MESSAGES,
-    subject: `Nuevo mensaje de ${name}`,
+    subject: `Nuevo mensaje de ${escapeHtml(name)}`,
     html: `
       <h2>Nuevo mensaje desde tu portafolio</h2>
-      <p><strong>Nombre:</strong> ${name}</p>
-      <p><strong>Email:</strong> ${email}</p>
+      <p><strong>Nombre:</strong> ${escapeHtml(name)}</p>
+      <p><strong>Email:</strong> ${escapeHtml(email)}</p>
       <p><strong>Mensaje:</strong></p>
-      <p>${message}</p>
+      <p>${escapeHtml(message).replace(/\n/g, "<br>")}</p>
     `,
   });
 }

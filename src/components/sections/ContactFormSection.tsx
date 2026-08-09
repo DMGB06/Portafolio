@@ -1,7 +1,6 @@
 "use client";
 
 import { useRef } from "react";
-import Image from "next/image";
 import { Titulo } from "../ui/Titulo";
 import ContactForm from "../forms/ContactForm";
 import { ContactLinks } from "./ContactLinks";
@@ -45,16 +44,6 @@ const ContactFormSection = ({ isSection = true }: ContactFormSectionProps) => {
           className={`flex flex-col items-center md:items-center ${GSAP_PREHIDE}`}
         >
           <ContactLinks heading={dict.contact.orMessageMeHere} />
-
-          <figure className="hidden md:flex flex-col items-center mt-8">
-            <Image
-              src="/images/profile/foto_contact.jpeg"
-              alt={dict.a11y.profileAlt}
-              width={250}
-              height={250}
-              className="custom-shadow -rotate-3 border border-theme bg-surface"
-            />
-          </figure>
         </div>
       </div>
     </section>

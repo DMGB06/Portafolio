@@ -14,5 +14,12 @@ export function isRateLimited(key: string): boolean {
 
   timestamps.push(now);
   hits.set(key, timestamps);
+
+  if (hits.size > 1000) {
+    for (const [k, v] of hits) {
+      if (v.every((t) => now - t >= WINDOW_MS)) hits.delete(k);
+    }
+  }
+
   return false;
 }
