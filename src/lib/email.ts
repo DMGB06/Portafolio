@@ -19,7 +19,11 @@ function escapeHtml(str: string): string {
 }
 
 // Función para enviar email de contacto
-export async function sendContactEmail({ name, email, message }: ContactEmailParams) {
+export async function sendContactEmail({
+  name,
+  email,
+  message,
+}: ContactEmailParams) {
   // Verificar variables de entorno
   if (!process.env.RESEND_API_KEY) {
     throw new Error("RESEND_API_KEY no está configurada");

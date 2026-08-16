@@ -114,7 +114,7 @@ const Hero = () => {
             ref={cvButtonRef}
             className={`hidden md:flex justify-end ${GSAP_PREHIDE}`}
           >
-            <a href="/cv.pdf" className="inline-block">
+            <a href="/files/CV_Denilson_Godoy.pdf" download="CV_Denilson_Godoy" className="inline-block">
               <Button
                 text={hero.downloadCv}
               />
