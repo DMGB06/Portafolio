@@ -91,6 +91,23 @@ const projectCatalog: ProjectCatalogItem[] = [
     ],
     github: "https://github.com/DMGB06/bus-attendance-qr",
   },
+  {
+    id: 2,
+    slug: "typingpro",
+    type: "web",
+    images: [
+      "/projects/typing-platform/cover.png",
+      "/projects/typing-platform/auth.png",
+    ],
+    technologies: [
+      { name: "Next.js" },
+      { name: "NestJS" },
+      { name: "Prisma" },
+      { name: "TypeScript" },
+    ],
+    github: "https://github.com/DMGB06/typing-platform",
+    demo: "https://typing-platform-six.vercel.app/",
+  },
 ];
 
 function getProjectItemCopy(locale: Locale, id: number) {

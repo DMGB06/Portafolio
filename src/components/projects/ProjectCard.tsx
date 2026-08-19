@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { FaArrowUpRightFromSquare } from "react-icons/fa6";
 import type { Project } from "@/types";
 import { ProjectGallery } from "./ProjectGallery";
 import { DEFAULT_LOCALE, fillTemplate, getDictionary, useTranslations } from "@/i18n";
@@ -53,9 +54,11 @@ export function ProjectCard({ project, className = "" }: ProjectCardProps) {
               href={project.demo}
               target="_blank"
               rel="noopener noreferrer"
-              className="project-card__link"
+              className="project-card__link project-card__link--demo"
             >
+              <span className="project-card__link-dot" aria-hidden />
               {dict.projects.demo}
+              <FaArrowUpRightFromSquare aria-hidden className="project-card__link-icon" />
             </a>
           )}
         </div>

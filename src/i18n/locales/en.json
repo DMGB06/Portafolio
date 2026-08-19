@@ -70,6 +70,24 @@
           "Handling offline/optimistic state without losing attendance events",
           "Coordinating different roles (driver, parent, coordinator) over the same data domain"
         ]
+      },
+      "2": {
+        "title": "TypingPro",
+        "description": "Web platform to practice typing speed with texts filterable by type, difficulty and language, user accounts, and a global leaderboard. Next.js frontend and NestJS/Prisma backend.",
+        "motivation": "I wanted a project that exercised a stack split into two real applications, a Next.js frontend and a NestJS API with its own database, authentication, and admin panel, instead of another single-framework full-stack project.",
+        "overview": "TypingPro measures typing speed and accuracy over texts filterable by type (quote, article, code, paragraph), difficulty, and language. Each typing session is saved against the user's account, feeding a global leaderboard and notifications. A separate admin panel manages the available texts, languages, and difficulty levels.",
+        "highlights": [
+          "NestJS backend with Prisma, JWT authentication, and an admin guard kept separate from the rest of the API",
+          "Text filtering by type, difficulty, and language consumed from the frontend",
+          "Global leaderboard computed from saved typing sessions",
+          "Admin panel to manage texts, languages, and difficulties"
+        ],
+        "approach": "I split the project into two applications (Next.js for the UI, NestJS for the API) instead of a full-stack monolith, to version and test the business logic (WPM calculation, ranking, admin permissions) independently from the UI. In the backend I used Prisma as the data access layer and organized each domain (auth, texts, typing sessions, leaderboard, notifications, admin) into its own NestJS module with its own tests, instead of one large controller. The admin guard lives apart from the regular auth guard so role permissions don't get mixed with session validation.",
+        "learnings": [
+          "Designing a NestJS API organized by domain modules instead of a monolith",
+          "Separating authentication from authorization (session guard vs. admin role guard)",
+          "Modeling typing sessions and aggregating them into a consistent global leaderboard"
+        ]
       }
     }
   },

@@ -70,6 +70,24 @@
           "Manejar estado offline/optimista sin perder eventos de asistencia",
           "Coordinar roles distintos (chofer, apoderado, coordinador) sobre el mismo dominio de datos"
         ]
+      },
+      "2": {
+        "title": "TypingPro",
+        "description": "Plataforma web para practicar velocidad de escritura con textos por tipo, dificultad e idioma, cuentas de usuario y ranking global. Frontend en Next.js y backend en NestJS con Prisma.",
+        "motivation": "Quería un proyecto que probara un stack separado en dos aplicaciones reales, un frontend en Next.js y una API en NestJS con su propia base de datos, autenticación y panel de administración, en vez de otro proyecto full-stack en un solo framework.",
+        "overview": "TypingPro mide velocidad y precisión de escritura sobre textos filtrables por tipo (cita, artículo, código, párrafo), dificultad e idioma. Cada sesión de escritura se guarda contra la cuenta del usuario, alimentando un ranking global (leaderboard) y notificaciones. Un panel de administración aparte permite gestionar los textos, idiomas y niveles de dificultad disponibles.",
+        "highlights": [
+          "Backend NestJS con Prisma, autenticación JWT y guard de administrador separado del resto de la API",
+          "Filtro de textos por tipo, dificultad e idioma consumido desde el frontend",
+          "Ranking global (leaderboard) calculado a partir de las sesiones de escritura guardadas",
+          "Panel de administración para gestionar textos, idiomas y dificultades"
+        ],
+        "approach": "Separé el proyecto en dos aplicaciones (Next.js para la UI, NestJS para la API) en vez de un monolito full-stack, para poder versionar y testear la lógica de negocio (cálculo de WPM, ranking, permisos de administrador) independiente de la interfaz. En el backend usé Prisma como capa de acceso a datos y organicé cada dominio (auth, textos, sesiones de escritura, leaderboard, notificaciones, administración) en su propio módulo de NestJS con sus tests, en vez de un solo controlador grande. El guard de administrador vive aparte del guard de autenticación normal para no mezclar permisos de rol con la validación de sesión.",
+        "learnings": [
+          "Diseñar una API en NestJS organizada por módulos de dominio en vez de un monolito",
+          "Separar autenticación de autorización (guard de sesión vs. guard de rol de administrador)",
+          "Modelar sesiones de escritura y agregarlas en un ranking global consistente"
+        ]
       }
     }
   },

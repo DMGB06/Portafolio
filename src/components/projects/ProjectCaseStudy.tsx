@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect } from "react";
+import { FaArrowUpRightFromSquare } from "react-icons/fa6";
 import {
   getAdjacentProjectSlugs,
   getProjectBySlug,
@@ -89,9 +90,11 @@ export function ProjectCaseStudy({ slug }: ProjectCaseStudyProps) {
           href={project.demo}
           target="_blank"
           rel="noopener noreferrer"
-          className="project-card__link"
+          className="project-card__link project-card__link--demo"
         >
+          <span className="project-card__link-dot" aria-hidden />
           {copy.demo}
+          <FaArrowUpRightFromSquare aria-hidden className="project-card__link-icon" />
         </a>
       )}
     </div>

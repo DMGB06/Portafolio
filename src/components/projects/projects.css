@@ -107,6 +107,62 @@
   color: rgb(var(--on-secondary));
 }
 
+/* Demo — filled from the start so a live deploy reads as the standout action */
+.project-card__link--demo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border-color: rgb(var(--secondary));
+  background: rgb(var(--secondary));
+  color: rgb(var(--on-secondary));
+  font-weight: 600;
+}
+
+.project-card__link--demo:hover {
+  background: transparent;
+  color: rgb(var(--secondary));
+  border-color: rgb(var(--secondary));
+  box-shadow: 0 6px 16px rgba(var(--secondary), 0.32);
+  transform: translateY(-1px);
+}
+
+.project-card__link--demo:hover .project-card__link-icon {
+  transform: translate(1px, -1px);
+}
+
+.project-card__link-dot {
+  width: 0.375rem;
+  height: 0.375rem;
+  border-radius: 50%;
+  background: rgb(var(--on-secondary));
+  animation: project-card-live-pulse 1.8s ease-in-out infinite;
+}
+
+.project-card__link--demo:hover .project-card__link-dot {
+  background: rgb(var(--secondary));
+}
+
+.project-card__link-icon {
+  font-size: 0.6rem;
+  transition: transform 0.2s ease;
+}
+
+@keyframes project-card-live-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card__link-dot {
+    animation: none;
+  }
+}
+
 /* â”€â”€ Gallery (full-bleed screenshot â€” no device chrome) â”€â”€ */
 
 .project-gallery {
