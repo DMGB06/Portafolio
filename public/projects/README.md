@@ -1,38 +1,9 @@
-# Imágenes de proyectos
+# Medios de proyectos
 
-Coloca aquí las capturas de cada proyecto en su propia carpeta.
+Cada proyecto tiene su carpeta en `public/projects/<nombre>/`.
 
-## Estructura
+- Imagenes en WebP (`cwebp` o ffmpeg con `-c:v libwebp -quality 80`), ~1200px de ancho maximo.
+- `images[0]` e `images[1]` salen en la vista previa del listado; el resto, en el caso de estudio.
+- Video opcional: `clip` (corto, sin audio, ~300px de ancho, para el listado) y `video` (completo, para el caso de estudio). Comprimidos a pocos MB.
 
-```
-public/projects/
-├── control-asistencia/
-│   ├── cover.png      ← se muestra primero
-│   └── dashboard.png  ← aparece al pasar el mouse (carrusel)
-└── otro-proyecto/
-    ├── cover.png
-    └── screen-2.png
-```
-
-## Cómo agregar un proyecto
-
-1. Crea una carpeta con el nombre del proyecto (sin espacios, usa guiones).
-2. Guarda tus imágenes dentro (PNG o JPG, recomendado ~1200px de ancho).
-3. Edita `src/data/portfolio.ts` y agrega un objeto en el array `projects`:
-
-```ts
-{
-  id: 2,
-  title: "Mi App",
-  description: "Descripción corta del proyecto.",
-  images: [
-    "/projects/mi-app/cover.png",
-    "/projects/mi-app/screen-2.png",
-  ],
-  technologies: [{ name: "React Native" }],
-  github: "https://github.com/tu-usuario/mi-app",
-}
-```
-
-- `images`: mínimo 1 imagen. Con 2 o más, al pasar el mouse rota como carrusel.
-- En móvil, toca la imagen para cambiar de captura.
+Para agregar un proyecto, edita `projectCatalog` en `src/data/portfolio.ts` y los textos en `src/i18n/locales/`.

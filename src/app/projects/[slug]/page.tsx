@@ -38,7 +38,7 @@ export default async function ProjectCasePage({ params }: ProjectCasePageProps) 
   return (
     <main className="min-h-screen">
       <div className="max-w-6xl mx-auto px-2 md:px-10 pt-6 md:pt-10">
-        <ProjectCaseStudy slug={slug} />
+        <ProjectCaseStudy key={slug} slug={slug} />
       </div>
     </main>
   );

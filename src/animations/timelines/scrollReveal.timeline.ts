@@ -16,6 +16,12 @@ export function playScrollReveal(
 ) {
   const { y = 40, stagger = 0.1, duration = 0.6 } = options;
 
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    gsap.set(elements, { autoAlpha: 1, y: 0 });
+    elements.forEach((el) => el.classList.remove("gsap-prehide"));
+    return;
+  }
+
   setScrollRevealInitialState(elements, y);
 
   return gsap.to(elements, {

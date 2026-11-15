@@ -16,10 +16,8 @@
   },
   "hero": {
     "title": {
-      "verb": "es",
-      "roleStudent": "estudiante de ingeniería de sistemas",
-      "conjunction": "y",
-      "roleDeveloper": "desarrollador de software"
+      "verb": "Soy",
+      "roleDeveloper": "desarrollador de software full stack"
     },
     "available": "Disponible",
     "biography": "Biografía",
@@ -40,14 +38,14 @@
     "demo": "Demo",
     "viewCase": "Ver caso",
     "backToProjects": "← Proyectos",
-    "sectionMotivation": "Por qué lo hice",
     "sectionOverview": "Qué hace",
-    "sectionApproach": "Cómo lo armé",
     "sectionLearnings": "Qué aprendí",
     "nextProject": "Siguiente proyecto",
     "previousProject": "Proyecto anterior",
     "projectsNav": "Navegación entre proyectos",
-
+    "switchHint": "para cambiar de proyecto",
+    "allProjects": "Ver todos los proyectos",
+    "demoVideo": "Demo en video",
     "typeMobile": "Móvil",
     "typeWeb": "Web",
     "notFoundTitle": "Proyecto no encontrado",
@@ -64,11 +62,62 @@
           "Mapa en vivo del bus y notificaciones push para las familias",
           "Reglas de negocio (asistencia, prioridad, permisos) cubiertas con tests unitarios y CI en cada push"
         ],
-        "approach": "Separé las reglas de negocio (asistencia, prioridad, permisos por rol) en una capa de dominio sin UI, para poder testearlas con Jest sin levantar la app, clave para no romper el registro de asistencia al agregar la cola offline. Para el mapa del bus elegí Apple Maps nativo en iOS y OpenStreetMap vía WebView en Android/web, para no depender de una API key de pago de Google Maps en un proyecto municipal con presupuesto ajustado. Y para el estado de viajes usé useSyncExternalStore de React en vez de sumar Zustand o Redux: la app ya carga cámara, mapas y push, y no quería otra dependencia para algo que React ya resuelve. Lint y tests corren automáticamente en GitHub Actions en cada push.",
         "learnings": [
           "Diseñar reglas de negocio testeables separadas de la UI",
           "Manejar estado offline/optimista sin perder eventos de asistencia",
           "Coordinar roles distintos (chofer, apoderado, coordinador) sobre el mismo dominio de datos"
+        ],
+        "decisions": [
+          {
+            "title": "Reglas de negocio sin interfaz",
+            "text": "Asistencia, prioridad y permisos por rol viven en una capa de dominio sin UI, para testearlas con Jest sin levantar la app. Fue clave para no romper el registro al agregar la cola offline."
+          },
+          {
+            "title": "Mapas sin API key de pago",
+            "text": "Apple Maps nativo en iOS y OpenStreetMap vía WebView en Android y web, para no depender de Google Maps en un proyecto municipal con presupuesto ajustado."
+          },
+          {
+            "title": "Estado con lo que React ya trae",
+            "text": "useSyncExternalStore para el estado de viajes, en vez de sumar Zustand o Redux: la app ya carga cámara, mapas y push, y no quería otra dependencia."
+          },
+          {
+            "title": "Lint y tests en cada push",
+            "text": "GitHub Actions corre lint y tests automáticamente, para que las reglas de asistencia no se rompan sin que nadie se entere."
+          }
+        ],
+        "chapters": [
+          {
+            "title": "Ingreso",
+            "text": "Cada persona entra con su cuenta y ve solo lo que le corresponde."
+          },
+          {
+            "title": "Viaje en curso",
+            "text": "Cuántos faltan, cuántos van a bordo y cuántos ya llegaron, de un vistazo."
+          },
+          {
+            "title": "Escaneo con QR",
+            "text": "El conductor apunta la cámara al código del alumno."
+          },
+          {
+            "title": "Registro manual",
+            "text": "Si el QR no se lee, se busca al alumno por nombre."
+          },
+          {
+            "title": "Lista del bus",
+            "text": "Busca por nombre, filtra por estado y corrige un registro si hace falta."
+          },
+          {
+            "title": "Perfil",
+            "text": "Tema claro u oscuro, alto contraste y cierre de sesión."
+          },
+          {
+            "title": "Para las familias",
+            "text": "El apoderado ve en tiempo real dónde está su hijo."
+          },
+          {
+            "title": "Historial",
+            "text": "Los últimos 7 días, día por día."
+          }
         ]
       },
       "2": {
@@ -82,14 +131,40 @@
           "Ranking global (leaderboard) calculado a partir de las sesiones de escritura guardadas",
           "Panel de administración para gestionar textos, idiomas y dificultades"
         ],
-        "approach": "Separé el proyecto en dos aplicaciones (Next.js para la UI, NestJS para la API) en vez de un monolito full-stack, para poder versionar y testear la lógica de negocio (cálculo de WPM, ranking, permisos de administrador) independiente de la interfaz. En el backend usé Prisma como capa de acceso a datos y organicé cada dominio (auth, textos, sesiones de escritura, leaderboard, notificaciones, administración) en su propio módulo de NestJS con sus tests, en vez de un solo controlador grande. El guard de administrador vive aparte del guard de autenticación normal para no mezclar permisos de rol con la validación de sesión.",
         "learnings": [
           "Diseñar una API en NestJS organizada por módulos de dominio en vez de un monolito",
           "Separar autenticación de autorización (guard de sesión vs. guard de rol de administrador)",
           "Modelar sesiones de escritura y agregarlas en un ranking global consistente"
-        ]
+        ],
+        "decisions": [
+          {
+            "title": "Dos aplicaciones, no un monolito",
+            "text": "Next.js para la interfaz y NestJS para la API, para versionar y testear la lógica de negocio (WPM, ranking, permisos) aparte de la UI."
+          },
+          {
+            "title": "Un módulo por dominio",
+            "text": "Prisma como capa de datos, y cada dominio (auth, textos, sesiones, leaderboard, notificaciones, administración) en su propio módulo de NestJS con sus tests."
+          },
+          {
+            "title": "Autorización separada de la sesión",
+            "text": "El guard de administrador vive aparte del guard de autenticación, para no mezclar permisos de rol con la validación de sesión."
+          }
+        ],
+        "chapters": []
       }
-    }
+    },
+    "sectionProblem": "El problema",
+    "sectionDemo": "Demo",
+    "sectionScreens": "Capturas",
+    "sectionDecisions": "Decisiones técnicas",
+    "factType": "Tipo",
+    "factPlatforms": "Plataformas",
+    "factStack": "Stack",
+    "factCode": "Código",
+    "watchVideo": "Ver el video",
+    "liveDemo": "Ver demo en vivo",
+    "viewCode": "Código en Github",
+    "chaptersLabel": "Capítulos del video"
   },
   "skills": {
     "categories": {
@@ -105,12 +180,12 @@
     "readMore": "Leer más ->",
     "paragraphs": [
       "¡Hola, soy Denilson!",
-      "Soy desarrollador full stack de 21 años, de Perú, estudiando en la Universidad Nacional de Cañete. Me gusta crear sitios web y aplicaciones responsivas y fáciles de usar, convirtiendo ideas en experiencias digitales interactivas.",
-      "Me encanta combinar creatividad con tecnología para desarrollar proyectos que generen impacto. Aprendo constantemente nuevas herramientas y frameworks para ofrecer soluciones modernas y eficientes."
+      "Soy desarrollador full stack de 21 años, de Perú, con formación en Ingeniería de Sistemas en la Universidad Nacional de Cañete. Me gusta crear sitios web y aplicaciones responsivas y fáciles de usar, convirtiendo ideas en experiencias digitales interactivas.",
+      "Me encanta combinar creatividad con tecnología para desarrollar proyectos que generen impacto. Cuento con pensamiento analítico y capacidad de razonamiento para resolver problemas complejos, y aprendo constantemente nuevas herramientas y frameworks para ofrecer soluciones modernas y eficientes."
     ]
   },
   "contact": {
-    "intro": "Estoy abierto a oportunidades laborales, prácticas y proyectos freelance. Si tienes algo en mente, no dudes en escribirme.",
+    "intro": "Estoy abierto a oportunidades laborales y proyectos freelance. Si tienes algo en mente, no dudes en escribirme.",
     "messageMeHere": "Escríbeme aquí",
     "orMessageMeHere": "O escríbeme aquí"
   },
@@ -136,11 +211,12 @@
     "toggleThemeDark": "Activar tema oscuro",
     "toggleThemeLight": "Activar tema claro",
     "profileAlt": "Foto de perfil",
-    "galleryHover": "Mueve el cursor",
-    "galleryMultiple": "{title}, imagen {current} de {total}",
+    "projectsList": "Proyectos",
+    "projectDemo": "Demo de {title}",
     "galleryScreenshot": "{title} - captura {index}",
     "viewCase": "Ver caso de {title}",
     "previousProject": "Proyecto anterior: {title}",
-    "nextProject": "Siguiente proyecto: {title}"
+    "nextProject": "Siguiente proyecto: {title}",
+    "stackLabel": "Tecnologías"
   }
 }

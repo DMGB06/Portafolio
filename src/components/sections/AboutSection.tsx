@@ -54,13 +54,13 @@ const AboutSection = ({
       >
         <figure
           ref={imageRef}
-          className={`flex justify-center order-2 md:order-0 ${GSAP_PREHIDE}`}
+          className={`flex justify-center items-start order-2 md:order-0 ${GSAP_PREHIDE}`}
         >
           <Image
-            src="/images/profile/carnet.jpeg"
+            src="/images/profile/carnet.webp"
             alt="Denilson Godoy"
             width={300}
-            height={400}
+            height={392}
             priority
             className="custom-shadow col-span-2 md:col-span-1 rounded-sm border border-theme bg-surface"
           />

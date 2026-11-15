@@ -70,7 +70,10 @@ export const skillCategories: Record<SkillCategoryKey, Skill[]> = {
 };
 
 /** Fixed project data (URLs, images, tech). Localized copy lives in i18n JSON. */
-type ProjectCatalogItem = Omit<Project, ProjectLocalizedFields>;
+type ProjectCatalogItem = Omit<Project, ProjectLocalizedFields> & {
+  /** Start second of each video chapter, same order as i18n chapters */
+  chapterTimes?: number[];
+};
 
 type ProjectItemKey = keyof Dictionary["projects"]["items"];
 
@@ -80,9 +83,15 @@ const projectCatalog: ProjectCatalogItem[] = [
     slug: "buscontrol-qr",
     type: "mobile",
     images: [
-      "/projects/control-asistencia/dashboard.png",
-      "/projects/control-asistencia/cover.png",
+      "/projects/control-asistencia/bus-14.webp",
+      "/projects/control-asistencia/bus-41.webp",
+      "/projects/control-asistencia/bus-26.webp",
+      "/projects/control-asistencia/bus-70.webp",
     ],
+    clip: "/projects/control-asistencia/cerrobus-clip.mp4",
+    video: "/projects/control-asistencia/cerrobus-demo.mp4",
+    chapterTimes: [0, 12, 20, 28, 40, 52, 64, 76],
+    platforms: "iOS · Android · Web",
     technologies: [
       { name: "Expo" },
       { name: "React Native" },
@@ -96,8 +105,8 @@ const projectCatalog: ProjectCatalogItem[] = [
     slug: "typingpro",
     type: "web",
     images: [
-      "/projects/typing-platform/cover.png",
-      "/projects/typing-platform/auth.png",
+      "/projects/typing-platform/cover.webp",
+      "/projects/typing-platform/auth.webp",
     ],
     technologies: [
       { name: "Next.js" },
@@ -105,6 +114,7 @@ const projectCatalog: ProjectCatalogItem[] = [
       { name: "Prisma" },
       { name: "TypeScript" },
     ],
+    platforms: "Web",
     github: "https://github.com/DMGB06/typing-platform",
     demo: "https://typing-platform-six.vercel.app/",
   },
@@ -132,14 +142,15 @@ function hydrateProject(
     motivation: text.motivation,
     overview: text.overview,
     highlights: text.highlights,
-    approach: text.approach,
+    decisions: text.decisions,
+    chapters: (text.chapters as { title: string; text: string }[]).map(
+      (chapter, index) => ({
+        ...chapter,
+        time: catalogItem.chapterTimes?.[index] ?? 0,
+      })
+    ),
     learnings: text.learnings,
   };
-}
-
-/** Whether the case study should render the approach section */
-export function projectHasApproach(project: Project): boolean {
-  return project.approach.trim().length > 0;
 }
 
 export function getProjects(locale: Locale): Project[] {

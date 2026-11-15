@@ -5,8 +5,7 @@ import { Titulo } from "../ui/Titulo";
 import { getProjects } from "@/data/portfolio";
 import Link from "next/link";
 import { GSAP_PREHIDE, REVEAL_ITEM, useScrollReveal } from "@/animations";
-import { ProjectCard } from "../projects/ProjectCard";
-import "../projects/projects.css";
+import { ProjectsExplorer } from "../projects/ProjectsExplorer";
 import { DEFAULT_LOCALE, getDictionary, useTranslations } from "@/i18n";
 
 type ProjectsSectionProps = {
@@ -32,17 +31,7 @@ const ProjectsSection = ({ isSection = true }: ProjectsSectionProps) => {
         />
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 items-stretch">
-        {projectList.map((project) => (
-          <div
-            key={project.id}
-            {...{ [REVEAL_ITEM]: true }}
-            className={GSAP_PREHIDE}
-          >
-            <ProjectCard project={project} />
-          </div>
-        ))}
-      </div>
+      <ProjectsExplorer projects={projectList} />
 
       {isSection && (
         <Link
