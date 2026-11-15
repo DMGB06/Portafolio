@@ -16,10 +16,8 @@
   },
   "hero": {
     "title": {
-      "verb": "is a",
-      "roleStudent": "Systems engineering student",
-      "conjunction": "and",
-      "roleDeveloper": "software developer"
+      "verb": "I'm",
+      "roleDeveloper": "full stack software developer"
     },
     "available": "Available",
     "biography": "Biography",
@@ -40,14 +38,14 @@
     "demo": "Demo",
     "viewCase": "View case",
     "backToProjects": "← Projects",
-    "sectionMotivation": "Why I built it",
     "sectionOverview": "What it does",
-    "sectionApproach": "How I built it",
     "sectionLearnings": "What I learned",
     "nextProject": "Next project",
     "previousProject": "Previous project",
     "projectsNav": "Projects navigation",
-
+    "switchHint": "to switch project",
+    "allProjects": "View all projects",
+    "demoVideo": "Video demo",
     "typeMobile": "Mobile",
     "typeWeb": "Web",
     "notFoundTitle": "Project not found",
@@ -64,11 +62,62 @@
           "Live bus map and push notifications for families",
           "Business rules (attendance, priority, permissions) covered by unit tests and CI on every push"
         ],
-        "approach": "I split business rules (attendance, priority, role permissions) into a UI-free domain layer so they could be unit-tested with Jest without booting the app, key to not breaking attendance tracking when I added the offline queue. For the bus map, I chose native Apple Maps on iOS and OpenStreetMap via WebView on Android/web, to avoid depending on a paid Google Maps API key on a municipal project with a tight budget. For trip state I used React's own useSyncExternalStore instead of adding Zustand or Redux: the app already loads camera, maps, and push, and I didn't want another dependency for something React already solves. Lint and tests also run automatically on GitHub Actions on every push.",
         "learnings": [
           "Designing testable business rules separate from the UI",
           "Handling offline/optimistic state without losing attendance events",
           "Coordinating different roles (driver, parent, coordinator) over the same data domain"
+        ],
+        "decisions": [
+          {
+            "title": "Business rules without UI",
+            "text": "Attendance, priority, and role permissions live in a UI-free domain layer, so they can be tested with Jest without booting the app. It was key to not breaking attendance tracking when I added the offline queue."
+          },
+          {
+            "title": "Maps without a paid API key",
+            "text": "Native Apple Maps on iOS and OpenStreetMap via WebView on Android and web, to avoid depending on Google Maps on a municipal project with a tight budget."
+          },
+          {
+            "title": "State with what React already ships",
+            "text": "useSyncExternalStore for trip state instead of adding Zustand or Redux: the app already loads camera, maps, and push, and I didn't want another dependency."
+          },
+          {
+            "title": "Lint and tests on every push",
+            "text": "GitHub Actions runs lint and tests automatically, so the attendance rules don't break without anyone noticing."
+          }
+        ],
+        "chapters": [
+          {
+            "title": "Sign in",
+            "text": "Each person signs in with their own account and sees only what applies to them."
+          },
+          {
+            "title": "Trip in progress",
+            "text": "How many are missing, aboard, and already arrived, at a glance."
+          },
+          {
+            "title": "QR scanning",
+            "text": "The driver points the camera at the student's code."
+          },
+          {
+            "title": "Manual entry",
+            "text": "If the QR can't be read, search the student by name."
+          },
+          {
+            "title": "Bus list",
+            "text": "Search by name, filter by status, and fix a record when needed."
+          },
+          {
+            "title": "Profile",
+            "text": "Light or dark theme, high contrast, and sign out."
+          },
+          {
+            "title": "For families",
+            "text": "Parents see in real time where their child is."
+          },
+          {
+            "title": "History",
+            "text": "The last 7 days, day by day."
+          }
         ]
       },
       "2": {
@@ -82,14 +131,40 @@
           "Global leaderboard computed from saved typing sessions",
           "Admin panel to manage texts, languages, and difficulties"
         ],
-        "approach": "I split the project into two applications (Next.js for the UI, NestJS for the API) instead of a full-stack monolith, to version and test the business logic (WPM calculation, ranking, admin permissions) independently from the UI. In the backend I used Prisma as the data access layer and organized each domain (auth, texts, typing sessions, leaderboard, notifications, admin) into its own NestJS module with its own tests, instead of one large controller. The admin guard lives apart from the regular auth guard so role permissions don't get mixed with session validation.",
         "learnings": [
           "Designing a NestJS API organized by domain modules instead of a monolith",
           "Separating authentication from authorization (session guard vs. admin role guard)",
           "Modeling typing sessions and aggregating them into a consistent global leaderboard"
-        ]
+        ],
+        "decisions": [
+          {
+            "title": "Two applications, not a monolith",
+            "text": "Next.js for the UI and NestJS for the API, to version and test the business logic (WPM, ranking, permissions) separately from the interface."
+          },
+          {
+            "title": "One module per domain",
+            "text": "Prisma as the data layer, and each domain (auth, texts, typing sessions, leaderboard, notifications, admin) in its own NestJS module with its own tests."
+          },
+          {
+            "title": "Authorization separate from the session",
+            "text": "The admin guard lives apart from the regular auth guard, so role permissions don't get mixed with session validation."
+          }
+        ],
+        "chapters": []
       }
-    }
+    },
+    "sectionProblem": "The problem",
+    "sectionDemo": "Demo",
+    "sectionScreens": "Screenshots",
+    "sectionDecisions": "Technical decisions",
+    "factType": "Type",
+    "factPlatforms": "Platforms",
+    "factStack": "Stack",
+    "factCode": "Code",
+    "watchVideo": "Watch the video",
+    "liveDemo": "View live demo",
+    "viewCode": "Code on Github",
+    "chaptersLabel": "Video chapters"
   },
   "skills": {
     "categories": {
@@ -105,12 +180,12 @@
     "readMore": "Read more ->",
     "paragraphs": [
       "Hello, I'm Denilson!",
-      "I'm a 21-year-old full stack developer from Peru, currently studying at the Universidad Nacional de Cañete. I enjoy building responsive and user-friendly websites and applications, turning ideas into interactive digital experiences.",
-      "I love combining creativity with technology to develop projects that make an impact. I'm constantly learning new tools and frameworks to deliver modern and efficient solutions."
+      "I'm a 21-year-old full stack developer from Peru, with a background in Systems Engineering from the Universidad Nacional de Cañete. I enjoy building responsive and user-friendly websites and applications, turning ideas into interactive digital experiences.",
+      "I love combining creativity with technology to develop projects that make an impact. I bring analytical thinking and strong reasoning skills to solve complex problems, and I'm constantly learning new tools and frameworks to deliver modern and efficient solutions."
     ]
   },
   "contact": {
-    "intro": "I'm open to job opportunities, internships, and freelance projects. If you have something in mind, feel free to reach out.",
+    "intro": "I'm open to job opportunities and freelance projects. If you have something in mind, feel free to reach out.",
     "messageMeHere": "Message me here",
     "orMessageMeHere": "Or message me here"
   },
@@ -136,11 +211,12 @@
     "toggleThemeDark": "Enable dark theme",
     "toggleThemeLight": "Enable light theme",
     "profileAlt": "Profile picture",
-    "galleryHover": "Move cursor",
-    "galleryMultiple": "{title}, image {current} of {total}",
+    "projectsList": "Projects",
+    "projectDemo": "{title} demo",
     "galleryScreenshot": "{title} - screenshot {index}",
     "viewCase": "View case study for {title}",
     "previousProject": "Previous project: {title}",
-    "nextProject": "Next project: {title}"
+    "nextProject": "Next project: {title}",
+    "stackLabel": "Technologies"
   }
 }

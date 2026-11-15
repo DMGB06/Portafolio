@@ -11,11 +11,18 @@ export interface Project {
   motivation: string;
   overview: string;
   highlights: string[];
-  /** Empty string = hide approach section in the case study template */
-  approach: string;
+  /** Technical decisions (what + why). Empty = hide the section */
+  decisions: ProjectDecision[];
+  /** Video chapters; empty when the project has no demo video */
+  chapters: ProjectChapter[];
   learnings: string[];
-  /** Rutas en /public, ej: /projects/mi-app/cover.png */
+  platforms?: string;
+  /** Rutas en /public (webp). images[0] y images[1] salen en la vista previa del listado */
   images: string[];
+  /** Clip corto sin audio para la vista previa del listado */
+  clip?: string;
+  /** Video completo para el caso de estudio */
+  video?: string;
   /** mobile = capturas de celular, web = capturas horizontales */
   type?: "mobile" | "web";
   technologies: Technology[];
@@ -30,8 +37,19 @@ export type ProjectLocalizedFields =
   | "motivation"
   | "overview"
   | "highlights"
-  | "approach"
+  | "decisions"
+  | "chapters"
   | "learnings";
+
+export interface ProjectDecision {
+  title: string;
+  text: string;
+}
+
+/** time = second of the demo video where the chapter starts */
+export interface ProjectChapter extends ProjectDecision {
+  time: number;
+}
 
 
 export interface Technology {

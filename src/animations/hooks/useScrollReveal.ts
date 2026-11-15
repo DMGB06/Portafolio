@@ -22,6 +22,38 @@ function isSectionVisible(section: Element, threshold: number) {
   return visibleHeight >= rect.height * threshold;
 }
 
+/** Revela cada [data-reveal] por separado al entrar en pantalla (para paginas largas) */
+export function useRevealOnScroll(
+  rootRef: RefObject<HTMLElement | null>,
+  { y = 24, duration = 0.5 }: { y?: number; duration?: number } = {}
+) {
+  useGsapTimeline(() => {
+    const root = rootRef.current;
+    if (!root) return;
+
+    const items = Array.from(root.querySelectorAll(`[${REVEAL_ITEM}]`));
+    if (!items.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          observer.unobserve(entry.target);
+          playScrollReveal([entry.target], { y, duration });
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -8% 0px" }
+    );
+
+    items.forEach((item) => observer.observe(item));
+
+    return () => {
+      observer.disconnect();
+      killScrollReveal(items);
+    };
+  }, []);
+}
+
 export function useScrollReveal(
   sectionRef: RefObject<HTMLElement | null>,
   options: UseScrollRevealOptions = {}

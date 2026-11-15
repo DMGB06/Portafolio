@@ -46,9 +46,10 @@ const Hero = () => {
   useHeroAnimation(sectionRef, animationRefs);
 
   const router = useRouter();
-  const { t, isReady } = useTranslations();
+  const { t, locale, isReady } = useTranslations();
   const dict = isReady ? t : getDictionary(DEFAULT_LOCALE);
   const { hero } = dict;
+  const cvFile = `CV_Denilson_Godoy_${locale.toUpperCase()}`;
   const shortName = personalInfo[0].shortName;
 
   const handleContactMe = () => {
@@ -63,9 +64,7 @@ const Hero = () => {
           className={`font-semibold mb-4 leading-snug ${GSAP_PREHIDE}`}
           style={{ fontSize: "clamp(1.5rem, 5vw, 2.7rem)" }}
         >
-          {shortName} {hero.title.verb}{" "}
-          <span className="text-secondary">{hero.title.roleStudent} </span>
-          {hero.title.conjunction}{" "}
+          {hero.title.verb} {shortName},{" "}
           <span className="text-secondary">{hero.title.roleDeveloper}</span>
         </h1>
       </div>
@@ -74,7 +73,7 @@ const Hero = () => {
         <figure className="flex flex-col items-center justify-center w-full md:col-span-2 col-span-1">
           <Image
             ref={imageRef}
-            src="/images/profile/foto_animada.png"
+            src="/images/profile/foto_animada.webp"
             alt={dict.a11y.profileAlt}
             width={250}
             height={250}
@@ -114,7 +113,7 @@ const Hero = () => {
             ref={cvButtonRef}
             className={`hidden md:flex justify-end ${GSAP_PREHIDE}`}
           >
-            <a href="/files/CV_Denilson_Godoy.pdf" download="CV_Denilson_Godoy" className="inline-block">
+            <a href={`/files/${cvFile}.pdf`} download={cvFile} className="inline-block">
               <Button
                 text={hero.downloadCv}
               />
