@@ -12,6 +12,7 @@ import {
   SiSupabase,
   SiKubernetes,
   SiNodedotjs,
+  SiNestjs,
   SiDocker,
   SiPostman,
   SiFigma,
@@ -53,6 +54,7 @@ export const skillCategories: Record<SkillCategoryKey, Skill[]> = {
   ],
   backend: [
     { name: "Node.js", icon: SiNodedotjs, color: "#339933" },
+    { name: "NestJS", icon: SiNestjs, color: "#E0234E" },
     { name: "Express", icon: SiExpress, color: "#000000" },
     { name: "Supabase", icon: SiSupabase, color: "#3FCF8E" },
     { name: "PostgreSQL", icon: SiPostgresql, color: "#4169E1" },
