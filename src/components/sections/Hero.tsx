@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Link from "next/link";
 import Image from "next/image";
 import { personalInfo } from "@/data/portfolio";
 import { Button } from "../ui/Button";
@@ -28,10 +29,10 @@ const Hero = () => {
   const availableRef = useRef<HTMLElement>(null);
   const biographyRef = useRef<HTMLHeadingElement>(null);
   const biographyTextRef = useRef<HTMLParagraphElement>(null);
+  const projectsLinkRef = useRef<HTMLAnchorElement>(null);
   const cvButtonRef = useRef<HTMLDivElement>(null);
   const contactButtonRef = useRef<HTMLDivElement>(null);
   const socialIconsRef = useRef<(HTMLAnchorElement | null)[]>([]);
-  const dotsRef = useRef<HTMLDivElement>(null);
 
   const animationRefs: HeroAnimationRefs = {
     title: titleRef,
@@ -39,10 +40,10 @@ const Hero = () => {
     available: availableRef,
     biography: biographyRef,
     biographyText: biographyTextRef,
+    projectsLink: projectsLinkRef,
     cvButton: cvButtonRef,
     contactButton: contactButtonRef,
     socialIcons: socialIconsRef,
-    dots: dotsRef,
   };
 
   useHeroAnimation(sectionRef, animationRefs);
@@ -59,57 +60,37 @@ const Hero = () => {
   };
 
   return (
-    <section ref={sectionRef} className="py-2 md:py-10">
-      <div className="w-full mb-7 lg:mt-10 md:mb-20">
+    <section ref={sectionRef} className="personal-hero">
+      <div className="personal-title">
         <h1
           ref={titleRef}
           className={`font-semibold mb-4 leading-snug ${GSAP_PREHIDE}`}
-          style={{ fontSize: "clamp(1.5rem, 5vw, 2.7rem)" }}
         >
           {hero.title.verb} {shortName},{" "}
           <span className="text-secondary">{hero.title.roleDeveloper}</span>
         </h1>
       </div>
 
-      <div className="w-full grid grid-cols-1 md:grid-cols-10 gap-10">
-        <figure className="flex flex-col items-center justify-center w-full md:col-span-2 col-span-1">
-          <Image
-            ref={imageRef}
-            src="/images/profile/foto_animada.webp"
-            alt={dict.a11y.profileAlt}
-            width={250}
-            height={250}
-            className={`rounded-full border-2 border-theme mb-4 ${GSAP_PREHIDE}`}
-            priority
-          />
-
-          <figure
-            ref={availableRef}
-            className={`max-w-40 flex items-center gap-2 border border-theme px-4 py-2 rounded ${GSAP_PREHIDE}`}
-          >
-            <div
-              className="w-3 h-3"
-              style={{ backgroundColor: "rgb(var(--secondary))" }}
-            ></div>
-            <span className="text-muted">{hero.available}</span>
-          </figure>
-        </figure>
-
-        <article className="md:col-span-6 col-span-1">
-          <h1
+      <div className="personal-content">
+        <article className="personal-bio">
+          <h2
             ref={biographyRef}
             className={`mb-1.5 font-normal ${GSAP_PREHIDE}`}
             style={{ fontSize: "clamp(1.25rem, 4vw, 2rem)" }}
           >
             <span className="text-secondary" aria-hidden>#</span>
             {hero.biography}
-          </h1>
+          </h2>
           <p
             ref={biographyTextRef}
             className={`text-muted mb-1 md:mb-5 ${GSAP_PREHIDE}`}
           >
-            {hero.bioShort}
+            {hero.introduction}
           </p>
+
+          <Link ref={projectsLinkRef} href="#projects" className={`personal-work-link ${GSAP_PREHIDE}`}>
+            {hero.viewWork} &darr;
+          </Link>
 
           {SHOW_CV_DOWNLOAD && (
             <div
@@ -123,7 +104,7 @@ const Hero = () => {
           )}
         </article>
 
-        <nav className="md:col-span-2 col-span-1">
+        <nav className="personal-links">
           <div
             ref={contactButtonRef}
             className={`flex md:justify-end justify-center ${GSAP_PREHIDE}`}
@@ -131,11 +112,12 @@ const Hero = () => {
             <Button text={hero.contactMe} onClick={handleContactMe} />
           </div>
 
-          <div className="grid md:grid-cols-3 md:grid-rows-3 md:gap-5 grid-cols-5 grid-rows-1 gap-4 mt-6 justify-center items-center">
+          <div className="personal-social">
             <a
               ref={(el) => {
                 socialIconsRef.current[0] = el;
               }}
+              aria-label="GitHub"
               href="https://github.com/DMGB06"
               target="_blank"
               rel="noopener noreferrer"
@@ -147,6 +129,7 @@ const Hero = () => {
               ref={(el) => {
                 socialIconsRef.current[1] = el;
               }}
+              aria-label="LinkedIn"
               href="https://www.linkedin.com/in/denilson-miguel-godoy-bautista/"
               target="_blank"
               rel="noopener noreferrer"
@@ -158,31 +141,18 @@ const Hero = () => {
               ref={(el) => {
                 socialIconsRef.current[2] = el;
               }}
+              aria-label="Email"
               href={`mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL}`}
               className={`flex justify-center ${GSAP_PREHIDE}`}
             >
               <FaEnvelope size={24} className="text-chrome" />
             </a>
 
-            <div
-              ref={dotsRef}
-              className="hidden md:grid md:col-span-2 md:row-span-2"
-            >
-              <div className="grid grid-cols-5 gap-2">
-                {Array.from({ length: 20 }).map((_, i) => (
-                  <div
-                    key={i}
-                    className={`w-1 h-1 rounded-full ${GSAP_PREHIDE}`}
-                    style={{ backgroundColor: "rgb(var(--muted))" }}
-                  />
-                ))}
-              </div>
-            </div>
-
             <a
               ref={(el) => {
                 socialIconsRef.current[3] = el;
               }}
+              aria-label="Instagram"
               href="https://www.instagram.com/denilson_6_gd/"
               target="_blank"
               rel="noopener noreferrer"
@@ -194,6 +164,7 @@ const Hero = () => {
               ref={(el) => {
                 socialIconsRef.current[4] = el;
               }}
+              aria-label="Facebook"
               href="https://www.facebook.com/denilson.godoy.395"
               target="_blank"
               rel="noopener noreferrer"
@@ -203,6 +174,30 @@ const Hero = () => {
             </a>
           </div>
         </nav>
+
+        <figure className="personal-avatar">
+          <Image
+            ref={imageRef}
+            src="/images/profile/foto_animada.webp"
+            alt={dict.a11y.profileAlt}
+            width={250}
+            height={250}
+            sizes="(max-width: 767px) clamp(128px, 36vw, 160px), 256px"
+            className={`personal-avatar-image ${GSAP_PREHIDE}`}
+            priority
+          />
+
+          <figcaption
+            ref={availableRef}
+            className={`max-w-40 flex items-center gap-2 border border-theme px-4 py-2 rounded ${GSAP_PREHIDE}`}
+          >
+            <div
+              className="w-3 h-3"
+              style={{ backgroundColor: "rgb(var(--secondary))" }}
+            ></div>
+            <span className="text-muted">{hero.available}</span>
+          </figcaption>
+        </figure>
       </div>
     </section>
   );

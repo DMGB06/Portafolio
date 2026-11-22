@@ -31,7 +31,7 @@
 
 .project-card__link--primary {
   border-color: rgb(var(--secondary));
-  color: rgb(var(--secondary));
+  color: rgb(var(--secondary-text));
 }
 
 .project-card__link--primary:hover {
@@ -52,7 +52,7 @@
 
 .project-card__link--demo:hover {
   background: transparent;
-  color: rgb(var(--secondary));
+  color: rgb(var(--secondary-text));
   border-color: rgb(var(--secondary));
   box-shadow: 0 6px 16px rgba(var(--secondary), 0.32);
   transform: translateY(-1px);

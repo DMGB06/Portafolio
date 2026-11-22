@@ -112,7 +112,7 @@
 
   .case-btn--main:hover {
     background: transparent;
-    color: rgb(var(--secondary));
+    color: rgb(var(--secondary-text));
   }
 
   .case-btn--main:hover .project-card__link-dot {
@@ -229,7 +229,7 @@
 }
 
 .case-fact a {
-  color: rgb(var(--secondary));
+  color: rgb(var(--secondary-text));
   text-decoration: none;
 }
 
@@ -369,7 +369,7 @@
 }
 
 .case-demo__chapter[aria-current="true"] time {
-  color: rgb(var(--secondary));
+  color: rgb(var(--secondary-text));
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -475,7 +475,7 @@
   margin: 0;
   font-size: 0.95rem;
   font-weight: 500;
-  color: rgb(var(--secondary));
+  color: rgb(var(--secondary-text));
 }
 
 .case-decision p {
@@ -547,7 +547,7 @@
 }
 
 .case-nav--next span {
-  color: rgb(var(--secondary));
+  color: rgb(var(--secondary-text));
 }
 
 @media (hover: hover) and (pointer: fine) {

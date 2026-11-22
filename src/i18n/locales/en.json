@@ -15,6 +15,10 @@
     "socialLabel": "connect"
   },
   "hero": {
+    "greeting": "Hi, I’m",
+    "introduction": "I combine technology and creativity to build practical, efficient solutions.",
+    "viewWork": "View projects",
+    "profession": "Full stack developer",
     "title": {
       "verb": "I'm",
       "roleDeveloper": "full stack software developer"
@@ -23,7 +27,7 @@
     "biography": "Biography",
     "bioShort": "He builds practical and efficient solutions where technology meets creativity",
     "downloadCv": "Download CV |>",
-    "contactMe": "Contact me!!"
+    "contactMe": "Contact me"
   },
   "sections": {
     "projects": "Projects",
@@ -44,6 +48,7 @@
     "previousProject": "Previous project",
     "projectsNav": "Projects navigation",
     "switchHint": "to switch project",
+    "allTypes": "All",
     "allProjects": "View all projects",
     "demoVideo": "Video demo",
     "typeMobile": "Mobile",
@@ -53,6 +58,7 @@
     "items": {
       "1": {
         "title": "BusControl QR",
+        "shortDescription": "School bus attendance via QR, even offline.",
         "description": "Multi-role mobile app for municipal school transport: QR attendance with an offline queue, a live bus map, and push notifications for families, backed by Supabase.",
         "motivation": "School municipal transport attendance used to be manual and easy to lose, and parents had no way to know if their kid boarded or where the bus was. I wanted to solve both sides at once: a reliable log for the driver and assistant (QR plus offline fallback), and real-time visibility for families.",
         "overview": "BusControl is an Expo/React Native app backed by Supabase, with separate roles for driver, assistant, parent, and coordinator. Driver and assistant log attendance by QR even without signal (the app syncs on its own once connection is back); parents see their kids and the bus on a live map and get push notifications on every event.",
@@ -122,6 +128,7 @@
       },
       "2": {
         "title": "TypingPro",
+        "shortDescription": "Typing practice with challenges and rankings.",
         "description": "Web platform to practice typing speed with texts filterable by type, difficulty and language, user accounts, and a global leaderboard. Next.js frontend and NestJS/Prisma backend.",
         "motivation": "I wanted a project that exercised a stack split into two real applications, a Next.js frontend and a NestJS API with its own database, authentication, and admin panel, instead of another single-framework full-stack project.",
         "overview": "TypingPro measures typing speed and accuracy over texts filterable by type (quote, article, code, paragraph), difficulty, and language. Each typing session is saved against the user's account, feeding a global leaderboard and notifications. A separate admin panel manages the available texts, languages, and difficulty levels.",

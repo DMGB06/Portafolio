@@ -7,6 +7,7 @@ export interface Project {
   slug: string;
   title: string;
   /** Short teaser for cards — not the full case study */
+  shortDescription: string;
   description: string;
   motivation: string;
   overview: string;
@@ -33,6 +34,7 @@ export interface Project {
 /** Fields that come from i18n dictionaries, not the static catalog */
 export type ProjectLocalizedFields =
   | "title"
+  | "shortDescription"
   | "description"
   | "motivation"
   | "overview"

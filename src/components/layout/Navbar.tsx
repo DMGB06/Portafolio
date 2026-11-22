@@ -25,7 +25,7 @@ export default function Navbar() {
   const dict = isReady ? t : getDictionary(DEFAULT_LOCALE);
 
   return (
-    <nav className="sticky top-0 z-50 w-dvw border-b border-theme bg-surface-translucent backdrop-blur-sm">
+    <nav className="site-nav sticky top-0 z-50 w-full border-b backdrop-blur-sm">
       <div className="max-w-6xl mx-auto px-6 py-4 pt-5 pb-5 min-80vw">
         <div className="flex items-center justify-between">
           <Link

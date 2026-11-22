@@ -6,10 +6,10 @@ export interface HeroAnimationRefs {
   available: RefObject<HTMLElement | null>;
   biography: RefObject<HTMLElement | null>;
   biographyText: RefObject<HTMLElement | null>;
+  projectsLink: RefObject<HTMLAnchorElement | null>;
   cvButton: RefObject<HTMLElement | null>;
   contactButton: RefObject<HTMLElement | null>;
   socialIcons: RefObject<(HTMLElement | null)[]>;
-  dots: RefObject<HTMLDivElement | null>;
 }
 
 export interface AboutAnimationRefs {

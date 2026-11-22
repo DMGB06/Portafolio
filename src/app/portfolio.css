@@ -1,0 +1,106 @@
+.folio {
+  max-width: 72rem;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 3rem);
+}
+.personal-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(10rem, 16rem);
+  grid-template-areas: "title avatar" "bio avatar" "links avatar";
+  align-items: center;
+  gap: 1rem clamp(1.5rem, 5vw, 4rem);
+  margin-block: clamp(1rem, 4vw, 3rem) 1.5rem;
+  padding-block: clamp(1.25rem, 3vw, 2.5rem) 0;
+}
+.personal-content { display: contents; }
+.personal-title { grid-area: title; }
+.personal-hero h1 {
+  margin: 0;
+  max-width: 17ch;
+  font-size: clamp(2rem, 4.8vw, 4rem);
+  line-height: 1.05;
+  letter-spacing: -.055em;
+}
+.personal-hero h1 span {
+  display: block;
+  margin-top: .8rem;
+  font: 500 clamp(.9rem, 2vw, 1.2rem) var(--font-geist-mono), monospace;
+  letter-spacing: normal;
+}
+.personal-avatar {
+  grid-area: avatar;
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 1rem;
+}
+.personal-avatar-image {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: contain;
+  border-radius: 50%;
+  border: 1px solid rgb(var(--secondary));
+  background: rgb(var(--background));
+}
+@media (min-width: 768px) {
+  .personal-avatar::before,
+  .personal-avatar::after {
+    content: "";
+    position: absolute;
+    grid-area: 1 / 1;
+    pointer-events: none;
+    color: rgb(var(--secondary));
+    opacity: .65;
+    background: radial-gradient(circle, currentColor 1.2px, transparent 1.5px) 0 0 / 8px 8px;
+  }
+  .personal-avatar::before {
+    width: 40px;
+    height: 24px;
+    top: -6px;
+    right: 0;
+  }
+  .personal-avatar::after {
+    width: 24px;
+    height: 16px;
+    bottom: 0;
+    left: 4px;
+  }
+}
+.folio .section-rule-tip { position: relative; }
+.folio .section-rule-tip::after {
+  content: "";
+  position: absolute;
+  inset-inline-end: 0;
+  bottom: 0;
+  width: 1px;
+  height: 7px;
+  background: inherit;
+}
+.personal-bio { grid-area: bio; max-width: 46ch; }
+.personal-links {
+  grid-area: links;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .6rem 1.25rem;
+  padding-top: .25rem;
+}
+.personal-social { display: flex; flex-wrap: wrap; }
+.personal-social a { width: 44px; min-height: 44px; align-items: center; }
+@media (max-width: 767px) {
+  .personal-hero {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "title" "bio" "links" "avatar";
+  }
+  .personal-hero h1 { max-width: none; }
+  .personal-avatar { justify-self: center; margin-top: 1rem; gap: .5rem; }
+  .personal-avatar-image { width: clamp(8rem, 36vw, 10rem); }
+}
+.personal-work-link { display: inline-flex; align-items: center; min-height: 44px; color: rgb(var(--secondary-text)); }
+.personal-work-link:hover { text-decoration: underline; }
+#projects { scroll-margin-top: 6rem; }
+.folio h2 { font-size: clamp(1.6rem, 3vw, 2.25rem); letter-spacing: -.035em; margin-bottom: 1rem; font-weight: 550; }
+.folio a:focus-visible { outline: 2px solid rgb(var(--secondary)); outline-offset: 4px; }
+@media (prefers-reduced-motion: reduce) {
+  .personal-hero .gsap-prehide { opacity: 1; visibility: visible; }
+}

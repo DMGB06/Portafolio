@@ -76,7 +76,7 @@
 
 .is-active .projects-index__idx,
 .is-active .projects-index__name {
-  color: rgb(var(--secondary));
+  color: rgb(var(--secondary-text));
 }
 
 .projects-index__main {
@@ -438,7 +438,7 @@
   }
 
   .projects-index__idx {
-    color: rgb(var(--secondary));
+    color: rgb(var(--secondary-text));
   }
 
   .projects-index__pick {

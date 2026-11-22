@@ -14,6 +14,7 @@ export function useHeroAnimation(
   refs: HeroAnimationRefs
 ) {
   useGsapTimeline(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     setHeroInitialState(refs);
 
     const enterTimeline = createHeroEnterTimeline(refs);

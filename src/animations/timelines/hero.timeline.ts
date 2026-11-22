@@ -8,10 +8,10 @@ function getHeroTargets(refs: HeroAnimationRefs) {
     refs.available.current,
     refs.biography.current,
     refs.biographyText.current,
+    refs.projectsLink.current,
     refs.cvButton.current,
     refs.contactButton.current,
     ...refs.socialIcons.current,
-    ...(refs.dots.current?.children ?? []),
   ].filter(Boolean);
 }
 
@@ -21,12 +21,12 @@ export function setHeroInitialState(refs: HeroAnimationRefs) {
   gsap.set(refs.available.current, { autoAlpha: 0, y: 20 });
   gsap.set(refs.biography.current, { autoAlpha: 0, x: -30 });
   gsap.set(refs.biographyText.current, { autoAlpha: 0, y: 20 });
+  gsap.set(refs.projectsLink.current, { autoAlpha: 0, y: 10 });
   if (refs.cvButton.current) {
     gsap.set(refs.cvButton.current, { autoAlpha: 0, scale: 0.8 });
   }
   gsap.set(refs.contactButton.current, { autoAlpha: 0, scale: 0.8 });
   gsap.set(refs.socialIcons.current, { autoAlpha: 0, y: 20, scale: 0.5 });
-  gsap.set(refs.dots.current?.children ?? [], { autoAlpha: 0, scale: 0 });
 }
 
 export function createHeroEnterTimeline(refs: HeroAnimationRefs) {
@@ -51,7 +51,8 @@ export function createHeroEnterTimeline(refs: HeroAnimationRefs) {
       "-=0.4"
     )
     .to(refs.biography.current, { autoAlpha: 1, x: 0, duration: 0.7 }, "-=0.4")
-    .to(refs.biographyText.current, { autoAlpha: 1, y: 0, duration: 0.5 }, "-=0.35");
+    .to(refs.biographyText.current, { autoAlpha: 1, y: 0, duration: 0.5 }, "-=0.35")
+    .to(refs.projectsLink.current, { autoAlpha: 1, y: 0, duration: 0.3 }, "-=0.25");
 
   if (cvButton) {
     tl.to(cvButton, { autoAlpha: 1, scale: 1, duration: 0.4 }, "-=0.3");
@@ -74,11 +75,6 @@ export function createHeroEnterTimeline(refs: HeroAnimationRefs) {
         ease: "back.out(2)",
       },
       "-=0.25"
-    )
-    .to(
-      refs.dots.current?.children ?? [],
-      { autoAlpha: 1, scale: 1, duration: 0.25, stagger: 0.02 },
-      "-=0.2"
     );
 
   return tl;

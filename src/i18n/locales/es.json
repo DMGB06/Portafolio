@@ -15,6 +15,10 @@
     "socialLabel": "conecta"
   },
   "hero": {
+    "greeting": "Hola, soy",
+    "introduction": "Combino tecnología y creatividad para desarrollar soluciones prácticas y eficientes.",
+    "viewWork": "Ver proyectos",
+    "profession": "Desarrollador full stack",
     "title": {
       "verb": "Soy",
       "roleDeveloper": "desarrollador de software full stack"
@@ -23,7 +27,7 @@
     "biography": "Biografía",
     "bioShort": "Construye soluciones prácticas y eficientes donde la tecnología se encuentra con la creatividad",
     "downloadCv": "Descargar CV |>",
-    "contactMe": "¡Contáctame!!"
+    "contactMe": "Contáctame"
   },
   "sections": {
     "projects": "Proyectos",
@@ -44,6 +48,7 @@
     "previousProject": "Proyecto anterior",
     "projectsNav": "Navegación entre proyectos",
     "switchHint": "para cambiar de proyecto",
+    "allTypes": "Todos",
     "allProjects": "Ver todos los proyectos",
     "demoVideo": "Demo en video",
     "typeMobile": "Móvil",
@@ -53,6 +58,7 @@
     "items": {
       "1": {
         "title": "BusControl QR",
+        "shortDescription": "Asistencia escolar por QR, incluso sin conexión.",
         "description": "App móvil multi-rol para transporte escolar municipal: escaneo QR con cola offline, mapa en vivo del bus y notificaciones push para las familias, sobre Supabase.",
         "motivation": "En el transporte escolar municipal el control de asistencia solía ser manual y fácil de perder, y los padres no tenían forma de saber si su hijo había subido al bus o dónde estaba. Quise resolver los dos lados a la vez: un registro confiable para chofer y asistenta (con QR y respaldo offline), y visibilidad en tiempo real para las familias.",
         "overview": "BusControl es una app Expo/React Native con Supabase de fondo, con roles separados para chofer, asistenta, apoderado y coordinador. Chofer y asistenta registran asistencia por QR incluso sin señal (la app sincroniza sola al recuperar conexión); los padres ven a sus hijos y el bus en un mapa en vivo y reciben notificaciones push en cada evento.",
@@ -122,6 +128,7 @@
       },
       "2": {
         "title": "TypingPro",
+        "shortDescription": "Práctica de mecanografía con retos y ranking.",
         "description": "Plataforma web para practicar velocidad de escritura con textos por tipo, dificultad e idioma, cuentas de usuario y ranking global. Frontend en Next.js y backend en NestJS con Prisma.",
         "motivation": "Quería un proyecto que probara un stack separado en dos aplicaciones reales, un frontend en Next.js y una API en NestJS con su propia base de datos, autenticación y panel de administración, en vez de otro proyecto full-stack en un solo framework.",
         "overview": "TypingPro mide velocidad y precisión de escritura sobre textos filtrables por tipo (cita, artículo, código, párrafo), dificultad e idioma. Cada sesión de escritura se guarda contra la cuenta del usuario, alimentando un ranking global (leaderboard) y notificaciones. Un panel de administración aparte permite gestionar los textos, idiomas y niveles de dificultad disponibles.",

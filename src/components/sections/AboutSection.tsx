@@ -44,7 +44,7 @@ const AboutSection = ({
       <Titulo
         text={dict.sections.aboutMe}
         isSection={isSection}
-        className="max-w-1/3"
+        className="max-w-1/3 section-rule-tip"
       />
 
       <div

@@ -138,6 +138,7 @@ function hydrateProject(
   return {
     ...catalogItem,
     title: text.title,
+    shortDescription: text.shortDescription,
     description: text.description,
     motivation: text.motivation,
     overview: text.overview,

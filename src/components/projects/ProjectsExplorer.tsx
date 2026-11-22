@@ -12,10 +12,10 @@ import "./projects-index.css";
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
-function ProjectDetails({ project, dict }: { project: Project; dict: ReturnType<typeof getDictionary> }) {
+function ProjectDetails({ project, dict, compact = false }: { compact?: boolean; project: Project; dict: ReturnType<typeof getDictionary> }) {
   return (
     <>
-      <p className="projects-index__desc">{project.description}</p>
+      <p className="projects-index__desc">{compact ? project.shortDescription : project.description}</p>
       <div className="projects-index__actions">
         <Link
           href={`/projects/${project.slug}`}
@@ -117,7 +117,7 @@ export function ProjectsExplorer({
                 <div className="projects-index__more">
                   <div className="projects-index__more-in">
                     <div className="projects-index__more-pad">
-                      <ProjectDetails project={project} dict={dict} />
+                      <ProjectDetails project={project} dict={dict} compact={isHome} />
                     </div>
                   </div>
                 </div>
@@ -138,7 +138,7 @@ export function ProjectsExplorer({
                 data-active={i === current}
                 inert={i !== current}
               >
-                <ProjectDetails project={project} dict={dict} />
+                <ProjectDetails project={project} dict={dict} compact={isHome} />
               </div>
             ))}
           </div>

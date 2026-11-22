@@ -22,12 +22,12 @@ const ProjectsSection = ({ isSection = true }: ProjectsSectionProps) => {
   useScrollReveal(sectionRef, { stagger: 0.12 });
 
   return (
-    <section ref={sectionRef} className="py-10">
+    <section id={isSection ? "projects" : undefined} ref={sectionRef} className="py-10">
       <div {...{ [REVEAL_ITEM]: true }} className={GSAP_PREHIDE}>
         <Titulo
           text={dict.sections.projects}
           isSection={isSection}
-          className="max-w-1/2"
+          className="max-w-1/2 section-rule-tip"
         />
       </div>
 
@@ -39,7 +39,7 @@ const ProjectsSection = ({ isSection = true }: ProjectsSectionProps) => {
           {...{ [REVEAL_ITEM]: true }}
           className={`flex w-full justify-end mt-4 ${GSAP_PREHIDE}`}
         >
-          {dict.projects.readMore}
+          {dict.projects.allProjects}
         </Link>
       )}
     </section>

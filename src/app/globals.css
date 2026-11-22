@@ -7,15 +7,18 @@
 */
 @layer base {
   :root {
-    --background: 250, 250, 252;
+    --background: 250, 248, 244;
     --foreground: 28, 28, 32;
     --primary: 28, 28, 32;
     --secondary: 195, 110, 18;
+    --secondary-text: 143, 75, 14;
     --muted: 100, 105, 115;
     --surface: 255, 255, 255;
     --border: 210, 212, 218;
+    --nav-surface: 248, 243, 233;
+    --nav-border: 221, 208, 188;
     /* Text/icon on filled secondary (buttons, primary links) */
-    --on-secondary: 255, 255, 255;
+    --on-secondary: 28, 20, 14;
     /* Light content on intentionally dark overlays (gallery dots, etc.) */
     --on-overlay: 255, 255, 255;
     /* Elevation — gray lift in light; deeper in dark */
@@ -25,8 +28,8 @@
     --media-shadow: 0 16px 40px rgba(var(--shadow-color), 0.18);
     --custom-shadow: 0 8px 16px rgba(var(--shadow-color), 0.12);
     /* Atmosphere wash (fades via opacity — background-image cannot interpolate) */
-    --atmosphere-from: 255, 255, 255;
-    --atmosphere-to: 242, 244, 248;
+    --atmosphere-from: 255, 253, 249;
+    --atmosphere-to: 246, 241, 232;
     --atmosphere-opacity: 1;
     --theme-duration: 280ms;
   }
@@ -36,10 +39,13 @@
     --foreground: 237, 237, 237;
     --primary: 237, 237, 237;
     --secondary: 228, 177, 105;
+    --secondary-text: var(--secondary);
     --muted: 171, 178, 191;
     /* Slightly above page bg so cards/navbar read as panels */
     --surface: 48, 52, 60;
     --border: 80, 85, 95;
+    --nav-surface: var(--surface);
+    --nav-border: var(--border);
     --on-secondary: 40, 44, 51;
     --on-overlay: 255, 255, 255;
     --elevation-shadow: 0 12px 32px rgba(var(--shadow-color), 0.4);
@@ -55,7 +61,7 @@
 }
 
 .text-secondary {
-  color: rgb(var(--secondary));
+  color: rgb(var(--secondary-text));
 }
 
 .text-highlight {
@@ -74,8 +80,9 @@
   background-color: rgb(var(--surface));
 }
 
-.bg-surface-translucent {
-  background-color: rgba(var(--surface), 0.9);
+.site-nav {
+  background-color: rgba(var(--nav-surface), 0.9);
+  border-color: rgb(var(--nav-border));
 }
 
 .bg-background {
@@ -107,7 +114,7 @@ body {
   min-height: 100dvh;
   background-color: rgb(var(--background));
   color: rgb(var(--foreground));
-  font-family: var(--font-fira-code), monospace;
+  font-family: var(--font-geist-sans), sans-serif;
   transition:
     background-color var(--theme-duration) ease,
     color var(--theme-duration) ease;
