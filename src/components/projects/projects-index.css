@@ -191,6 +191,10 @@
   display: none;
 }
 
+.projects-index__details {
+  display: none;
+}
+
 /* Escenario (columna derecha) */
 .projects-stage {
   position: sticky;
@@ -372,6 +376,52 @@
   white-space: nowrap;
 }
 
+@media (width > 899px) {
+  .projects-index[data-variant="home"] .projects-index__more {
+    display: none;
+  }
+
+  .projects-index[data-variant="home"] .projects-index__details {
+    display: grid;
+    padding: 1rem 0.5rem 0 0.9rem;
+  }
+
+  .projects-index__detail {
+    grid-area: 1 / 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .projects-index__detail[data-active="false"] {
+    visibility: hidden;
+  }
+
+  .projects-index[data-variant="home"] .projects-index__item::before,
+  .projects-index[data-variant="home"] .projects-index__idx,
+  .projects-index[data-variant="home"] .projects-index__name {
+    transition: none;
+  }
+
+  .projects-index[data-variant="home"] .projects-stage .project-scene {
+    filter: none;
+    transform: none;
+    transition: none;
+  }
+
+  .projects-index[data-variant="home"] .projects-stage .project-scene.is-active {
+    z-index: 1;
+  }
+
+  .projects-index[data-variant="home"][data-animate-selection] .projects-stage .project-scene {
+    transition: opacity 160ms var(--ease-out), visibility 0s linear 160ms;
+  }
+
+  .projects-index[data-variant="home"][data-animate-selection] .projects-stage .project-scene.is-active {
+    transition-delay: 0s;
+  }
+}
+
 /* Movil: cada proyecto trae su propia vista previa y todo va abierto */
 @media (max-width: 899px) {
   .projects-index {
@@ -426,6 +476,10 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .projects-index[data-variant="home"][data-animate-selection] .projects-stage .project-scene {
+    transition: none;
+  }
+
   .project-scene,
   .projects-index__more,
   .projects-index__more-pad,

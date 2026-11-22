@@ -57,7 +57,7 @@ export function ProjectScene({ project, active, priority = false }: ProjectScene
   );
 
   return (
-    <div className={`project-scene${active ? " is-active" : ""}`}>
+    <div className={`project-scene${active ? " is-active" : ""}`} aria-hidden={!active}>
       {project.type === "mobile" ? (
         <div className="project-scene__media">
           <div className="project-scene__phone project-scene__phone--a">

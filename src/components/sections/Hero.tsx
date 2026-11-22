@@ -19,6 +19,8 @@ import {
 } from "@/animations";
 import { DEFAULT_LOCALE, getDictionary, useTranslations } from "@/i18n";
 
+const SHOW_CV_DOWNLOAD = false;
+
 const Hero = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -109,16 +111,16 @@ const Hero = () => {
             {hero.bioShort}
           </p>
 
-          <div
-            ref={cvButtonRef}
-            className={`hidden md:flex justify-end ${GSAP_PREHIDE}`}
-          >
-            <a href={`/files/${cvFile}.pdf`} download={cvFile} className="inline-block">
-              <Button
-                text={hero.downloadCv}
-              />
-            </a>
-          </div>
+          {SHOW_CV_DOWNLOAD && (
+            <div
+              ref={cvButtonRef}
+              className={`hidden md:flex justify-end ${GSAP_PREHIDE}`}
+            >
+              <a href={`/files/${cvFile}.pdf`} download={cvFile} className="inline-block">
+                <Button text={hero.downloadCv} />
+              </a>
+            </div>
+          )}
         </article>
 
         <nav className="md:col-span-2 col-span-1">

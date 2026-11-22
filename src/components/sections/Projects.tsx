@@ -31,7 +31,7 @@ const ProjectsSection = ({ isSection = true }: ProjectsSectionProps) => {
         />
       </div>
 
-      <ProjectsExplorer projects={projectList} />
+      <ProjectsExplorer projects={projectList} variant={isSection ? "home" : "index"} />
 
       {isSection && (
         <Link

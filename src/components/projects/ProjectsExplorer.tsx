@@ -12,26 +12,72 @@ import "./projects-index.css";
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
-export function ProjectsExplorer({ projects }: { projects: Project[] }) {
+function ProjectDetails({ project, dict }: { project: Project; dict: ReturnType<typeof getDictionary> }) {
+  return (
+    <>
+      <p className="projects-index__desc">{project.description}</p>
+      <div className="projects-index__actions">
+        <Link
+          href={`/projects/${project.slug}`}
+          className="project-card__link project-card__link--primary"
+          aria-label={fillTemplate(dict.a11y.viewCase, { title: project.title })}
+        >
+          {dict.projects.viewCase}
+        </Link>
+        {project.github && (
+          <a href={project.github} target="_blank" rel="noopener noreferrer" className="project-card__link">
+            {dict.projects.github}
+          </a>
+        )}
+        {project.demo && (
+          <a
+            href={project.demo}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="project-card__link project-card__link--demo"
+          >
+            <span className="project-card__link-dot" aria-hidden />
+            {dict.projects.demo}
+            <FaArrowUpRightFromSquare aria-hidden className="project-card__link-icon" />
+          </a>
+        )}
+      </div>
+    </>
+  );
+}
+
+export function ProjectsExplorer({
+  projects,
+  variant = "index",
+}: {
+  projects: Project[];
+  variant?: "home" | "index";
+}) {
   const { t, isReady } = useTranslations();
   const dict = isReady ? t : getDictionary(DEFAULT_LOCALE);
-  const [current, setCurrent] = useState(0);
+  const [{ index: current, animate }, setSelection] = useState({ index: 0, animate: false });
   const picks = useRef<(HTMLButtonElement | null)[]>([]);
+  const isHome = variant === "home";
+
+  const select = (index: number, animate: boolean) => {
+    setSelection((previous) => previous.index === index ? previous : { index, animate });
+  };
 
   const onKeyDown = (event: KeyboardEvent<HTMLUListElement>) => {
     if (event.key !== "ArrowDown" && event.key !== "ArrowUp") return;
     event.preventDefault();
     const delta = event.key === "ArrowDown" ? 1 : projects.length - 1;
     const next = (current + delta) % projects.length;
-    setCurrent(next);
-    picks.current[next]?.focus();
+    select(next, false);
+    const preventScroll = isHome && window.matchMedia("(width > 899px)").matches;
+    picks.current[next]?.focus({ preventScroll });
   };
 
   const active = projects[current];
   const total = pad(projects.length);
 
   return (
-    <div className="projects-index">
+    <div className="projects-index" data-variant={variant} data-animate-selection={animate || undefined}>
       <div>
         <ul className="projects-index__list" aria-label={dict.a11y.projectsList} onKeyDown={onKeyDown}>
           {projects.map((project, i) => {
@@ -50,7 +96,7 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
                   }}
                   className="projects-index__pick"
                   aria-current={isActive ? "true" : undefined}
-                  onClick={() => setCurrent(i)}
+                  onClick={(event) => select(i, isHome && event.detail > 0)}
                 >
                   <span className="projects-index__idx">{pad(i + 1)}</span>
                   <span className="projects-index__main">
@@ -71,38 +117,7 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
                 <div className="projects-index__more">
                   <div className="projects-index__more-in">
                     <div className="projects-index__more-pad">
-                      <p className="projects-index__desc">{project.description}</p>
-                      <div className="projects-index__actions">
-                        <Link
-                          href={`/projects/${project.slug}`}
-                          className="project-card__link project-card__link--primary"
-                          aria-label={fillTemplate(dict.a11y.viewCase, { title: project.title })}
-                        >
-                          {dict.projects.viewCase}
-                        </Link>
-                        {project.github && (
-                          <a
-                            href={project.github}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="project-card__link"
-                          >
-                            {dict.projects.github}
-                          </a>
-                        )}
-                        {project.demo && (
-                          <a
-                            href={project.demo}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="project-card__link project-card__link--demo"
-                          >
-                            <span className="project-card__link-dot" aria-hidden />
-                            {dict.projects.demo}
-                            <FaArrowUpRightFromSquare aria-hidden className="project-card__link-icon" />
-                          </a>
-                        )}
-                      </div>
+                      <ProjectDetails project={project} dict={dict} />
                     </div>
                   </div>
                 </div>
@@ -114,6 +129,20 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
             );
           })}
         </ul>
+        {isHome && (
+          <div className={`projects-index__details ${GSAP_PREHIDE}`} {...{ [REVEAL_ITEM]: true }}>
+            {projects.map((project, i) => (
+              <div
+                key={project.id}
+                className="projects-index__detail"
+                data-active={i === current}
+                inert={i !== current}
+              >
+                <ProjectDetails project={project} dict={dict} />
+              </div>
+            ))}
+          </div>
+        )}
         <p className="projects-index__hint">
           <kbd>↑</kbd> <kbd>↓</kbd> {dict.projects.switchHint}
         </p>
