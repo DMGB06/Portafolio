@@ -158,6 +158,49 @@
           }
         ],
         "chapters": []
+      },
+      "3": {
+        "title": "Mesa de Partes Virtual",
+        "shortDescription": "Presentación y seguimiento de trámites para la Municipalidad Distrital de Cerro Azul.",
+        "description": "Desarrollé una aplicación web para la Municipalidad Distrital de Cerro Azul que conecta el envío de solicitudes ciudadanas con el registro, la derivación y la atención de expedientes.",
+        "motivation": "Las solicitudes del formulario anterior llegaban por correo y el personal tenía que volver a escribir los datos para registrarlas. El reto era aprovechar esos datos al crear el expediente y darle al ciudadano una forma de consultar el avance con un código.",
+        "overview": "Implementé el formulario ciudadano con adjuntos y consulta por código, además del panel donde el personal revisa solicitudes, registra trámites presenciales y gestiona expedientes. Preparé pruebas automatizadas y manuales por perfil.",
+        "highlights": [
+          "Envío sin cuenta, constancia con código de seguimiento y consulta pública con información limitada para casos reservados.",
+          "Revisión de solicitudes con registro de expediente y correlativo anual al aprobar.",
+          "Bandejas por área, confirmación de recepción e historial de derivación, observación y resolución.",
+          "Búsqueda de expedientes, exportación a Excel y administración de usuarios y áreas."
+        ],
+        "learnings": [
+          "Aprendí a medir el sistema por capas. Con 20 sesiones, el p95 era de 1 a 1,5 s por HTTP y de 22 a 30 s con navegadores en el mismo equipo. Dejé abierta la causa de esa diferencia y documenté cómo repetir la prueba con el generador de carga en otra máquina.",
+          "Aprendí a probar cómo se recupera el sistema cuando falla una dependencia. Simulé una caída de Supabase y comprobé que el personal podía reintentar la carga sin perder la sesión. Ese escenario pasó a formar parte de la verificación del sistema.",
+          "Aprendí a traducir el proceso de oficina a reglas de negocio. Una derivación cambia el área responsable, pero todavía queda pendiente de recepción. Registrar la recepción como un movimiento propio permitió distinguir cuándo se envió el expediente y cuándo alguien se hizo cargo."
+        ],
+        "decisions": [
+          {
+            "title": "Una aplicación Next.js para el portal y el panel interno",
+            "text": "El diseño inicial usaba React estático. Elegí Next.js cuando el flujo necesitó validar el captcha, proteger las descargas y manejar la sesión del personal en el servidor. Así pude separar las rutas públicas e internas y compartir la integración con Supabase dentro de una sola aplicación."
+          },
+          {
+            "title": "Reglas de negocio en PostgreSQL",
+            "text": "Dejé a Next.js a cargo de las pantallas y las peticiones, y a PostgreSQL a cargo de los permisos y las transiciones del expediente. Las funciones de la base aplican las mismas reglas al derivar, recibir o resolver un trámite desde cualquier pantalla. Concentrar la integración con Supabase en el servidor facilita cambiar cómo se accede a la base sin reescribir esas reglas."
+          },
+          {
+            "title": "Solicitudes y expedientes como entidades distintas",
+            "text": "Crear un expediente al enviar el formulario habría asignado números oficiales a solicitudes duplicadas o que podían rechazarse. Separé la solicitud original, que conserva el código de seguimiento, del expediente de trabajo, que recibe su número solo al aprobarse. Eso permite consultar el trámite desde el primer envío y conservar lo que el ciudadano presentó."
+          },
+          {
+            "title": "Estado actual e historial de movimientos separados",
+            "text": "Guardé el estado y el área actual en el expediente para que las bandejas puedan consultarlos directamente. Cada cambio agrega un movimiento al historial en la misma transacción. Al vincular la recepción con su derivación, el historial conserva quién envió el expediente, quién lo recibió y cuándo ocurrió cada paso."
+          }
+        ],
+        "chapters": [],
+        "screenshotAlts": [
+          "Formulario ciudadano para presentar un trámite, con selección del tipo de solicitante.",
+          "Bandeja municipal con expedientes por recibir, filtros y área de origen.",
+          "Ficha interna con la situación del expediente, acciones disponibles e historial de movimientos.",
+          "Resultado de la consulta ciudadana con el estado del trámite y su área actual."
+        ]
       }
     },
     "sectionProblem": "El problema",

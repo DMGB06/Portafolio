@@ -47,7 +47,7 @@ export function ProjectScene({ project, active, priority = false }: ProjectScene
   const shot = (src: string, index: number, sizes: string) => (
     <Image
       src={src}
-      alt={fillTemplate(a11y.galleryScreenshot, { title: project.title, index: index + 1 })}
+      alt={project.screenshotAlts?.[index] ?? fillTemplate(a11y.galleryScreenshot, { title: project.title, index: index + 1 })}
       fill
       sizes={sizes}
       priority={priority && index === 0}

@@ -20,6 +20,8 @@ export interface Project {
   platforms?: string;
   /** Rutas en /public (webp). images[0] y images[1] salen en la vista previa del listado */
   images: string[];
+  /** Optional localized descriptions in the same order as the screenshots. */
+  screenshotAlts?: string[];
   /** Clip corto sin audio para la vista previa del listado */
   clip?: string;
   /** Video completo para el caso de estudio */

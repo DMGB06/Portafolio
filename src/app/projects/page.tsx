@@ -32,7 +32,7 @@ export default function Projects() {
         {visible.map(project => (
           <li key={project.slug}>
             <Link className="catalog-entry" href={`/projects/${project.slug}`}>
-              <div className="catalog-preview" data-type={project.type}>
+              <div className="catalog-preview" data-type={project.type} data-project={project.slug}>
                 {project.images.slice(0, project.type === "mobile" ? 2 : 1).map(src => (
                   <div key={src} className="catalog-shot">
                     <Image src={src} alt="" fill sizes={project.type === "mobile" ? "140px" : "(max-width: 700px) 88vw, 480px"} />

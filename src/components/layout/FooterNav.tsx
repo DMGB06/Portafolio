@@ -7,7 +7,7 @@ const NAV_LINKS = [
   { href: "/", key: "home" as const },
   { href: "/projects", key: "projects" as const },
   { href: "/about-me", key: "aboutMe" as const },
-  { href: "/contact-me", key: "contacts" as const },
+  { href: "/contact-me", key: "contact" as const },
 ];
 
 export function FooterNav() {
@@ -15,20 +15,19 @@ export function FooterNav() {
   const dict = isReady ? t : getDictionary(DEFAULT_LOCALE);
 
   return (
-    <div className="flex flex-col gap-3">
-      <h3 className="text-sm font-medium text-foreground">
-        <span className="text-secondary" aria-hidden>
-          #
-        </span>
-        {dict.footer.navLabel}
-      </h3>
-      <nav className="flex flex-col gap-2">
+    <nav aria-labelledby="footer-nav-title">
+      <h2 className="site-footer__label" id="footer-nav-title">{dict.footer.navLabel}</h2>
+      <ul className="site-footer__list">
         {NAV_LINKS.map(({ href, key }) => (
-          <Link key={href} href={href} className="text-chrome transition-colors">
-            {dict.nav[key]}
-          </Link>
+          <li key={href}>
+            <Link href={href}>
+              <span className="site-footer__nav-text">
+                {key === "home" ? dict.nav.home : dict.sections[key]}
+              </span>
+            </Link>
+          </li>
         ))}
-      </nav>
-    </div>
+      </ul>
+    </nav>
   );
 }
