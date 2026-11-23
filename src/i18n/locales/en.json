@@ -158,6 +158,49 @@
           }
         ],
         "chapters": []
+      },
+      "3": {
+        "title": "Virtual Records Office",
+        "shortDescription": "Online submission and tracking for Cerro Azul District Municipality.",
+        "description": "I built a web application for Cerro Azul District Municipality that connects online submissions with the registration, routing, and processing of municipal cases.",
+        "motivation": "Submissions from the previous form arrived by email, and staff had to re-enter the details to register them. The challenge was to reuse those details when creating a case and give residents a tracking code to check its progress.",
+        "overview": "I implemented the public submission form with attachments and status lookup, plus the staff portal for reviewing submissions, registering in-person requests, and managing cases. I prepared automated tests and user guides for each role.",
+        "highlights": [
+          "Account-free submission, a receipt with a tracking code, and limited public information for confidential cases.",
+          "Application review with formal case registration and an annual sequential number upon approval.",
+          "Department inboxes, receipt confirmation, and a history of transfers, requests for corrections, and resolutions.",
+          "Case search, Excel export, and administration of staff accounts and departments."
+        ],
+        "learnings": [
+          "I learned to measure the system at different layers. At 20 concurrent sessions, p95 was 1 to 1.5 s over HTTP and 22 to 30 s with browsers running on the same machine. I left the cause open and documented how to repeat the run with the load generator on a separate machine.",
+          "I learned to test how the system recovers when a dependency fails. I simulated a Supabase outage and checked that staff could retry loading a page without losing their session. That scenario became part of the system verification.",
+          "I learned to turn office procedures into business rules. A transfer assigns the case to another department while receipt is still pending. Recording receipt as its own event made it possible to tell when a case was sent and when someone took responsibility for it."
+        ],
+        "decisions": [
+          {
+            "title": "One Next.js application for the public and staff portals",
+            "text": "The initial design used static React. I chose Next.js when the workflow needed server-side CAPTCHA verification, protected downloads, and staff sessions. This let me separate the public and staff routes while sharing the Supabase integration within one application."
+          },
+          {
+            "title": "Business rules in PostgreSQL",
+            "text": "I put pages and request handling in Next.js, and permissions and case transitions in PostgreSQL. Database functions apply the same rules when staff transfer, receive, or resolve a case from any screen. Keeping the Supabase integration on the server makes it easier to change how the application accesses the database while preserving those rules."
+          },
+          {
+            "title": "Submissions and official cases as separate entities",
+            "text": "Creating an official case at submission would have assigned case numbers to duplicate requests or requests that might be rejected. I separated the original submission, which holds the tracking code, from the working case, which gets its number upon approval. Residents can track a submission from the start, and staff retain the original submission as a record."
+          },
+          {
+            "title": "Separate current state and movement history",
+            "text": "I stored the current status and department on the case so staff inboxes could query them directly. Each change adds a history entry within the same transaction. Linking receipt to its transfer preserves who sent the case, who received it, and when each step happened."
+          }
+        ],
+        "chapters": [],
+        "screenshotAlts": [
+          "Public submission form with applicant type selection.",
+          "Municipal inbox showing cases awaiting receipt, filters, and the originating department.",
+          "Internal case view with case status, available actions, and movement history.",
+          "Public lookup result showing the case status and current department."
+        ]
       }
     },
     "sectionProblem": "The problem",

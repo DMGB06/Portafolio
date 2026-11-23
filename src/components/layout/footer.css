@@ -1,0 +1,122 @@
+.site-footer {
+  margin-top: clamp(4rem, 9vw, 7rem);
+  border-top: 1px solid rgb(var(--border));
+  background-color: rgb(var(--surface));
+  color: rgb(var(--muted));
+}
+
+.site-footer__inner {
+  max-width: 72rem;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 2.5rem);
+}
+
+.site-footer__main {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: clamp(2rem, 6vw, 5rem);
+  padding-block: clamp(2.25rem, 6vw, 4.25rem);
+}
+
+.site-footer__name {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  color: rgb(var(--foreground));
+  font-size: clamp(1.75rem, 3.3vw, 2.5rem);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+}
+
+.site-footer__name svg {
+  flex: 0 0 auto;
+  width: 0.65em;
+  height: 0.65em;
+  color: rgb(var(--secondary-text));
+}
+
+.site-footer__role {
+  margin-top: 0.5rem;
+}
+
+.site-footer__role::first-letter,
+.site-footer__label::first-letter,
+.site-footer__nav-text::first-letter {
+  text-transform: uppercase;
+}
+
+.site-footer__address {
+  margin-top: 1rem;
+  font-style: normal;
+}
+
+.site-footer__email {
+  display: inline-flex;
+  min-height: 44px;
+  max-width: 100%;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgb(var(--secondary-text));
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+
+.site-footer__email svg,
+.site-footer__list svg {
+  flex: 0 0 auto;
+}
+
+.site-footer__links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1rem, 4vw, 3rem);
+}
+
+.site-footer__label {
+  margin-bottom: 0.35rem;
+  color: rgb(var(--foreground));
+  font-size: 0.9rem;
+  font-weight: 650;
+}
+
+.site-footer__list a {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.site-footer__list a:hover {
+  color: rgb(var(--foreground));
+}
+
+.site-footer a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.22em;
+}
+
+.site-footer a:focus-visible {
+  outline: 2px solid rgb(var(--secondary-text));
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.site-footer__arrow {
+  opacity: 0.7;
+  width: 0.85em;
+  height: 0.85em;
+}
+
+.site-footer__legal {
+  border-top: 1px solid rgb(var(--border));
+  padding-block: 1.125rem;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 680px) {
+  .site-footer__main {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

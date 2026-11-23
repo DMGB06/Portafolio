@@ -412,6 +412,8 @@
 
 .case-shots--web img {
   aspect-ratio: 16 / 10;
+  object-fit: contain;
+  object-position: center;
 }
 
 /* Funciones */
@@ -606,6 +608,12 @@
 
   .case-decision:last-child:nth-child(odd) {
     grid-column: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .case-shots--web {
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 

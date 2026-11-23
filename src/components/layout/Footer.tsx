@@ -1,37 +1,43 @@
 import { FaCodepen } from "react-icons/fa";
+import { FiArrowUpRight } from "react-icons/fi";
 import { FooterContent } from "./FooterContent";
 import { FooterNav } from "./FooterNav";
 import { FooterSocial } from "./FooterSocial";
+import "./footer.css";
 
 export default function Footer() {
+  const email = process.env.NEXT_PUBLIC_CONTACT_EMAIL?.trim();
+
   return (
-    <footer className="border-t border-theme mt-24 text-muted py-10">
-      <div className="max-w-6xl mx-auto px-6 min-w-80vw">
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-[1.4fr_1fr_1fr] md:gap-0">
-          <div className="flex flex-col gap-1 md:pr-8">
-            <div className="flex flex-row items-center gap-2">
-              <FaCodepen size={15} className="text-secondary" aria-hidden />
-              <span className="text-foreground font-medium">Godoy</span>
-            </div>
-            <FooterContent />
-            <address className="text-muted not-italic">
-              {process.env.NEXT_PUBLIC_CONTACT_EMAIL}
-            </address>
+    <footer className="site-footer">
+      <div className="site-footer__inner">
+        <div className="site-footer__main">
+          <div>
+            <p className="site-footer__name">
+              <FaCodepen aria-hidden />
+              Denilson Godoy
+            </p>
+            <p className="site-footer__role"><FooterContent /></p>
+            {email && (
+              <address className="site-footer__address">
+                <a className="site-footer__email" href={`mailto:${email}`}>
+                  {email}
+                  <FiArrowUpRight aria-hidden />
+                </a>
+              </address>
+            )}
           </div>
 
-          <div className="md:border-l md:border-theme md:pl-8">
+          <div className="site-footer__links">
             <FooterNav />
-          </div>
-
-          <div className="md:border-l md:border-theme md:pl-8">
             <FooterSocial />
           </div>
         </div>
 
-        <div className="mt-8 pt-6 border-t border-theme text-sm">
+        <p className="site-footer__legal">
           © {new Date().getFullYear()} Denilson Godoy ·{" "}
           <FooterContent part="rights" />
-        </div>
+        </p>
       </div>
     </footer>
   );

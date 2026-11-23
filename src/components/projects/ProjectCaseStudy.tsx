@@ -215,7 +215,7 @@ export function ProjectCaseStudy({ slug }: ProjectCaseStudyProps) {
             <li key={image} className="case-shot">
               <Image
                 src={image}
-                alt={fillTemplate(a11y.galleryScreenshot, {
+                alt={project.screenshotAlts?.[index] ?? fillTemplate(a11y.galleryScreenshot, {
                   title: project.title,
                   index: index + 1,
                 })}
@@ -224,7 +224,7 @@ export function ProjectCaseStudy({ slug }: ProjectCaseStudyProps) {
                 sizes={
                   project.type === "mobile"
                     ? "(max-width: 899px) 45vw, 200px"
-                    : "(max-width: 899px) 90vw, 440px"
+                    : "(max-width: 600px) 95vw, (max-width: 899px) 45vw, 440px"
                 }
                 loading="lazy"
               />

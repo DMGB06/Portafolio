@@ -72,7 +72,7 @@ export const skillCategories: Record<SkillCategoryKey, Skill[]> = {
 };
 
 /** Fixed project data (URLs, images, tech). Localized copy lives in i18n JSON. */
-type ProjectCatalogItem = Omit<Project, ProjectLocalizedFields> & {
+type ProjectCatalogItem = Omit<Project, ProjectLocalizedFields | "screenshotAlts"> & {
   /** Start second of each video chapter, same order as i18n chapters */
   chapterTimes?: number[];
 };
@@ -120,6 +120,25 @@ const projectCatalog: ProjectCatalogItem[] = [
     github: "https://github.com/DMGB06/typing-platform",
     demo: "https://typing-platform-six.vercel.app/",
   },
+  {
+    id: 3,
+    slug: "mesa-de-partes",
+    type: "web",
+    images: [
+      "/projects/mesa-de-partes/solicitud.webp",
+      "/projects/mesa-de-partes/bandeja.webp",
+      "/projects/mesa-de-partes/expediente.webp",
+      "/projects/mesa-de-partes/seguimiento.webp",
+    ],
+    technologies: [
+      { name: "Next.js" },
+      { name: "PostgreSQL" },
+      { name: "Supabase" },
+      { name: "TypeScript" },
+      { name: "Playwright" },
+    ],
+    platforms: "Web",
+  },
 ];
 
 function getProjectItemCopy(locale: Locale, id: number) {
@@ -145,6 +164,7 @@ function hydrateProject(
     motivation: text.motivation,
     overview: text.overview,
     highlights: text.highlights,
+    screenshotAlts: "screenshotAlts" in text ? text.screenshotAlts : undefined,
     decisions: text.decisions,
     chapters: (text.chapters as { title: string; text: string }[]).map(
       (chapter, index) => ({

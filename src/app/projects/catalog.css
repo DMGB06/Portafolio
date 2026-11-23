@@ -10,6 +10,9 @@
 .catalog-entry { display: block; }
 .catalog-preview { display: flex; align-items: center; justify-content: center; gap: 4%; aspect-ratio: 1.75; overflow: hidden; border-radius: .5rem; background: #decba9; }
 .catalog-preview[data-type="mobile"] { background: #c2d6da; }
+.catalog-preview[data-project="mesa-de-partes"] {
+  background: color-mix(in srgb, #94aec9 42%, rgb(var(--surface)));
+}
 .catalog-shot { position: relative; width: 88%; height: 84%; }
 .catalog-shot img { object-fit: contain; }
 .catalog-preview[data-type="mobile"] .catalog-shot { height: 88%; width: 25%; }
